@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lessc:lux-nox": "lessc lux-nox.less lux-nox.css",
+    "minify": "cleancss lux-nox.css -o lux-nox.min.css",
     "docs": "jade -P lux-nox.jade",
-    "build": "npm run lessc:lux-nox  ;  npm run docs"
+    "build": "npm run lessc:lux-nox  ;  npm run minify  ;  npm run docs"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   },
   "homepage": "https://chharvey.github.io/lux-nox/",
   "devDependencies": {
+    "clean-css": "^3.4.6",
     "jade": "^1.11.0",
     "less": "^2.5.3",
     "xmeter": "^3.3.0"
