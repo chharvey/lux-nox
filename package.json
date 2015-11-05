@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lessc:lux-nox": "lessc lux-nox.less lux-nox.css",
-    "docs": "jade -P doc/lux-nox.jade",
+    "docs": "jade -P lux-nox.jade",
     "build": "npm run lessc:lux-nox  ;  npm run docs"
   },
   "repository": {
