@@ -1,0 +1,203 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
+    lux-nox
+    Version: 0.1.0
+    Licence: MIT
+    Repo   : https://github.com/chharvey/lux-nox.git
+    Home   : https://chharvey.github.io/lux-nox/
+    Author : https://chharvey.github.io/
+\*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*================================*\
+    lux-nox.less
+\*================================*/
+.u-bc-s03 {
+  background-color: #002b36 !important;
+}
+.u-bc-s02 {
+  background-color: #073642 !important;
+}
+.u-bc-s01 {
+  background-color: #586e75 !important;
+}
+.u-bc-s00 {
+  background-color: #657b83 !important;
+}
+.u-bc-s0 {
+  background-color: #839496 !important;
+}
+.u-bc-s1 {
+  background-color: #93a1a1 !important;
+}
+.u-bc-s2 {
+  background-color: #eee8d5 !important;
+}
+.u-bc-s3 {
+  background-color: #fdf6e3 !important;
+}
+.u-bc-sr {
+  background-color: #dc322f !important;
+}
+.u-bc-so {
+  background-color: #cb4b16 !important;
+}
+.u-bc-sy {
+  background-color: #b58900 !important;
+}
+.u-bc-sg {
+  background-color: #859900 !important;
+}
+.u-bc-sc {
+  background-color: #2aa198 !important;
+}
+.u-bc-sb {
+  background-color: #268bd2 !important;
+}
+.u-bc-sv {
+  background-color: #6c71c4 !important;
+}
+.u-bc-sm {
+  background-color: #d33682 !important;
+}
+.u-bc-l03 {
+  background-color: #360b00 !important;
+}
+.u-bc-l02 {
+  background-color: #421307 !important;
+}
+.u-bc-l01 {
+  background-color: #755f58 !important;
+}
+.u-bc-l00 {
+  background-color: #836d65 !important;
+}
+.u-bc-l0 {
+  background-color: #968583 !important;
+}
+.u-bc-l1 {
+  background-color: #a19393 !important;
+}
+.u-bc-l2 {
+  background-color: #d5dbee !important;
+}
+.u-bc-l3 {
+  background-color: #e3eafd !important;
+}
+.u-bc-lc {
+  background-color: #23cdd0 !important;
+}
+.u-bc-lb {
+  background-color: #34b4e9 !important;
+}
+.u-bc-li {
+  background-color: #4a76ff !important;
+}
+.u-bc-lv {
+  background-color: #7a66ff !important;
+}
+.u-bc-lr {
+  background-color: #d55e67 !important;
+}
+.u-bc-lo {
+  background-color: #d9742d !important;
+}
+.u-bc-ly {
+  background-color: #938e3b !important;
+}
+.u-bc-lg {
+  background-color: #2cc97d !important;
+}
+.u-c-s03 {
+  color: #002b36 !important;
+}
+.u-c-s02 {
+  color: #073642 !important;
+}
+.u-c-s01 {
+  color: #586e75 !important;
+}
+.u-c-s00 {
+  color: #657b83 !important;
+}
+.u-c-s0 {
+  color: #839496 !important;
+}
+.u-c-s1 {
+  color: #93a1a1 !important;
+}
+.u-c-s2 {
+  color: #eee8d5 !important;
+}
+.u-c-s3 {
+  color: #fdf6e3 !important;
+}
+.u-c-sr {
+  color: #dc322f !important;
+}
+.u-c-so {
+  color: #cb4b16 !important;
+}
+.u-c-sy {
+  color: #b58900 !important;
+}
+.u-c-sg {
+  color: #859900 !important;
+}
+.u-c-sc {
+  color: #2aa198 !important;
+}
+.u-c-sb {
+  color: #268bd2 !important;
+}
+.u-c-sv {
+  color: #6c71c4 !important;
+}
+.u-c-sm {
+  color: #d33682 !important;
+}
+.u-c-l03 {
+  color: #360b00 !important;
+}
+.u-c-l02 {
+  color: #421307 !important;
+}
+.u-c-l01 {
+  color: #755f58 !important;
+}
+.u-c-l00 {
+  color: #836d65 !important;
+}
+.u-c-l0 {
+  color: #968583 !important;
+}
+.u-c-l1 {
+  color: #a19393 !important;
+}
+.u-c-l2 {
+  color: #d5dbee !important;
+}
+.u-c-l3 {
+  color: #e3eafd !important;
+}
+.u-c-lc {
+  color: #23cdd0 !important;
+}
+.u-c-lb {
+  color: #34b4e9 !important;
+}
+.u-c-li {
+  color: #4a76ff !important;
+}
+.u-c-lv {
+  color: #7a66ff !important;
+}
+.u-c-lr {
+  color: #d55e67 !important;
+}
+.u-c-lo {
+  color: #d9742d !important;
+}
+.u-c-ly {
+  color: #938e3b !important;
+}
+.u-c-lg {
+  color: #2cc97d !important;
+}
