@@ -1,6 +1,6 @@
 {
   "name": "lux-nox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A repository containing the Solarized and Lunarized color schemes.",
   "main": "lux-nox.css",
   "scripts": {
