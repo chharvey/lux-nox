@@ -2,7 +2,7 @@
   "name": "lux-nox",
   "version": "0.1.0",
   "description": "A repository containing the Solarized and Lunarized color schemes.",
-  "main": "index.js",
+  "main": "lux-nox.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +21,5 @@
   "bugs": {
     "url": "https://github.com/chharvey/lux-nox/issues"
   },
-  "homepage": "https://github.com/chharvey/lux-nox#readme"
+  "homepage": "https://chharvey.github.io/lux-nox/"
 }
