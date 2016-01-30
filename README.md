@@ -1,17 +1,26 @@
 # lux-nox
 A repository containing the Solarized and Lunarized color schemes.
 
-lux-nox is a repo containing 32 colors: 16 [Solarized](http://ethanschoonover.com/solarized)
-colors and 16 Lunarized colors.
-
+lux-nox is a repo specifically designed for using colors from the
+[Solarized](http://ethanschoonover.com/solarized) and Lunarized color schemes.
 The Solarized and Lunarized color schemes are mainly used for displaying computer code, though
 they could be applied anywhere.
-Each color scheme has two modes: Light and Dark.
-Light mode is a light background with a dark text; the stronger the emphasis, the darker the text.
-Dark mode is a dark background with a light text; the stronger the emphasis, the lighter the text.
-Each scheme includes 8 base colors and 8 accent colors.
-The bases are dull tones for background, foreground, and stress colors, and these bases will change depending on the mode. The accents are sharp tones used for syntax highlighting, and
-do not change based on the mode.
+
+Each scheme includes 16 colors total, 8 base colors and 8 accent colors,
+which are shared among two modes:
+
+- Light mode
+  - light background
+  - dark text
+  - stronger emphasis = darker text
+- Dark mode
+  - dark background
+  - light text
+  - stronger emphasis = lighter text
+
+The 8 bases are dull tones for background, foreground, and stress colors, and
+these bases will change depending on the mode. The 8 accents are sharp tones
+used for syntax highlighting, and do not change based on the mode.
 
 Solarized was developed by [Ethan Schoonover](http://ethanschoonover.com/solarized).
 Inspired by his work, I developed the Lunarized Scheme in an attempt to
