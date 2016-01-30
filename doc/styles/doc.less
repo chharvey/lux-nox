@@ -1,0 +1,126 @@
+
+/*================================*\
+    lux-nox  |  doc.less
+    project documentation stylesheet
+\*================================*/
+@import (reference) url('../../node_modules/xmeter/src/__tool.fallback.flexbox.less');
+@import (reference) url('../../node_modules/xmeter/src/__tool.module.delims.less');
+
+
+//Table of Contents
+//# IMPORTED --- styles stolen from other projects
+//# COMPOSED --- styles written for this project
+
+
+//++++++++++++++++++++++++++++++++//
+//    # IMPORTED
+//++++++++++++++++++++++++++++++++//
+.o-Box {
+  padding: 0.5rem;
+  overflow: auto;
+}
+.o-ListBare {
+  padding: 0;
+  list-style: none;
+}
+.o-FlexContainer {
+  #XMETER .flexbox();
+  #XMETER .flex-direction(row);
+  #XMETER .flex-wrap(wrap);
+  #XMETER .flex-justify-content(space-between);
+}
+.c-ListFootnotes {
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 2;
+  padding-left: 1rem;
+  text-indent: -1rem;
+  list-style: none;
+}
+.c-ListFootnotes::before {
+  content: '';
+  display: block;
+  border-top-width: 1px;
+  margin-top: -1px;
+  border-top-style: solid;
+  border-top-color: currentColor;
+  position: relative;
+  bottom: 0.75rem;
+}
+.c-ListFootnotes::before {
+  width: 61.80339887%;
+  margin-left: -1rem;
+  opacity: 0.25;
+}
+.Rf,
+.Fn {
+  quotes: '[' ']';
+}
+.Rf::before,
+.Fn::before {
+  content: open-quote;
+}
+.Rf::after,
+.Fn::after {
+  content: close-quote;
+}
+//++++ end # IMPORTED ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # COMPOSED
+//++++++++++++++++++++++++++++++++//
+table {
+  text-align: center;
+}
+th, td {
+  padding: 0.25rem;
+}
+td {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+table table {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.75em;
+  text-align: initial;
+}
+table footer {
+  text-align: initial;
+}
+table table td {
+  font-size: inherit;
+  vertical-align: initial;
+}
+td[title] {
+  text-decoration: underline;
+}
+td[title]:hover {
+  cursor: help;
+}
+[data-rating="1"]::after,
+[data-rating="2"]::after,
+[data-rating="3"]::after,
+[data-rating="4"]::after {
+  font-family: serif;
+  margin-left: 1rem;
+}
+[data-rating="1"]::after { font-size: 0.33em; content: 'bad.';   }
+[data-rating="2"]::after { font-size: 0.67em; content: 'okay…';  }
+[data-rating="3"]::after { font-size: 1.00em; content: 'good!'; }
+[data-rating="4"]::after { font-size: 1.25em; content: 'great!!'; }
+.o-Box {
+  h4, p, ul {
+    margin-bottom: 0;
+  }
+  ul {
+    padding-left: 2rem;
+  }
+}
+.h-darkbg {
+  color: fadeout(#fff, 20%);
+}
+.a-w-1o1 { width: 100%; }
+.a-w-1o2 { width:  50%; }
+//++++ end # COMPOSED ++++//
