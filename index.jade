@@ -64,19 +64,23 @@ html
               li syntax highlighting
               li remain constant, independent of mode
       section
-        h2 About
+        h2 Inspiration and Construction
         p.
-          #[cite Solarized] was developed by #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover].
+          #[cite Solarized] was developed by
+          #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover].
           Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
-          cool the Solarized Light background colors. I liked the idea of using a Light mode but I didn&rsquo;t
-          want a yellowish tint. In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
-          the accents are complements of the Solarized Accents.
+          cool the Solarized Light background colors. I liked the idea of using a Light mode
+          but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
+          it gave me a bluish tint, #[strong(title="hence, “lunar”") like the full moon]. I tried inverting the accent colors
+          but got ugly results, so I complemented them instead.
         p.
-          The inverse of a color is that color with a hue rotation of 180&deg;, while the complement
+          In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
+          the accents are complements of the Solarized Accents.
+          The inverse of a color is a 180&deg; hue rotation of that color, while the complement
           of a color is the difference between that color and white.
         pre.
           inverse(@color)    : spin(@color, 180);
-          complement(@color) : rgb( 255 - red(@color), 255 - green(@color), 255 - blue(@color) );
+          complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );
       section
         h2 The Colors
         section.o-ListBare.o-FlexContainer
@@ -130,6 +134,7 @@ html
               li programming control (#[code if], #[code for], #[code switch], #[code return])
               li other control (#[code public], #[code private], #[code static])
               li Jade buffered comments
+              li CSS pseudo-elements and -classes
           section.o-Box.a-w-1o2.a-bc-sc
             h4 Solarized Cyan
             p: code #2aa198 &emsp; .a-bc-sc &emsp; .a-c-sc
@@ -264,7 +269,7 @@ html
             p: code #2cc97d &emsp; .a-bc-lg &emsp; .a-c-lg
             p: small complement of Solarized Magenta
       section
-        h2 More
+        h2 More Pages
         ul
           li: a(href="doc/code.html") The Code
           li: a(href="doc/accessibility.html") Accessibiltiy
