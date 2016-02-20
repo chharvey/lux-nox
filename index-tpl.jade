@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+  block vars
+    - var page_names = ['lux-nox']
+  head
+    title= page_names.reduceRight(function(a,b) { return a + ' | ' + b })
+    meta(charset="utf-8")
+    meta(name="author" content="Chris Harvey")
+    meta(name="description" content="Solarized and Lunaried colors for any project.")
+    link(rel="stylesheet" href="#{home_path||''}node_modules/xmeter/xmeter.min.css")
+    link(rel="stylesheet" href="#{home_path||''}lux-nox.min.css")
+    link(rel="stylesheet" href="#{home_path||''}doc/styles/doc.css")
+  body
+    main
+      block main
+        header
+          block header
+            h1!= page_names.reduce(function (a, b) { return a + ' &mdash; ' + b })

@@ -1,14 +1,10 @@
-doctype html
-html
-  head
-    title The Code  |  lux-nox
-    meta(charset="utf-8")
-    link(rel="stylesheet", href="../node_modules/xmeter/xmeter.min.css")
-    link(rel="stylesheet", href="../lux-nox.min.css")
-    link(rel="stylesheet", href="styles/doc.css")
-  body
-    main
-      h1 lux-nox &mdash; The Code
+extends ../index-tpl.jade
+
+block append vars
+  - page_names.push('The Code')
+  - home_path = '../'
+
+block append main
       section#background-color
         h2 Background Colors
         ul

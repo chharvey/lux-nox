@@ -1,23 +1,14 @@
-doctype html
-html
-  head
-    title lux-nox
-    meta(charset="utf-8")
-    meta(name="author", content="Chris Harvey")
-    meta(name="description", content="Solarized and Lunaried colors for any project.")
-    link(rel="stylesheet", href="node_modules/xmeter/xmeter.min.css")
-    link(rel="stylesheet", href="lux-nox.min.css")
-    link(rel="stylesheet", href="doc/styles/doc.css")
-  body
-    main
-      header
-        h1 lux-nox
+extends index-tpl.jade
+
+block append header
         p.
           This repo is specifically designed for using colors from the
           #[cite Solarized] and #[cite Lunarized] color schemes.
           These color schemes were originally designed for displaying computer code, though
           they can be applied #[abbr(title="practically") literally] anywhere.
           Import them into any project to use the variables and classes in your codebase.
+
+block append main
       footer: p by #[a(href="https://github.com/chharvey/lux-nox/") Chris Harvey]
       section
         h2 Example
@@ -44,19 +35,19 @@ html
               li light background
               li dark text
               li emphasis = darker text
-              li side-comments = lighter text
+              li de-emphasis = lighter text
           li Dark mode
             ul
               li dark background
               li light text
               li emphasis = lighter text
-              li side-comments = darker text
+              li de-emphasis = darker text
         p Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:
         ul
           li Bases
             ul
               li dull tones
-              li foreground, background, emphasis, comments
+              li foreground, background, emphasis, de-emphasis
               li interchanged based on the mode
           li Accents
             ul
@@ -320,7 +311,7 @@ html
             h4 Lunarized Violet
           section.o-Box.a-w-1o2.a-bc-lg
             h4 Lunarized Green
-      section
+      nav
         h2 More Pages
         ul
           li: a(href="doc/code.html") The Code
