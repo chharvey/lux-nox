@@ -174,143 +174,119 @@ block append main
           section.o-ColorBox.a-bc-lg.a-xo-7-s2
             h4 Lunarized Green
             p: code #2cc97d#[br].a-bc-lg#[br].a-c-lg
-        section.o-ListBare.o-FlexContainer
-          h3.a-w-1o1 #[cite Solarized] Color Scheme
-          section.o-Box.a-w-1o2.a-bc-s03.h-darkbg
-            h4 Solarized Base03
-            ul
-              li dark code background
-          section.o-Box.a-w-1o2.a-bc-s3
-            h4 Solarized Base3
-            ul
-              li light code background
-          section.o-Box.a-w-1o2.a-bc-s02.h-darkbg
-            h4 Solarized Base02
-            ul
-              li dark code border
-          section.o-Box.a-w-1o2.a-bc-s2
-            h4 Solarized Base2
-            ul
-              li light code border
-          section.o-Box.a-w-1o2.a-bc-s01
-            h4 Solarized Base01
-            ul
-              li light code emphasis
-              li dark code comment
-          section.o-Box.a-w-1o2.a-bc-s1
-            h4 Solarized Base1
-            ul
-              li light code comment
-              li dark code emphasis
-          section.o-Box.a-w-1o2.a-bc-s00
-            h4 Solarized Base00
-            ul
-              li light code text
-          section.o-Box.a-w-1o2.a-bc-s0
-            h4 Solarized Base0
-            ul
-              li dark code text
-          section.o-Box.a-w-1o2.a-bc-sr
-            h4 Solarized Red
+      section
+        h2 The Schemes
+        mixin accent-red(scheme)
+          section(class={'a-c-sr': scheme==='Solarized', 'a-c-lr': scheme==='Lunarized'})
+            h5 #{scheme} Red
             ul
               li programming control (#[code if], #[code for], #[code switch], #[code return])
               li other control (#[code public], #[code private], #[code static])
-              li Jade buffered comments
+              li Jade buffered comments&nbsp;
               li CSS pseudo-elements and -classes
-          section.o-Box.a-w-1o2.a-bc-sc
-            h4 Solarized Cyan
-            ul
-              li HTML attribute values
-              li CSS property values
-              li strings (except in CSS#[sup: a.Rf#rf-cssstring(rel="this" href="#fn-cssstring") 2])
-          section.o-Box.a-w-1o2.a-bc-so
-            h4 Solarized Orange
+        mixin accent-orange(scheme)
+          section(class={'a-c-so': scheme==='Solarized', 'a-c-lo': scheme==='Lunarized'})
+            h5 #{scheme} Orange
             ul
               li delimiters and operators (#[code +], #[code ==], #[code .], #[code new], #[code typeof])
               li Jade class names
-          section.o-Box.a-w-1o2.a-bc-sb
-            h4 Solarized Blue
-            ul
-              li HTML/Jade tags
-              li CSS/Less class selectors
-              li JS function definitions and function calls
-          section.o-Box.a-w-1o2.a-bc-sy
-            h4 Solarized Yellow
+        mixin accent-yellow(scheme)
+          section(class={'a-c-sy': scheme==='Solarized', 'a-c-ly': scheme==='Lunarized'})
+            h5 #{scheme} Yellow
             ul
               li HTML/Jade attribute names
               li CSS property names
               li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
-          section.o-Box.a-w-1o2.a-bc-sv
-            h4 Solarized Violet
-            ul
-              li variable names
-              li function arguments
-              li Jade tag interpolation
-          section.o-Box.a-w-1o2.a-bc-sg
-            h4 Solarized Green
+        mixin accent-green(scheme)
+          section(class={'a-c-sg': scheme==='Solarized', 'a-c-lg': scheme==='Lunarized'})
+            h5 #{scheme} Green
             ul
               li HTML/Jade characters and entities
               li CSS numeric values with units
               li constant values (numbers, colors, booleans, #[code null])
-          section.o-Box.a-w-1o2.a-bc-sm
-            h4 Solarized Magenta
+        mixin accent-cyan(scheme)
+          section(class={'a-c-sc': scheme==='Solarized', 'a-c-lc': scheme==='Lunarized'})
+            h5 #{scheme} Cyan
+            ul
+              li HTML attribute values
+              li CSS property values
+              li strings (except in CSS)
+        mixin accent-blue(scheme)
+          section(class={'a-c-sb': scheme==='Solarized', 'a-c-lb': scheme==='Lunarized'})
+            h5 #{scheme} Blue
+            ul
+              li HTML/Jade tags
+              li CSS/Less class selectors
+              li JS function definitions and function calls
+        mixin accent-violet(scheme)
+          section(class={'a-c-sv': scheme==='Solarized', 'a-c-lv': scheme==='Lunarized'})
+            h5 #{scheme} Violet
+            ul
+              li variable names
+              li function arguments
+              li Jade tag interpolation
+        mixin accent-magenta-indigo(scheme,color)
+          section(class={'a-c-sm': scheme==='Solarized', 'a-c-li': scheme==='Lunarized'})
+            h5 #{scheme} #{color}
             ul
               li string delimiters (#[code &quot;] and #[code &apos;])
-              li #[sup: a.Fn#fn-cssstring(rel="this" href="#rf-cssstring") 2]CSS strings
+              li CSS strings
               li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
               li Jade id names
-        section.o-ListBare.o-FlexContainer
-          h3.a-w-1o1 #[cite Lunarized] Color Scheme
-          section.o-Box.a-w-1o2.a-bc-l03.h-darkbg
-            h4 Lunarized Base03
-            ul
-              li dark code background
-          section.o-Box.a-w-1o2.a-bc-l3
-            h4 Lunarized Base3
-            ul
-              li light code background
-          section.o-Box.a-w-1o2.a-bc-l02.h-darkbg
-            h4 Lunarized Base02
-            ul
-              li dark code border
-          section.o-Box.a-w-1o2.a-bc-l2
-            h4 Lunarized Base2
-            ul
-              li light code border
-          section.o-Box.a-w-1o2.a-bc-l01
-            h4 Lunarized Base01
-            ul
-              li light code emphasis
-              li dark code comment
-          section.o-Box.a-w-1o2.a-bc-l1
-            h4 Lunarized Base1
-            ul
-              li light code comment
-              li dark code emphasis
-          section.o-Box.a-w-1o2.a-bc-l00
-            h4 Lunarized Base00
-            ul
-              li light code text
-          section.o-Box.a-w-1o2.a-bc-l0
-            h4 Lunarized Base0
-            ul
-              li dark code text
-          section.o-Box.a-w-1o2.a-bc-lc
-            h4 Lunarized Cyan
-          section.o-Box.a-w-1o2.a-bc-lr
-            h4 Lunarized Red
-          section.o-Box.a-w-1o2.a-bc-lb
-            h4 Lunarized Blue
-          section.o-Box.a-w-1o2.a-bc-lo
-            h4 Lunarized Orange
-          section.o-Box.a-w-1o2.a-bc-li
-            h4 Lunarized Indigo
-          section.o-Box.a-w-1o2.a-bc-ly
-            h4 Lunarized Yellow
-          section.o-Box.a-w-1o2.a-bc-lv
-            h4 Lunarized Violet
-          section.o-Box.a-w-1o2.a-bc-lg
-            h4 Lunarized Green
+        section
+          h3 #[cite Solarized] Color Scheme
+          section
+            h4 Dark Bases
+            mixin base-dark(scheme)
+              span.
+                #[span (Background: #{scheme} Base03)]
+                #[span(class={'a-c-s01': scheme==='Solarized', 'a-c-l01': scheme==='Lunarized'}) De-Emphasis: #{scheme} Base01]
+                #[span Text: #{scheme} Base0]
+                #[span(class={'a-c-s1': scheme==='Solarized', 'a-c-l1': scheme==='Lunarized'}) Emphasis: #{scheme} Base1]
+            mixin base-light(scheme)
+              span.
+                #[span(class={'a-c-s1': scheme==='Solarized', 'a-c-l1': scheme==='Lunarized'}) Emphasis: #{scheme} Base01]
+                #[span Text: #{scheme} Base00]
+                #[span(class={'a-c-s01': scheme==='Solarized', 'a-c-l01': scheme==='Lunarized'}) De-Emphasis: #{scheme} Base1]
+                #[span (Background: #{scheme} Base3)]
+            pre.o-Box.a-bc-s03.a-c-s0
+              +base-dark('Solarized')
+          section
+            h4 Light Bases
+            pre.o-Box.a-bc-s3.a-c-s00
+              +base-light('Solarized')
+          section.a-bc-s3.a-c-l00
+            h4 Accents
+            - var scheme = 'Solarized'
+            +accent-red(scheme)
+            +accent-orange(scheme)
+            +accent-yellow(scheme)
+            +accent-green(scheme)
+            +accent-cyan(scheme)
+            +accent-blue(scheme)
+            +accent-violet(scheme)
+            +accent-magenta-indigo(scheme,'Magenta')
+        section
+          h3 #[cite Lunarized] Color Scheme
+          section
+            h4 Dark Bases
+            pre.o-Box.a-bc-l03.a-c-l0
+              +base-dark('Lunarized')
+          section
+            h4 Light Bases
+            pre.o-Box.a-bc-l3.a-c-l00
+              +base-dark('Lunarized')
+          section.a-bc-l03.a-c-s0
+            h4 Accents
+            - var scheme = 'Lunarized'
+            +accent-red(scheme)
+            +accent-orange(scheme)
+            +accent-yellow(scheme)
+            +accent-green(scheme)
+            +accent-cyan(scheme)
+            +accent-blue(scheme)
+            +accent-violet(scheme)
+            +accent-magenta-indigo(scheme,'Indigo')
       nav
         h2 More Pages
         ul
