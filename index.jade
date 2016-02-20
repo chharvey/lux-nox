@@ -12,7 +12,7 @@ block append main
       footer: p by #[a(href="https://github.com/chharvey/lux-nox/") Chris Harvey]
       section
         h2 Example
-        figure.a-bc-s3(style="padding: 0.5rem;")
+        figure.o-Box.a-bc-s3
           pre
             span.a-c-sb
               | &lt;h3 
@@ -20,58 +20,42 @@ block append main
                 | class=
                 span.a-c-sc
                   span.a-c-sm &quot;
-                  | a-bc-s03 a-c-lc
+                  | a-bc-s03  a-c-lc
                   span.a-c-sm &quot;
               | &gt;
-            | Solarized Base 03 background, Lunarized Cyan foreground!
+            | Solarized Base03 background, Lunarized Cyan foreground!
             span.a-c-sb &lt;/h3&gt;
-          h3.a-bc-s03.a-c-lc(style="padding: 0.5rem;") Solarized Base 03 background, Lunarized Cyan foreground!
+          h3.o-Box.a-bc-s03.a-c-lc Solarized Base03 background, Lunarized Cyan foreground!
       section
         h2 Description
         p Each color scheme contains 16 colors total, shared among two modes:
         ul
-          li Light mode
-            ul
-              li light background
-              li dark text
-              li emphasis = darker text
-              li de-emphasis = lighter text
           li Dark mode
             ul
-              li dark background
-              li light text
-              li emphasis = lighter text
-              li de-emphasis = darker text
+              li medium-light text
+              li light emphasis
+              li dark de-emphasis
+              li darker highlight
+              li darkest background
+          li Light mode
+            ul
+              li medium-dark text
+              li dark emphasis
+              li light de-emphasis
+              li lighter highlight
+              li lightest background
         p Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:
         ul
           li Bases
             ul
               li dull tones
-              li foreground, background, emphasis, de-emphasis
+              li foreground, emphasis, de-emphasis, highlight, background
               li interchanged based on the mode
           li Accents
             ul
               li sharp tones
               li syntax highlighting
               li remain constant, independent of mode
-      section
-        h2 Inspiration and Construction
-        p.
-          #[cite Solarized] was developed by
-          #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover].
-          Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
-          cool the Solarized Light background colors. I liked the idea of using a Light mode
-          but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
-          it gave me a bluish tint, #[strong(title="hence, “lunar”") like the full moon]. I tried inverting the accent colors
-          but got ugly results, so I complemented them instead.
-        p.
-          In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
-          the accents are complements of the Solarized Accents.
-          The inverse of a color is a 180&deg; hue rotation of that color, while the complement
-          of a color is the difference between that color and white.
-        pre.
-          inverse(@color)    : spin(@color, 180);
-          complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );
       section
         h2 The Colors
         section.o-ListBare.o-FlexContainer
@@ -175,120 +159,26 @@ block append main
             h4 Lunarized Green
             p: code #2cc97d#[br].a-bc-lg#[br].a-c-lg
       section
-        h2 The Schemes
-        mixin accent-red(scheme)
-          section(class={'a-c-sr': scheme==='Solarized', 'a-c-lr': scheme==='Lunarized'})
-            h5 #{scheme} Red
-            ul
-              li programming control (#[code if], #[code for], #[code switch], #[code return])
-              li other control (#[code public], #[code private], #[code static])
-              li Jade buffered comments&nbsp;
-              li CSS pseudo-elements and -classes
-        mixin accent-orange(scheme)
-          section(class={'a-c-so': scheme==='Solarized', 'a-c-lo': scheme==='Lunarized'})
-            h5 #{scheme} Orange
-            ul
-              li delimiters and operators (#[code +], #[code ==], #[code .], #[code new], #[code typeof])
-              li Jade class names
-        mixin accent-yellow(scheme)
-          section(class={'a-c-sy': scheme==='Solarized', 'a-c-ly': scheme==='Lunarized'})
-            h5 #{scheme} Yellow
-            ul
-              li HTML/Jade attribute names
-              li CSS property names
-              li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
-        mixin accent-green(scheme)
-          section(class={'a-c-sg': scheme==='Solarized', 'a-c-lg': scheme==='Lunarized'})
-            h5 #{scheme} Green
-            ul
-              li HTML/Jade characters and entities
-              li CSS numeric values with units
-              li constant values (numbers, colors, booleans, #[code null])
-        mixin accent-cyan(scheme)
-          section(class={'a-c-sc': scheme==='Solarized', 'a-c-lc': scheme==='Lunarized'})
-            h5 #{scheme} Cyan
-            ul
-              li HTML attribute values
-              li CSS property values
-              li strings (except in CSS)
-        mixin accent-blue(scheme)
-          section(class={'a-c-sb': scheme==='Solarized', 'a-c-lb': scheme==='Lunarized'})
-            h5 #{scheme} Blue
-            ul
-              li HTML/Jade tags
-              li CSS/Less class selectors
-              li JS function definitions and function calls
-        mixin accent-violet(scheme)
-          section(class={'a-c-sv': scheme==='Solarized', 'a-c-lv': scheme==='Lunarized'})
-            h5 #{scheme} Violet
-            ul
-              li variable names
-              li function arguments
-              li Jade tag interpolation
-        mixin accent-magenta-indigo(scheme,color)
-          section(class={'a-c-sm': scheme==='Solarized', 'a-c-li': scheme==='Lunarized'})
-            h5 #{scheme} #{color}
-            ul
-              li string delimiters (#[code &quot;] and #[code &apos;])
-              li CSS strings
-              li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
-              li Jade id names
-        section
-          h3 #[cite Solarized] Color Scheme
-          section
-            h4 Dark Bases
-            mixin base-dark(scheme)
-              span.
-                #[span (Background: #{scheme} Base03)]
-                #[span(class={'a-c-s01': scheme==='Solarized', 'a-c-l01': scheme==='Lunarized'}) De-Emphasis: #{scheme} Base01]
-                #[span Text: #{scheme} Base0]
-                #[span(class={'a-c-s1': scheme==='Solarized', 'a-c-l1': scheme==='Lunarized'}) Emphasis: #{scheme} Base1]
-            mixin base-light(scheme)
-              span.
-                #[span(class={'a-c-s1': scheme==='Solarized', 'a-c-l1': scheme==='Lunarized'}) Emphasis: #{scheme} Base01]
-                #[span Text: #{scheme} Base00]
-                #[span(class={'a-c-s01': scheme==='Solarized', 'a-c-l01': scheme==='Lunarized'}) De-Emphasis: #{scheme} Base1]
-                #[span (Background: #{scheme} Base3)]
-            pre.o-Box.a-bc-s03.a-c-s0
-              +base-dark('Solarized')
-          section
-            h4 Light Bases
-            pre.o-Box.a-bc-s3.a-c-s00
-              +base-light('Solarized')
-          section.a-bc-s3.a-c-l00
-            h4 Accents
-            - var scheme = 'Solarized'
-            +accent-red(scheme)
-            +accent-orange(scheme)
-            +accent-yellow(scheme)
-            +accent-green(scheme)
-            +accent-cyan(scheme)
-            +accent-blue(scheme)
-            +accent-violet(scheme)
-            +accent-magenta-indigo(scheme,'Magenta')
-        section
-          h3 #[cite Lunarized] Color Scheme
-          section
-            h4 Dark Bases
-            pre.o-Box.a-bc-l03.a-c-l0
-              +base-dark('Lunarized')
-          section
-            h4 Light Bases
-            pre.o-Box.a-bc-l3.a-c-l00
-              +base-dark('Lunarized')
-          section.a-bc-l03.a-c-s0
-            h4 Accents
-            - var scheme = 'Lunarized'
-            +accent-red(scheme)
-            +accent-orange(scheme)
-            +accent-yellow(scheme)
-            +accent-green(scheme)
-            +accent-cyan(scheme)
-            +accent-blue(scheme)
-            +accent-violet(scheme)
-            +accent-magenta-indigo(scheme,'Indigo')
+        h2 Inspiration and Construction
+        p.
+          #[cite Solarized] was developed by
+          #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover].
+          Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
+          cool the Solarized Light background colors. The Light mode was appealing to me
+          but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
+          it gave me a bluish tint, #[strong(title="hence, “lunar”") like the full moon].
+          I tried inverting the accent colors as well,
+          but got ugly results, so I complemented them instead.
+        p.
+          In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
+          the accents are complements of the Solarized Accents.
+          The inverse of a color is a 180&deg; hue rotation of that color, while the complement
+          of a color is the difference between that color and white.
+        pre.
+          inverse(@color)    : spin(@color, 180);
+          complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );
       nav
         h2 More Pages
         ul
-          li: a(href="doc/code.html") The Code
+          li: a(href="doc/use.html") Suggested Use
           li: a(href="doc/accessibility.html") Accessibiltiy

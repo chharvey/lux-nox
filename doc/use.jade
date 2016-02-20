@@ -1,0 +1,167 @@
+extends ../index-tpl.jade
+
+block append vars
+  - page_names.push('Suggested Use')
+  - home_path = '../'
+
+block append main
+  mixin demo(settings)
+    -
+      var bases = {
+        'Solarized': {
+          dark: {
+            text   : { class: 'a-c-s0'   , name: 'Solarized Base0'   }
+          , emph   : { class: 'a-c-s1'   , name: 'Solarized Base1'   }
+          , deemph : { class: 'a-c-s01'  , name: 'Solarized Base01'  }
+          , hilite : { class: 'a-bc-s02' , name: 'Solarized Base02'  }
+          , bg     : { class: 'a-bc-s03' , name: 'Solarized Base03'  }
+          }
+        , light: {
+            text   : { class: 'a-c-s00'  , name: 'Solarized Base00'  }
+          , emph   : { class: 'a-c-s01'  , name: 'Solarized Base01'  }
+          , deemph : { class: 'a-c-s1'   , name: 'Solarized Base1'   }
+          , hilite : { class: 'a-bc-s2'  , name: 'Solarized Base2'   }
+          , bg     : { class: 'a-bc-s3'  , name: 'Solarized Base3'   }
+          }
+        , accent: {
+            red:     { class: 'a-c-sr'   , name: 'Solarized Red'     }
+          , orange:  { class: 'a-c-so'   , name: 'Solarized Orange'  }
+          , yellow:  { class: 'a-c-sy'   , name: 'Solarized Yellow'  }
+          , green:   { class: 'a-c-sg'   , name: 'Solarized Green'   }
+          , cyan:    { class: 'a-c-sc'   , name: 'Solarized Cyan'    }
+          , blue:    { class: 'a-c-sb'   , name: 'Solarized Blue'    }
+          , violet:  { class: 'a-c-sv'   , name: 'Solarized Violet'  }
+          , magenta: { class: 'a-c-sm'   , name: 'Solarized Magenta' }
+          }
+        }
+      , 'Lunarized': {
+          dark: {
+            text   : { class: 'a-c-l0'   , name: 'Lunarized Base0'   }
+          , emph   : { class: 'a-c-l1'   , name: 'Lunarized Base1'   }
+          , deemph : { class: 'a-c-l01'  , name: 'Lunarized Base01'  }
+          , hilite : { class: 'a-bc-l02' , name: 'Lunarized Base02'  }
+          , bg     : { class: 'a-bc-l03' , name: 'Lunarized Base03'  }
+          }
+        , light: {
+            text   : { class: 'a-c-l00'  , name: 'Lunarized Base00'  }
+          , emph   : { class: 'a-c-l01'  , name: 'Lunarized Base01'  }
+          , deemph : { class: 'a-c-l1'   , name: 'Lunarized Base1'   }
+          , hilite : { class: 'a-bc-l2'  , name: 'Lunarized Base2'   }
+          , bg     : { class: 'a-bc-l3'  , name: 'Lunarized Base3'   }
+          }
+        , accent: {
+            cyan:    { class: 'a-c-lc'   , name: 'Lunarized Cyan'    }
+          , blue:    { class: 'a-c-lb'   , name: 'Lunarized Blue'    }
+          , indigo:  { class: 'a-c-li'   , name: 'Lunarized Indigo'  }
+          , violet:  { class: 'a-c-lv'   , name: 'Lunarized Violet'  }
+          , red:     { class: 'a-c-lr'   , name: 'Lunarized Red'     }
+          , orange:  { class: 'a-c-lo'   , name: 'Lunarized Orange'  }
+          , yellow:  { class: 'a-c-ly'   , name: 'Lunarized Yellow'  }
+          , green:   { class: 'a-c-lg'   , name: 'Lunarized Green'   }
+          }
+        }
+      }
+      var this_theme = {
+        //- pay careful attention to the [bg|fg|ac]_scheme here
+        text   : bases[settings.fg_scheme][settings.mode].text
+      , emph   : bases[settings.fg_scheme][settings.mode].emph
+      , deemph : bases[settings.fg_scheme][settings.mode].deemph
+      , hilite : bases[settings.bg_scheme][settings.mode].hilite
+      , bg     : bases[settings.bg_scheme][settings.mode].bg
+      , red    : bases[settings.ac_scheme].accent.red
+      , orange : bases[settings.ac_scheme].accent.orange
+      , yellow : bases[settings.ac_scheme].accent.yellow
+      , green  : bases[settings.ac_scheme].accent.green
+      , cyan   : bases[settings.ac_scheme].accent.cyan
+      , blue   : bases[settings.ac_scheme].accent.blue
+      , violet : bases[settings.ac_scheme].accent.violet
+      , purple : bases[settings.ac_scheme].accent.magenta || bases[settings.ac_scheme].accent.indigo
+      }
+    section.o-Box(class=[ this_theme.bg.class , this_theme.text.class ])
+      h2= settings.mode.charAt(0).toUpperCase() + settings.mode.slice(1) + ' Color Theme'
+      section
+        h3 Bases
+        ul
+          li #{this_theme.text.name}: text
+          li(class=this_theme.emph.class) #{this_theme.emph.name}: emphasis
+          li(class=this_theme.deemph.class) #{this_theme.deemph.name}: de-emphasis
+          li(class=this_theme.hilite.class) #{this_theme.hilite.name}: highlight
+          li #{this_theme.bg.name}: background
+      section
+        h3 Accents
+        mixin red()
+          li(class=this_theme.red.class)= this_theme.red.name + ':'
+            ul
+              li programming control (#[code if], #[code for], #[code switch], #[code return])
+              li other control (#[code public], #[code private], #[code static])
+              li Jade buffered comments&nbsp;
+              li CSS pseudo-elements and -classes
+        mixin orange()
+          li(class=this_theme.orange.class)= this_theme.orange.name + ':'
+            ul
+              li delimiters and operators (#[code +], #[code ==], #[code .], #[code new], #[code typeof])
+              li Jade class names
+        mixin yellow()
+          li(class=this_theme.yellow.class)= this_theme.yellow.name + ':'
+            ul
+              li HTML/Jade attribute names
+              li CSS property names
+              li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
+        mixin green()
+          li(class=this_theme.green.class)= this_theme.green.name + ':'
+            ul
+              li HTML/Jade characters and entities
+              li CSS numeric values with units
+              li constant values (numbers, colors, booleans, #[code null])
+        mixin cyan()
+          li(class=this_theme.cyan.class)= this_theme.cyan.name + ':'
+            ul
+              li HTML attribute values
+              li CSS property values
+              li strings (except in CSS)
+        mixin blue()
+          li(class=this_theme.blue.class)= this_theme.blue.name + ':'
+            ul
+              li HTML/Jade tags
+              li CSS/Less class selectors
+              li JS function definitions and function calls
+        mixin violet()
+          li(class=this_theme.violet.class)= this_theme.violet.name + ':'
+            ul
+              li variable names
+              li function arguments
+              li Jade tag interpolation
+        mixin purple()
+          li(class=this_theme.purple.class)= this_theme.purple.name + ':'
+            ul
+              li string delimiters (#[code &quot;] and #[code &apos;])
+              li CSS strings
+              li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
+              li Jade id names
+        ul
+          if settings.ac_scheme === 'Lunarized'
+            +cyan()
+            +blue()
+            +purple()
+            +violet()
+          +red()
+          +orange()
+          +yellow()
+          +green()
+          if settings.ac_scheme === 'Solarized'
+            +cyan()
+            +blue()
+            +violet()
+            +purple()
+  +demo({
+    mode: 'dark',
+    bg_scheme: 'Lunarized',
+    fg_scheme: 'Solarized',
+    ac_scheme: 'Lunarized'
+  })
+  +demo({
+    mode: 'light',
+    bg_scheme: 'Solarized',
+    fg_scheme: 'Lunarized',
+    ac_scheme: 'Solarized'
+  })

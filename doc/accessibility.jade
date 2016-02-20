@@ -319,6 +319,8 @@ block append main
           the set of colors that has the best contrast ratio, on average. This is different based
           on whether you want a dark or light background, and whether you are choosing
           base colors or accent colors. Let&rsquo;s look at each case separately.
+          We will only consider the Base03 and Base3 backgrounds (not the respective
+          Base02 and Base2 highlights).
         section
           h3 Dark Mode
           section
@@ -327,10 +329,10 @@ block append main
               If you want a dark background (either Solarized Base03 or Lunarized Base03),
               you know that whatever bases you use will be
             ul
-              li Base01 (darkest): de-emphasis
+              li Base01 (dark): de-emphasis
               li Base00 (medium-dark): not used in dark mode
               li Base0 (medium-light): normal text
-              li Base1 (lightest): emphasis
+              li Base1 (light): emphasis
             section
               h5 Solarized Dark, Bases
               table.a-bc-s03
@@ -552,10 +554,10 @@ block append main
               If you want a light background (either Solarized Base3 or Lunarized Base3),
               you know that whatever bases you use will be
             ul
-              li Base01 (darkest): emphasis
+              li Base01 (dark): emphasis
               li Base00 (medium-dark): normal text
               li Base0 (medium-light): not used in light mode
-              li Base1 (lightest): de-emphasis
+              li Base1 (light): de-emphasis
             section
               h5 Solarized Light, Bases
               table.a-bc-s3
@@ -800,3 +802,4 @@ block append main
           #[br]Light mode: Solarized Light: Lunarized bases, Solarized accents.
           #[br]When facing each other, Dark mode has a better average contrast ratio with its
           bases and accents than Light mode does.
+        p See the #[a(href="use.html") Suggested Use] page for further demos.
