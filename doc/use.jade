@@ -61,80 +61,80 @@ block append main
           }
         }
       }
-      var this_theme = {
+      var theme = {
         //- pay careful attention to the [bg|fg|ac]_scheme here
-        text   : bases[settings.fg_scheme][settings.mode].text
-      , emph   : bases[settings.fg_scheme][settings.mode].emph
-      , deemph : bases[settings.fg_scheme][settings.mode].deemph
-      , hilite : bases[settings.bg_scheme][settings.mode].hilite
-      , bg     : bases[settings.bg_scheme][settings.mode].bg
-      , red    : bases[settings.ac_scheme].accent.red
-      , orange : bases[settings.ac_scheme].accent.orange
-      , yellow : bases[settings.ac_scheme].accent.yellow
-      , green  : bases[settings.ac_scheme].accent.green
-      , cyan   : bases[settings.ac_scheme].accent.cyan
-      , blue   : bases[settings.ac_scheme].accent.blue
-      , violet : bases[settings.ac_scheme].accent.violet
-      , purple : bases[settings.ac_scheme].accent.magenta || bases[settings.ac_scheme].accent.indigo
+        text    : bases[settings.fg_scheme][settings.mode].text
+      , emph    : bases[settings.fg_scheme][settings.mode].emph
+      , deemph  : bases[settings.fg_scheme][settings.mode].deemph
+      , hilite  : bases[settings.bg_scheme][settings.mode].hilite
+      , bg      : bases[settings.bg_scheme][settings.mode].bg
+      , red     : bases[settings.ac_scheme].accent.red
+      , orange  : bases[settings.ac_scheme].accent.orange
+      , yellow  : bases[settings.ac_scheme].accent.yellow
+      , green   : bases[settings.ac_scheme].accent.green
+      , cyan    : bases[settings.ac_scheme].accent.cyan
+      , blue    : bases[settings.ac_scheme].accent.blue
+      , purple1 : bases[settings.ac_scheme].accent.indigo  || bases[settings.ac_scheme].accent.violet
+      , purple2 : bases[settings.ac_scheme].accent.magenta || bases[settings.ac_scheme].accent.violet
       }
-    section.o-Box(class=[ this_theme.bg.class , this_theme.text.class ])
+    section.o-Box(class=[ theme.bg.class , theme.text.class ])
       h2= settings.mode.charAt(0).toUpperCase() + settings.mode.slice(1) + ' Color Theme'
       section
         h3 Bases
         ul
-          li #{this_theme.text.name}: text
-          li(class=this_theme.emph.class) #{this_theme.emph.name}: emphasis
-          li(class=this_theme.deemph.class) #{this_theme.deemph.name}: de-emphasis
-          li(class=this_theme.hilite.class) #{this_theme.hilite.name}: highlight
-          li #{this_theme.bg.name}: background
+          li #{theme.text.name}: text
+          li(class=theme.emph.class) #{theme.emph.name}: emphasis
+          li(class=theme.deemph.class) #{theme.deemph.name}: de-emphasis
+          li(class=theme.hilite.class) #{theme.hilite.name}: highlight
+          li #{theme.bg.name}: background
       section
         h3 Accents
         mixin red()
-          li(class=this_theme.red.class)= this_theme.red.name + ':'
+          li(class=theme.red.class)= theme.red.name + ':'
             ul
               li programming control (#[code if], #[code for], #[code switch], #[code return])
               li other control (#[code public], #[code private], #[code static])
               li Jade buffered comments&nbsp;
               li CSS pseudo-elements and -classes
         mixin orange()
-          li(class=this_theme.orange.class)= this_theme.orange.name + ':'
+          li(class=theme.orange.class)= theme.orange.name + ':'
             ul
-              li delimiters and operators (#[code +], #[code ==], #[code .], #[code new], #[code typeof])
+              li delimiters and operators (#[code +], #[code ==], #[code new], #[code typeof])
               li Jade class names
         mixin yellow()
-          li(class=this_theme.yellow.class)= this_theme.yellow.name + ':'
+          li(class=theme.yellow.class)= theme.yellow.name + ':'
             ul
               li HTML/Jade attribute names
               li CSS property names
               li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
         mixin green()
-          li(class=this_theme.green.class)= this_theme.green.name + ':'
+          li(class=theme.green.class)= theme.green.name + ':'
             ul
               li HTML/Jade characters and entities
               li CSS numeric values with units
               li constant values (numbers, colors, booleans, #[code null])
         mixin cyan()
-          li(class=this_theme.cyan.class)= this_theme.cyan.name + ':'
+          li(class=theme.cyan.class)= theme.cyan.name + ':'
             ul
               li HTML attribute values
               li CSS property values
               li strings (except in CSS)
         mixin blue()
-          li(class=this_theme.blue.class)= this_theme.blue.name + ':'
+          li(class=theme.blue.class)= theme.blue.name + ':'
             ul
               li HTML/Jade tags
               li CSS/Less class selectors
               li JS function definitions and function calls
-        mixin violet()
-          li(class=this_theme.violet.class)= this_theme.violet.name + ':'
+        mixin purple1()
+          li(class=theme.purple1.class)= theme.purple1.name + ':'
             ul
-              li variable names
+              li variable/parameter names
               li function arguments
               li Jade tag interpolation
-        mixin purple()
-          li(class=this_theme.purple.class)= this_theme.purple.name + ':'
+        mixin purple2()
+          li(class=theme.purple2.class)= theme.purple2.name + ':'
             ul
-              li string delimiters (#[code &quot;] and #[code &apos;])
+              //- li string delimiters (#[code &quot;] and #[code &apos;])
               li CSS strings
               li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
               li Jade id names
@@ -142,8 +142,8 @@ block append main
           if settings.ac_scheme === 'Lunarized'
             +cyan()
             +blue()
-            +purple()
-            +violet()
+            +purple1()
+            +purple2()
           +red()
           +orange()
           +yellow()
@@ -151,8 +151,50 @@ block append main
           if settings.ac_scheme === 'Solarized'
             +cyan()
             +blue()
-            +violet()
-            +purple()
+            +purple1()
+            +purple2()
+      section
+        h3 Sample
+        -
+          var r  = theme.red.class
+            , o  = theme.orange.class
+            , y  = theme.yellow.class
+            , g  = theme.green.class
+            , c  = theme.cyan.class
+            , b  = theme.blue.class
+            , p1 = theme.purple1.class
+            , p2 = theme.purple2.class
+            , emph    = theme.emph.class
+            , deemph  = theme.deemph.class
+            , hilite  = theme.hilite.class
+        pre.
+          #[span(class=b) &lt;tag #[span(class=y) attribute=#[span(class=c) &quot;value value&quot;]]&gt;]contents#[span(class=b) &lt;#{'/'}tag&gt;]
+          #[small(class=deemph) &lt;!-- HTML comment --&gt;]
+          #[span(class=b) &lt;style #[span(class=y) scoped]&gt;]
+            #[small(class=deemph) /* block comment */]
+            element,
+            #[span(class=b) .class] #[span(class=o)= '{']
+              #[small(class=deemph) #{'//'} inline comment]
+              #[span(class=y) property]: #[span(class=c) value];
+              #[span(class=y) property]: #[span(class=g) 48px];
+              #[span(class=b) .command(#[span(class=p1) argument, #[span(class=p2) 'string']])];
+              #[strong(class=[emph,hilite]) &amp;#[span(class=r) :pseudo] #[span(class=o)= '{'] #[span(class=y) property]: #[span(class=c) value]; #[span(class=o)= '}']]
+            #[span(class=o)= '}']
+          #[span(class=b) &lt;#{'/'}style&gt;]
+          #[span(class=b) &lt;script&gt;]
+            #[span(class=y) function] #[span(class=b) Person(#[span(class=p1) name])] #[span(class=o)= '{'] #[small(class=deemph) #{'//'} constructor for class `Person`]
+              #[span(class=p2) this].greetings #[span(class=o) =] #[span(class=o) #{'['}] #[span(class=c) 'hello!']#[span(class=o) ,] #[span(class=c) 'hi!']#[span(class=o) ,] handshake #[span(class=o) #{']'}];
+            #[span(class=o)= '}']
+            #[span(class=y) function] #[span(class=b) TestSubject(#[span(class=p1) name#[span(class=o) ,] adopted])] #[span(class=o)= '{'] #[small(class=deemph) #{'//'} constructor for class `TestSubject`]
+              #[span(class=p2) Person]#[span(class=b) .call(#[span(class=p1) #[span(class=p2) this]#[span(class=o) ,] name#[span(class=o) ,] adopted])]; #[small(class=deemph) #{'//'} calls the parent constructor]
+              #[span(class=r) if (#[span(class=o) typeof] #[span(class=p1) adopted] #[span(class=o) ===] #[span(class=c) 'boolean'])] #[span(class=o)= '{']
+                #[strong(class=[emph,hilite]) #[span(class=p2) this].is_adopted #[span(class=o) =] #[span(class=p1) adopted];]
+              #[span(class=o)= '}'] #[span(class=r) else] #[span(class=p2) this].is_adopted #[span(class=o) =] #[span(class=g) false];
+            #[span(class=o)= '}']
+            #[span(class=p2) this].location #[span(class=o) =] #[span(class=o) #{'{'}] name#[span(class=o) :] #[span(class=c) 'Aperture Science Enrichment Center'] #[span(class=o) #{'}'}]
+            #[span(class=p2) Util]#[span(class=b) .extend(#[span(class=p1) #[span(class=p2) TestSubject]#[span(class=o) ,] #[span(class=p2) Person]])]; #[small(class=deemph) #{'//'} extends `TestSubject` from `Person`]
+            #[span(class=y) var] you #[span(class=o) =] #[span(class=o) new] #[span(class=b) TestSubject(#[span(class=p1) #[span(class=c) 'Chell']#[span(class=o) ,] #[span(class=g) true]])]; #[small(class=deemph) #{'//'} creates an instance of `TestSubject`]
+          #[span(class=b) &lt;#{'/'}script&gt;]
   +demo({
     mode: 'dark',
     bg_scheme: 'Lunarized',
