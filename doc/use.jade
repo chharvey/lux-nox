@@ -82,11 +82,26 @@ block append main
       section
         h3 Bases
         ul
-          li #{theme.text.name}: text
-          li(class=theme.emph.class) #{theme.emph.name}: emphasis
-          li(class=theme.deemph.class) #{theme.deemph.name}: de-emphasis
-          li(class=theme.hilite.class) #{theme.hilite.name}: highlight
-          li #{theme.bg.name}: background
+          mixin emphasizeWhenSchemesDisagree(content)
+            if (settings.bg_scheme !== settings.fg_scheme)
+              em= content
+            else
+              = content
+          li
+            +emphasizeWhenSchemesDisagree(theme.text.name)
+            |: text
+          li(class=theme.emph.class)
+            +emphasizeWhenSchemesDisagree(theme.emph.name)
+            |: emphasis
+          li(class=theme.deemph.class)
+            +emphasizeWhenSchemesDisagree(theme.deemph.name)
+            |: de-emphasis
+          li(class=theme.hilite.class)
+            = theme.hilite.name
+            | : highlight
+          li
+            = theme.bg.name
+            | : background
       section
         h3 Accents
         mixin red()
