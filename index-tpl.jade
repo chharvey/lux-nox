@@ -51,6 +51,91 @@ html(lang="en")
        * @returns - an object with a number of colors corresponding to the theme.
        */
       function createTheme(args) {
+        var bases = {
+          text : {
+            ground: 'fg'
+          , base: {
+              dark:  'base0'
+            , light: 'base00'
+            }
+          }
+        , emph : {
+            ground: 'fg'
+          , base: {
+              dark:  'base1'
+            , light: 'base01'
+            }
+          }
+        , deemph : {
+            ground: 'fg'
+          , base: {
+              dark:  'base01'
+            , light: 'base1'
+            }
+          }
+        , hilite : {
+            ground: 'bg'
+          , base: {
+              dark:  'base02'
+            , light: 'base2'
+            }
+          }
+        , bg : {
+            ground: 'bg'
+          , base: {
+              dark:  'base03'
+            , light: 'base3'
+            }
+          }
+        }
+        var theme = {}
+        for (var sch in scheme) {
+          theme[sch] = {}
+          theme[sch].dark = {}
+          theme[sch].light = {}
+          for (var mod of ['dark','light']) {
+            for (var comp in bases) {
+              theme[sch][mod][comp] = {
+                class: scheme[sch][bases[comp].base[mod]][bases[comp].ground+'_class']
+              , name: scheme[sch][bases[comp].base[mod]].name
+              }
+            }
+          }
+          theme[sch].accent = {}
+          for (var acc of ['red','orange','yellow','green','cyan','blue']) {
+            theme[sch].accent[acc] = {
+              class: scheme[sch][acc].fg_class
+            , name:  scheme[sch][acc].name
+            }
+          }
+          var purp1 = scheme[sch].indigo  || scheme[sch].violet
+          var purp2 = scheme[sch].magenta || scheme[sch].violet
+          theme[sch].accent.purple1 = {
+            class: purp1.fg_class
+          , name:  purp1.name
+          }
+          theme[sch].accent.purple2 = {
+            class: purp2.fg_class
+          , name:  purp2.name
+          }
+        }
+        return {
+          //- pay careful attention to the [bg|fg|ac]_scheme here
+          text    : theme[args.fg_scheme][args.mode].text
+        , emph    : theme[args.fg_scheme][args.mode].emph
+        , deemph  : theme[args.fg_scheme][args.mode].deemph
+        , hilite  : theme[args.bg_scheme][args.mode].hilite
+        , bg      : theme[args.bg_scheme][args.mode].bg
+        , red     : theme[args.ac_scheme].accent.red
+        , orange  : theme[args.ac_scheme].accent.orange
+        , yellow  : theme[args.ac_scheme].accent.yellow
+        , green   : theme[args.ac_scheme].accent.green
+        , cyan    : theme[args.ac_scheme].accent.cyan
+        , blue    : theme[args.ac_scheme].accent.blue
+        , purple1 : theme[args.ac_scheme].accent.purple1
+        , purple2 : theme[args.ac_scheme].accent.purple2
+        }
+      //- -
         var theme = {
           'Solarized': {
             dark: {
@@ -104,22 +189,6 @@ html(lang="en")
             , green  : { class: scheme.Lunarized.green.fg_class  , name: scheme.Lunarized.green.name  }
             }
           }
-        }
-        return {
-          //- pay careful attention to the [bg|fg|ac]_scheme here
-          text    : theme[args.fg_scheme][args.mode].text
-        , emph    : theme[args.fg_scheme][args.mode].emph
-        , deemph  : theme[args.fg_scheme][args.mode].deemph
-        , hilite  : theme[args.bg_scheme][args.mode].hilite
-        , bg      : theme[args.bg_scheme][args.mode].bg
-        , red     : theme[args.ac_scheme].accent.red
-        , orange  : theme[args.ac_scheme].accent.orange
-        , yellow  : theme[args.ac_scheme].accent.yellow
-        , green   : theme[args.ac_scheme].accent.green
-        , cyan    : theme[args.ac_scheme].accent.cyan
-        , blue    : theme[args.ac_scheme].accent.blue
-        , purple1 : theme[args.ac_scheme].accent.indigo  || theme[args.ac_scheme].accent.violet
-        , purple2 : theme[args.ac_scheme].accent.magenta || theme[args.ac_scheme].accent.violet
         }
       }
   head

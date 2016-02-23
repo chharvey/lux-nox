@@ -6,21 +6,22 @@ block append vars
 
 block append main
   mixin sample(args)
-    - var theme = createTheme(args)
+    - var my_theme = createTheme(args)
     -
       var color = {
-          text    : theme.text.class
-        , emph    : theme.emph.class
-        , deemph  : theme.deemph.class
-        , hilite  : theme.hilite.class
-        , bg      : theme.bg.class
-        , o  : theme.orange.class
-        , y  : theme.yellow.class
-        , g  : theme.green.class
-        , c  : theme.cyan.class
-        , b  : theme.blue.class
-        , p1 : theme.purple1.class
-        , p2 : theme.purple2.class
+          text    : my_theme.text.class
+        , emph    : my_theme.emph.class
+        , deemph  : my_theme.deemph.class
+        , hilite  : my_theme.hilite.class
+        , bg      : my_theme.bg.class
+        , r  : my_theme.red.class
+        , o  : my_theme.orange.class
+        , y  : my_theme.yellow.class
+        , g  : my_theme.green.class
+        , c  : my_theme.cyan.class
+        , b  : my_theme.blue.class
+        , p1 : my_theme.purple1.class
+        , p2 : my_theme.purple2.class
       }
     //- input.check(style="margin-left: 0.5em;" type="checkbox" name="switch-theme" value="")
     pre.o-Box(
