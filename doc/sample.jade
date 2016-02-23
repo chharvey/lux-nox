@@ -1,0 +1,105 @@
+extends ../index-tpl.jade
+
+block append vars
+  - page_names.push('Samples')
+  - home_path = '../'
+
+block append main
+  mixin sample(args)
+    - var theme = createTheme(args)
+    -
+      var color = {
+          text    : theme.text.class
+        , emph    : theme.emph.class
+        , deemph  : theme.deemph.class
+        , hilite  : theme.hilite.class
+        , bg      : theme.bg.class
+        , o  : theme.orange.class
+        , y  : theme.yellow.class
+        , g  : theme.green.class
+        , c  : theme.cyan.class
+        , b  : theme.blue.class
+        , p1 : theme.purple1.class
+        , p2 : theme.purple2.class
+      }
+    //- input.check(style="margin-left: 0.5em;" type="checkbox" name="switch-theme" value="")
+    pre.o-Box(
+      class=[color.bg, color.text]
+      data-mode=args.mode
+      data-bg_scheme=args.bg_scheme
+      data-fg_scheme=args.fg_scheme
+      data-ac_scheme=args.ac_scheme
+    ).
+      #[span(class=color.b) &lt;tag #[span(class=color.y) attribute=#[span(class=color.c) &quot;value value&quot;]]&gt;]contents#[span(class=color.b) &lt;#{'/'}tag&gt;]
+      #[small(class=color.deemph) &lt;!-- HTML comment --&gt;]
+      #[span(class=color.b) &lt;style #[span(class=color.y) scoped]&gt;]
+        #[small(class=color.deemph) /* block comment */]
+        element,
+        #[span(class=color.b) .class] #[span(class=color.o)= '{']
+          #[small(class=color.deemph) #{'//'} inline comment]
+          #[span(class=color.y) property]: #[span(class=color.c) value];
+          #[span(class=color.y) property]: #[span(class=color.g) 48px];
+          #[span(class=color.b) .command(#[span(class=color.p1) argument, #[span(class=color.p2) 'string']])];
+          #[strong(class=[color.emph, color.hilite]) &amp;#[span(class=color.r) :pseudo] #[span(class=color.o)= '{'] #[span(class=color.y) property]: #[span(class=color.c) value]; #[span(class=color.o)= '}']]
+        #[span(class=color.o)= '}']
+      #[span(class=color.b) &lt;#{'/'}style&gt;]
+      #[span(class=color.b) &lt;script&gt;]
+        #[span(class=color.y) function] #[span(class=color.b) Person(#[span(class=color.p1) name])] #[span(class=color.o)= '{'] #[small(class=color.deemph) #{'//'} constructor for class `Person`]
+          #[span(class=color.p2) this].greetings #[span(class=color.o) =] #[span(class=color.o) #{'['}] #[span(class=color.c) 'hello!']#[span(class=color.o) ,] #[span(class=color.c) 'hi!']#[span(class=color.o) ,] handshake #[span(class=color.o) #{']'}];
+        #[span(class=color.o)= '}']
+        #[span(class=color.y) function] #[span(class=color.b) TestSubject(#[span(class=color.p1) name#[span(class=color.o) ,] adopted])] #[span(class=color.o)= '{'] #[small(class=color.deemph) #{'//'} constructor for class `TestSubject`]
+          #[span(class=color.p2) Person]#[span(class=color.b) .call(#[span(class=color.p1) #[span(class=color.p2) this]#[span(class=color.o) ,] name#[span(class=color.o) ,] adopted])]; #[small(class=color.deemph) #{'//'} calls the parent constructor]
+          #[span(class=color.r) if (#[span(class=color.o) typeof] #[span(class=color.p1) adopted] #[span(class=color.o) ===] #[span(class=color.c) 'boolean'])] #[span(class=color.o)= '{']
+            #[strong(class=[color.emph, color.hilite]) #[span(class=color.p2) this].is_adopted #[span(class=color.o) =] #[span(class=color.p1) adopted];]
+          #[span(class=color.o)= '}'] #[span(class=color.r) else] #[span(class=color.p2) this].is_adopted #[span(class=color.o) =] #[span(class=color.g) false];
+        #[span(class=color.o)= '}']
+        #[span(class=color.p2) this].location #[span(class=color.o) =] #[span(class=color.o) #{'{'}] name#[span(class=color.o) :] #[span(class=color.c) 'Aperture Science Enrichment Center'] #[span(class=color.o) #{'}'}]
+        #[span(class=color.p2) Util]#[span(class=color.b) .extend(#[span(class=color.p1) #[span(class=color.p2) TestSubject]#[span(class=color.o) ,] #[span(class=color.p2) Person]])]; #[small(class=color.deemph) #{'//'} extends `TestSubject` from `Person`]
+        #[span(class=color.y) var] you #[span(class=color.o) =] #[span(class=color.o) new] #[span(class=color.b) TestSubject(#[span(class=color.p1) #[span(class=color.c) 'Chell']#[span(class=color.o) ,] #[span(class=color.g) true]])]; #[small(class=color.deemph) #{'//'} creates an instance of `TestSubject`]
+      #[span(class=color.b) &lt;&#x002f;script&gt;]
+  +sample({
+    mode: 'light'
+  , bg_scheme: 'Solarized'
+  , fg_scheme: 'Solarized'
+  , ac_scheme: 'Solarized'
+  })
+
+block append body
+  //- script.
+    var bases = !{JSON.stringify(bases)}
+    $('.check').change(function () {
+      var section = $(this).closest('section.o-Box')
+      var mode = section.attr('data-mode')
+      var bg_scheme = section.attr('data-bg_scheme')
+      var fg_scheme = section.attr('data-fg_scheme')
+      var ac_scheme = section.attr('data-ac_scheme')
+      var invert = {
+        'modes': {
+          'dark': 'light'
+        , 'light': 'dark'
+        }
+      , 'schemes': {
+          'Solarized': 'Lunarized'
+        , 'Lunarized': 'Solarized'
+        }
+      }
+      var bg_scheme_invert = invert.schemes[bg_scheme]
+      var fg_scheme_invert = invert.schemes[fg_scheme]
+      var ac_scheme_invert = invert.schemes[ac_scheme]
+      section.removeClass(bases[fg_scheme][mode].text.class + ' ' + bases[fg_scheme_invert][mode].text.class)
+      var children = {
+        emphs: section.find('.' + bases[fg_scheme][mode].emph.class + ', ' + '.' + bases[fg_scheme_invert][mode].emph.class)
+      , deemphs: section.find('.' + bases[fg_scheme][mode].deemph.class + ', ' + '.' + bases[fg_scheme_invert][mode].deemph.class)
+      }
+      children.emphs.removeClass(bases[fg_scheme][mode].emph.class + ' ' + bases[fg_scheme_invert][mode].emph.class)
+      children.deemphs.removeClass(bases[fg_scheme][mode].deemph.class + ' ' + bases[fg_scheme_invert][mode].deemph.class)
+      if (this.checked) {
+        section.addClass(bases[fg_scheme_invert][mode].text.class)
+        children.emphs.addClass(bases[fg_scheme_invert][mode].emph.class)
+        children.deemphs.addClass(bases[fg_scheme_invert][mode].deemph.class)
+      } else {
+        section.addClass(bases[fg_scheme][mode].text.class)
+        children.emphs.addClass(bases[fg_scheme][mode].emph.class)
+        children.deemphs.addClass(bases[fg_scheme][mode].deemph.class)
+      }
+    })

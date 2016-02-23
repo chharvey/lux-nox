@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "jade": "jade",
-    "jade:docs": "jade index.jade  ;  jade doc/{use,accessibility}.jade",
+    "jade:all": "jade {index,index-tpl}.jade  ;  jade doc/{sample,use,accessibility}.jade",
     "lessc:lux-nox": "lessc lux-nox.less lux-nox.css",
     "minify": "cleancss lux-nox.css -o lux-nox.min.css",
     "build": "npm run jade:docs  ;  npm run lessc:lux-nox  ;  npm run minify"

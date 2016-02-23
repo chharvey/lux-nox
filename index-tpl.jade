@@ -2,8 +2,90 @@ doctype html
 html(lang="en")
   block vars
     - var page_names = ['lux-nox']
+    -
+      var colors = {
+        'Solarized': {
+          dark: {
+            text   : { class: 'a-c-s0'   , name: 'Solarized Base0'   }
+          , emph   : { class: 'a-c-s1'   , name: 'Solarized Base1'   }
+          , deemph : { class: 'a-c-s01'  , name: 'Solarized Base01'  }
+          , hilite : { class: 'a-bc-s02' , name: 'Solarized Base02'  }
+          , bg     : { class: 'a-bc-s03' , name: 'Solarized Base03'  }
+          }
+        , light: {
+            text   : { class: 'a-c-s00'  , name: 'Solarized Base00'  }
+          , emph   : { class: 'a-c-s01'  , name: 'Solarized Base01'  }
+          , deemph : { class: 'a-c-s1'   , name: 'Solarized Base1'   }
+          , hilite : { class: 'a-bc-s2'  , name: 'Solarized Base2'   }
+          , bg     : { class: 'a-bc-s3'  , name: 'Solarized Base3'   }
+          }
+        , accent: {
+            red:     { class: 'a-c-sr'   , name: 'Solarized Red'     }
+          , orange:  { class: 'a-c-so'   , name: 'Solarized Orange'  }
+          , yellow:  { class: 'a-c-sy'   , name: 'Solarized Yellow'  }
+          , green:   { class: 'a-c-sg'   , name: 'Solarized Green'   }
+          , cyan:    { class: 'a-c-sc'   , name: 'Solarized Cyan'    }
+          , blue:    { class: 'a-c-sb'   , name: 'Solarized Blue'    }
+          , violet:  { class: 'a-c-sv'   , name: 'Solarized Violet'  }
+          , magenta: { class: 'a-c-sm'   , name: 'Solarized Magenta' }
+          }
+        }
+      , 'Lunarized': {
+          dark: {
+            text   : { class: 'a-c-l0'   , name: 'Lunarized Base0'   }
+          , emph   : { class: 'a-c-l1'   , name: 'Lunarized Base1'   }
+          , deemph : { class: 'a-c-l01'  , name: 'Lunarized Base01'  }
+          , hilite : { class: 'a-bc-l02' , name: 'Lunarized Base02'  }
+          , bg     : { class: 'a-bc-l03' , name: 'Lunarized Base03'  }
+          }
+        , light: {
+            text   : { class: 'a-c-l00'  , name: 'Lunarized Base00'  }
+          , emph   : { class: 'a-c-l01'  , name: 'Lunarized Base01'  }
+          , deemph : { class: 'a-c-l1'   , name: 'Lunarized Base1'   }
+          , hilite : { class: 'a-bc-l2'  , name: 'Lunarized Base2'   }
+          , bg     : { class: 'a-bc-l3'  , name: 'Lunarized Base3'   }
+          }
+        , accent: {
+            cyan:    { class: 'a-c-lc'   , name: 'Lunarized Cyan'    }
+          , blue:    { class: 'a-c-lb'   , name: 'Lunarized Blue'    }
+          , indigo:  { class: 'a-c-li'   , name: 'Lunarized Indigo'  }
+          , violet:  { class: 'a-c-lv'   , name: 'Lunarized Violet'  }
+          , red:     { class: 'a-c-lr'   , name: 'Lunarized Red'     }
+          , orange:  { class: 'a-c-lo'   , name: 'Lunarized Orange'  }
+          , yellow:  { class: 'a-c-ly'   , name: 'Lunarized Yellow'  }
+          , green:   { class: 'a-c-lg'   , name: 'Lunarized Green'   }
+          }
+        }
+      }
+      /*
+       * Returns a set of colors for a theme.
+       * @param args - an object with four properties:
+       *               1. `mode` - ['dark'|'light']
+       *               2. `fg_scheme` - ['Solarized'|'Lunarized']
+       *               3. `bg_scheme` - ['Solarized'|'Lunarized']
+       *               4. `ac_scheme` - ['Solarized'|'Lunarized']
+       * @returns - an object with a number of colors corresponding to the theme.
+       */
+      function createTheme(args) {
+        return {
+          //- pay careful attention to the [bg|fg|ac]_scheme here
+          text    : colors[args.fg_scheme][args.mode].text
+        , emph    : colors[args.fg_scheme][args.mode].emph
+        , deemph  : colors[args.fg_scheme][args.mode].deemph
+        , hilite  : colors[args.bg_scheme][args.mode].hilite
+        , bg      : colors[args.bg_scheme][args.mode].bg
+        , red     : colors[args.ac_scheme].accent.red
+        , orange  : colors[args.ac_scheme].accent.orange
+        , yellow  : colors[args.ac_scheme].accent.yellow
+        , green   : colors[args.ac_scheme].accent.green
+        , cyan    : colors[args.ac_scheme].accent.cyan
+        , blue    : colors[args.ac_scheme].accent.blue
+        , purple1 : colors[args.ac_scheme].accent.indigo  || colors[args.ac_scheme].accent.violet
+        , purple2 : colors[args.ac_scheme].accent.magenta || colors[args.ac_scheme].accent.violet
+        }
+      }
   head
-    title= page_names.reduceRight(function(a,b) { return a + ' | ' + b })
+    title= page_names.reduceRight(function (a,b) { return a + ' | ' + b })
     meta(charset="utf-8")
     meta(name="author" content="Chris Harvey")
     meta(name="description" content="Solarized and Lunaried colors for any project.")
@@ -11,8 +93,10 @@ html(lang="en")
     link(rel="stylesheet" href="#{home_path||''}lux-nox.min.css")
     link(rel="stylesheet" href="#{home_path||''}doc/styles/doc.css")
   body
-    main
-      block main
-        header
-          block header
-            h1!= page_names.reduce(function (a, b) { return a + ' &mdash; ' + b })
+    block body
+      main
+        block main
+          header
+            block header
+              h1!= page_names.reduce(function (a, b) { return a + ' &mdash; ' + b })
+      script(src="//code.jquery.com/jquery-1.12.0.min.js")
