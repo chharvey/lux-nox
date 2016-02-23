@@ -1,186 +1,89 @@
 extends index-tpl.jade
 
 block append header
-        p.
-          This repo is specifically designed for using colors from the
-          #[cite Solarized] and #[cite Lunarized] color schemes.
-          These color schemes were originally designed for displaying computer code, though
-          they can be applied #[abbr(title="practically") literally] anywhere.
-          Import them into any project to use the variables and classes in your codebase.
+  p.
+    This repo is specifically designed for using colors from the
+    #[cite Solarized] and #[cite Lunarized] color schemes.
+    These color schemes were originally designed for displaying computer code, though
+    they can be applied #[abbr(title="practically") literally] anywhere.
+    Import them into any project to use the variables and classes in your codebase.
 
 block append main
-      footer: p by #[a(href="https://github(class=color.c)om/chharvey/lux-nox/") Chris Harvey]
-      section
-        h2 Example
-        figure.o-Box.a-bc-s3
-          pre
-            span.a-c-sb
-              | &lt;h3 
-              span.a-c-sy
-                | class=
-                span.a-c-sc
-                  span.a-c-sm &quot;
-                  | a-bc-s03  a-c-lc
-                  span.a-c-sm &quot;
-              | &gt;
-            | Solarized Base03 background, Lunarized Cyan foreground!
-            span.a-c-sb &lt;/h3&gt;
-          h3.o-Box.a-bc-s03.a-c-lc Solarized Base03 background, Lunarized Cyan foreground!
-      section
-        h2 Description
-        p Each color scheme contains 16 colors total, shared among two modes:
+  footer: p by #[a(href="https://github(class=color.c)om/chharvey/lux-nox/") Chris Harvey]
+  section
+    h2 Example
+    figure.o-Box.a-bc-s3
+      pre #[span.a-c-sb &lt;h3 #[span.a-c-sy class=#[span.a-c-sc #[span.a-c-sm &quot;]a-bc-s03  a-c-lc#[span.a-c-sm &quot;]]]&gt;]Solarized Base03 background, Lunarized Cyan foreground!#[span.a-c-sb &lt;&#x002f;h3&gt;]
+      h3.o-Box.a-bc-s03.a-c-lc Solarized Base03 background, Lunarized Cyan foreground!
+  section
+    h2 Description
+    p Each color scheme contains 16 colors total, shared among two modes:
+    ul
+      li Dark mode
         ul
-          li Dark mode
-            ul
-              li medium-light text
-              li light emphasis
-              li dark de-emphasis
-              li darker highlight
-              li darkest background
-          li Light mode
-            ul
-              li medium-dark text
-              li dark emphasis
-              li light de-emphasis
-              li lighter highlight
-              li lightest background
-        p Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:
+          li medium-light text
+          li light emphasis
+          li dark de-emphasis
+          li darker highlight
+          li darkest background
+      li Light mode
         ul
-          li Bases
-            ul
-              li dull tones
-              li foreground, emphasis, de-emphasis, highlight, background
-              li interchanged based on the mode
-          li Accents
-            ul
-              li sharp tones
-              li syntax highlighting
-              li remain constant, independent of mode
-      section
-        h2 The Colors
-        section.o-ListBare.o-FlexContainer
-          h3.a-w-1o1 #[cite Solarized] Color Scheme
-          section.o-ColorBox.a-bc-s03.h-darkbg
-            h4 Solarized Base03
-            p: code #002b36#[br].a-bc-s03#[br].a-c-s03
-          section.o-ColorBox.a-bc-s02.h-darkbg.a-xo-1-s2.a-xo-z-s4
-            h4 Solarized Base02
-            p: code #073642#[br].a-bc-s02#[br].a-c-s02
-          section.o-ColorBox.a-bc-s01.a-xo-2-s2.a-xo-z-s4
-            h4 Solarized Base01
-            p: code #586e75#[br].a-bc-s01#[br].a-c-s01
-          section.o-ColorBox.a-bc-s00.a-xo-3-s2.a-xo-z-s4
-            h4 Solarized Base00
-            p: code #657b83#[br].a-bc-s00#[br].a-c-s00
-          section.o-ColorBox.a-bc-s0.a-xo-3-s2.a-xo-z-s8
-            h4 Solarized Base0
-            p: code #839496#[br].a-bc-s0#[br].a-c-s0
-          section.o-ColorBox.a-bc-s1.a-xo-2-s2.a-xo-z-s8
-            h4 Solarized Base1
-            p: code #93a1a1#[br].a-bc-s1#[br].a-c-s1
-          section.o-ColorBox.a-bc-s2.a-xo-1-s2.a-xo-z-s8
-            h4 Solarized Base2
-            p: code #eee8d5#[br].a-bc-s2#[br].a-c-s2
-          section.o-ColorBox.a-bc-s3
-            h4 Solarized Base3
-            p: code #fdf6e3#[br].a-bc-s3#[br].a-c-s3
-          section.o-ColorBox.a-bc-sr.a-xo-4-s2
-            h4 Solarized Red
-            p: code #dc322f#[br].a-bc-sr#[br].a-c-sr
-          section.o-ColorBox.a-bc-so.a-xo-5-s2.a-xo-4-s4
-            h4 Solarized Orange
-            p: code #cb4b16#[br].a-bc-so#[br].a-c-so
-          section.o-ColorBox.a-bc-sy.a-xo-6-s2.a-xo-4-s4
-            h4 Solarized Yellow
-            p: code #b58900#[br].a-bc-sy#[br].a-c-sy
-          section.o-ColorBox.a-bc-sg.a-xo-7-s2.a-xo-4-s4
-            h4 Solarized Green
-            p: code #859900#[br].a-bc-sg#[br].a-c-sg
-          section.o-ColorBox.a-bc-sc.a-xo-4-s2
-            h4 Solarized Cyan
-            p: code #2aa198#[br].a-bc-sc#[br].a-c-sc
-          section.o-ColorBox.a-bc-sb.a-xo-5-s2
-            h4 Solarized Blue
-            p: code #268bd2#[br].a-bc-sb#[br].a-c-sb
-          section.o-ColorBox.a-bc-sv.a-xo-6-s2
-            h4 Solarized Violet
-            p: code #6c71c4#[br].a-bc-sv#[br].a-c-sv
-          section.o-ColorBox.a-bc-sm.a-xo-7-s2
-            h4 Solarized Magenta
-            p: code #d33682#[br].a-bc-sm#[br].a-c-sm
-        section.o-ListBare.o-FlexContainer
-          h3.a-w-1o1 #[cite Lunarized] Color Scheme
-          section.o-ColorBox.a-bc-l03.h-darkbg
-            h4 Lunarized Base03
-            p: code #360b00#[br].a-bc-l03#[br].a-c-l03
-          section.o-ColorBox.a-bc-l02.h-darkbg.a-xo-1-s2.a-xo-z-s4
-            h4 Lunarized Base02
-            p: code #421307#[br].a-bc-l02#[br].a-c-l02
-          section.o-ColorBox.a-bc-l01.a-xo-2-s2.a-xo-z-s4
-            h4 Lunarized Base01
-            p: code #755f58#[br].a-bc-l01#[br].a-c-l01
-          section.o-ColorBox.a-bc-l00.a-xo-3-s2.a-xo-z-s4
-            h4 Lunarized Base00
-            p: code #836d65#[br].a-bc-l00#[br].a-c-l00
-          section.o-ColorBox.a-bc-l0.a-xo-3-s2.a-xo-z-s8
-            h4 Lunarized Base0
-            p: code #968583#[br].a-bc-l0#[br].a-c-l0
-          section.o-ColorBox.a-bc-l1.a-xo-2-s2.a-xo-z-s8
-            h4 Lunarized Base1
-            p: code #a19393#[br].a-bc-l1#[br].a-c-l1
-          section.o-ColorBox.a-bc-l2.a-xo-1-s2.a-xo-z-s8
-            h4 Lunarized Base2
-            p: code #d5dbee#[br].a-bc-l2#[br].a-c-l2
-          section.o-ColorBox.a-bc-l3
-            h4 Lunarized Base3
-            p: code #e3eafd#[br].a-bc-l3#[br].a-c-l3
-          section.o-ColorBox.a-bc-lc.a-xo-4-s2
-            h4 Lunarized Cyan
-            p: code #23cdd0#[br].a-bc-lc#[br].a-c-lc
-          section.o-ColorBox.a-bc-lb.a-xo-5-s2.a-xo-4-s4
-            h4 Lunarized Blue
-            p: code #34b4e9#[br].a-bc-lb#[br].a-c-lb
-          section.o-ColorBox.a-bc-li.a-xo-6-s2.a-xo-4-s4
-            h4 Lunarized Indigo
-            p: code #4a76ff#[br].a-bc-li#[br].a-c-li
-          section.o-ColorBox.a-bc-lv.a-xo-7-s2.a-xo-4-s4
-            h4 Lunarized Violet
-            p: code #7a66ff#[br].a-bc-lv#[br].a-c-lv
-          section.o-ColorBox.a-bc-lr.a-xo-4-s2
-            h4 Lunarized Red
-            p: code #d55e67#[br].a-bc-lr#[br].a-c-lr
-          section.o-ColorBox.a-bc-lo.a-xo-5-s2
-            h4 Lunarized Orange
-            p: code #d9742d#[br].a-bc-lo#[br].a-c-lo
-          section.o-ColorBox.a-bc-ly.a-xo-6-s2
-            h4 Lunarized Yellow
-            p: code #938e3b#[br].a-bc-ly#[br].a-c-ly
-          section.o-ColorBox.a-bc-lg.a-xo-7-s2
-            h4 Lunarized Green
-            p: code #2cc97d#[br].a-bc-lg#[br].a-c-lg
-        p: a(href="doc/sample.html") See samples in action.
-      section
-        h2 Inspiration and Construction
-        p.
-          #[cite Solarized] was developed by
-          #[a(href="http://ethanschoonover(class=color.c)om/solarized") Ethan Schoonover].
-          Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
-          cool the Solarized Light background colors. The Light mode was appealing to me
-          but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
-          it gave me a bluish tint, #[strong(title="hence, “lunar”") like the full moon].
-          I tried inverting the accent colors as well,
-          but got ugly results, so I complemented them instead.
-        p.
-          In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
-          the accents are complements of the Solarized Accents.
-          The inverse of a color is a 180&deg; hue rotation of that color, while the complement
-          of a color is the difference between that color and white.
-        pre.
-          inverse(@color)    : spin(@color, 180);
-          complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );
-      nav
-        h2 More Pages
+          li medium-dark text
+          li dark emphasis
+          li light de-emphasis
+          li lighter highlight
+          li lightest background
+    p Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:
+    ul
+      li Bases
         ul
-          li: a(href="doc/sample.html") Samples
-          li: a(href="doc/use.html") Suggested Use
-          li: a(href="doc/accessibility.html") Accessibiltiy
+          li dull tones
+          li foreground, emphasis, de-emphasis, highlight, background
+          li interchanged based on the mode
+      li Accents
+        ul
+          li sharp tones
+          li syntax highlighting
+          li remain constant, independent of mode
+  section
+    h2 The Colors
+    section
+      h3 #[cite Solarized] Color Scheme
+      mixin colorBox(color)
+        li.o-ColorBox(class=[color.bg_class, (color.name.slice(14)==='03' || color.name.slice(14)==='02')? 'h-darkbg' : ''])
+          h4= color.name
+          p: code #{color.code}#[br]#{color.bg_class}#[br]#{color.fg_class}
+      ul.o-ListBare.o-FlexContainer
+        each color in scheme.Solarized
+          +colorBox(color)
+    section
+      h3 #[cite Lunarized] Color Scheme
+      ul.o-ListBare.o-FlexContainer
+        each color in scheme.Lunarized
+          +colorBox(color)
+    p: a(href="doc/sample.html") See samples in action.
+  section
+    h2 Inspiration and Construction
+    p.
+      #[cite Solarized] was developed by
+      #[a(href="http://ethanschoonover(class=color.c)om/solarized") Ethan Schoonover].
+      Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
+      cool the Solarized Light background colors. The Light mode was appealing to me
+      but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
+      it gave me a bluish tint, #[strong(title="hence, “lunar”") like the full moon].
+      I tried inverting the accent colors as well,
+      but got ugly results, so I complemented them instead.
+    p.
+      In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
+      the accents are complements of the Solarized Accents.
+      The inverse of a color is a 180&deg; hue rotation of that color, while the complement
+      of a color is the difference between that color and white.
+    pre.
+      inverse(@color)    : spin(@color, 180);
+      complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );
+  nav
+    h2 More Pages
+    ul
+      li: a(href="doc/sample.html") Samples
+      li: a(href="doc/use.html") Suggested Use
+      li: a(href="doc/accessibility.html") Accessibiltiy
