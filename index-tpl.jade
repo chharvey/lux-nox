@@ -3,58 +3,42 @@ html(lang="en")
   block vars
     - var page_names = ['lux-nox']
     -
-      var colors = {
+      var scheme = {
         'Solarized': {
-          dark: {
-            text   : { class: 'a-c-s0'   , name: 'Solarized Base0'   }
-          , emph   : { class: 'a-c-s1'   , name: 'Solarized Base1'   }
-          , deemph : { class: 'a-c-s01'  , name: 'Solarized Base01'  }
-          , hilite : { class: 'a-bc-s02' , name: 'Solarized Base02'  }
-          , bg     : { class: 'a-bc-s03' , name: 'Solarized Base03'  }
-          }
-        , light: {
-            text   : { class: 'a-c-s00'  , name: 'Solarized Base00'  }
-          , emph   : { class: 'a-c-s01'  , name: 'Solarized Base01'  }
-          , deemph : { class: 'a-c-s1'   , name: 'Solarized Base1'   }
-          , hilite : { class: 'a-bc-s2'  , name: 'Solarized Base2'   }
-          , bg     : { class: 'a-bc-s3'  , name: 'Solarized Base3'   }
-          }
-        , accent: {
-            red:     { class: 'a-c-sr'   , name: 'Solarized Red'     }
-          , orange:  { class: 'a-c-so'   , name: 'Solarized Orange'  }
-          , yellow:  { class: 'a-c-sy'   , name: 'Solarized Yellow'  }
-          , green:   { class: 'a-c-sg'   , name: 'Solarized Green'   }
-          , cyan:    { class: 'a-c-sc'   , name: 'Solarized Cyan'    }
-          , blue:    { class: 'a-c-sb'   , name: 'Solarized Blue'    }
-          , violet:  { class: 'a-c-sv'   , name: 'Solarized Violet'  }
-          , magenta: { class: 'a-c-sm'   , name: 'Solarized Magenta' }
-          }
+          base03  : { name: 'Solarized Base03'  , bg_class: 'a-bc-s03' , fg_class: 'a-c-s03' }
+        , base02  : { name: 'Solarized Base02'  , bg_class: 'a-bc-s02' , fg_class: 'a-c-s02' }
+        , base01  : { name: 'Solarized Base01'  , bg_class: 'a-bc-s01' , fg_class: 'a-c-s01' }
+        , base00  : { name: 'Solarized Base00'  , bg_class: 'a-bc-s00' , fg_class: 'a-c-s00' }
+        , base0   : { name: 'Solarized Base0'   , bg_class: 'a-bc-s0'  , fg_class: 'a-c-s0'  }
+        , base1   : { name: 'Solarized Base1'   , bg_class: 'a-bc-s1'  , fg_class: 'a-c-s1'  }
+        , base2   : { name: 'Solarized Base2'   , bg_class: 'a-bc-s2'  , fg_class: 'a-c-s2'  }
+        , base3   : { name: 'Solarized Base3'   , bg_class: 'a-bc-s3'  , fg_class: 'a-c-s3'  }
+        , red     : { name: 'Solarized Red'     , bg_class: 'a-bc-sr'  , fg_class: 'a-c-sr'  }
+        , orange  : { name: 'Solarized Orange'  , bg_class: 'a-bc-so'  , fg_class: 'a-c-so'  }
+        , yellow  : { name: 'Solarized Yellow'  , bg_class: 'a-bc-sy'  , fg_class: 'a-c-sy'  }
+        , green   : { name: 'Solarized Green'   , bg_class: 'a-bc-sg'  , fg_class: 'a-c-sg'  }
+        , cyan    : { name: 'Solarized Cyan'    , bg_class: 'a-bc-sc'  , fg_class: 'a-c-sc'  }
+        , blue    : { name: 'Solarized Blue'    , bg_class: 'a-bc-sb'  , fg_class: 'a-c-sb'  }
+        , violet  : { name: 'Solarized Violet'  , bg_class: 'a-bc-sv'  , fg_class: 'a-c-sv'  }
+        , magenta : { name: 'Solarized Magenta' , bg_class: 'a-bc-sm'  , fg_class: 'a-c-sm'  }
         }
       , 'Lunarized': {
-          dark: {
-            text   : { class: 'a-c-l0'   , name: 'Lunarized Base0'   }
-          , emph   : { class: 'a-c-l1'   , name: 'Lunarized Base1'   }
-          , deemph : { class: 'a-c-l01'  , name: 'Lunarized Base01'  }
-          , hilite : { class: 'a-bc-l02' , name: 'Lunarized Base02'  }
-          , bg     : { class: 'a-bc-l03' , name: 'Lunarized Base03'  }
-          }
-        , light: {
-            text   : { class: 'a-c-l00'  , name: 'Lunarized Base00'  }
-          , emph   : { class: 'a-c-l01'  , name: 'Lunarized Base01'  }
-          , deemph : { class: 'a-c-l1'   , name: 'Lunarized Base1'   }
-          , hilite : { class: 'a-bc-l2'  , name: 'Lunarized Base2'   }
-          , bg     : { class: 'a-bc-l3'  , name: 'Lunarized Base3'   }
-          }
-        , accent: {
-            cyan:    { class: 'a-c-lc'   , name: 'Lunarized Cyan'    }
-          , blue:    { class: 'a-c-lb'   , name: 'Lunarized Blue'    }
-          , indigo:  { class: 'a-c-li'   , name: 'Lunarized Indigo'  }
-          , violet:  { class: 'a-c-lv'   , name: 'Lunarized Violet'  }
-          , red:     { class: 'a-c-lr'   , name: 'Lunarized Red'     }
-          , orange:  { class: 'a-c-lo'   , name: 'Lunarized Orange'  }
-          , yellow:  { class: 'a-c-ly'   , name: 'Lunarized Yellow'  }
-          , green:   { class: 'a-c-lg'   , name: 'Lunarized Green'   }
-          }
+          base03  : { name: 'Lunarized Base03'  , bg_class: 'a-bc-l03' , fg_class: 'a-c-l03' }
+        , base02  : { name: 'Lunarized Base02'  , bg_class: 'a-bc-l02' , fg_class: 'a-c-l02' }
+        , base01  : { name: 'Lunarized Base01'  , bg_class: 'a-bc-l01' , fg_class: 'a-c-l01' }
+        , base00  : { name: 'Lunarized Base00'  , bg_class: 'a-bc-l00' , fg_class: 'a-c-l00' }
+        , base0   : { name: 'Lunarized Base0'   , bg_class: 'a-bc-l0'  , fg_class: 'a-c-l0'  }
+        , base1   : { name: 'Lunarized Base1'   , bg_class: 'a-bc-l1'  , fg_class: 'a-c-l1'  }
+        , base2   : { name: 'Lunarized Base2'   , bg_class: 'a-bc-l2'  , fg_class: 'a-c-l2'  }
+        , base3   : { name: 'Lunarized Base3'   , bg_class: 'a-bc-l3'  , fg_class: 'a-c-l3'  }
+        , cyan    : { name: 'Lunarized Cyan'    , bg_class: 'a-bc-lc'  , fg_class: 'a-c-lc'  }
+        , blue    : { name: 'Lunarized Blue'    , bg_class: 'a-bc-lb'  , fg_class: 'a-c-lb'  }
+        , indigo  : { name: 'Lunarized Indigo'  , bg_class: 'a-bc-li'  , fg_class: 'a-c-li'  }
+        , violet  : { name: 'Lunarized Violet'  , bg_class: 'a-bc-lv'  , fg_class: 'a-c-lv'  }
+        , red     : { name: 'Lunarized Red'     , bg_class: 'a-bc-lr'  , fg_class: 'a-c-lr'  }
+        , orange  : { name: 'Lunarized Orange'  , bg_class: 'a-bc-lo'  , fg_class: 'a-c-lo'  }
+        , yellow  : { name: 'Lunarized Yellow'  , bg_class: 'a-bc-ly'  , fg_class: 'a-c-ly'  }
+        , green   : { name: 'Lunarized Green'   , bg_class: 'a-bc-lg'  , fg_class: 'a-c-lg'  }
         }
       }
       /*
@@ -67,21 +51,75 @@ html(lang="en")
        * @returns - an object with a number of colors corresponding to the theme.
        */
       function createTheme(args) {
+        var theme = {
+          'Solarized': {
+            dark: {
+              text   : { class: scheme.Solarized.base0.fg_class  , name: scheme.Solarized.base0.name  }
+            , emph   : { class: scheme.Solarized.base1.fg_class  , name: scheme.Solarized.base0.name  }
+            , deemph : { class: scheme.Solarized.base01.fg_class , name: scheme.Solarized.base1.name  }
+            , hilite : { class: scheme.Solarized.base02.bg_class , name: scheme.Solarized.base02.name }
+            , bg     : { class: scheme.Solarized.base03.bg_class , name: scheme.Solarized.base03.name }
+            }
+          , light: {
+              text   : { class: scheme.Solarized.base00.fg_class , name: scheme.Solarized.base00.name }
+            , emph   : { class: scheme.Solarized.base01.fg_class , name: scheme.Solarized.base01.name }
+            , deemph : { class: scheme.Solarized.base1.fg_class  , name: scheme.Solarized.base1.name  }
+            , hilite : { class: scheme.Solarized.base2.bg_class  , name: scheme.Solarized.base2.name  }
+            , bg     : { class: scheme.Solarized.base3.bg_class  , name: scheme.Solarized.base3.name  }
+            }
+          , accent: {
+              red     : { class: scheme.Solarized.red.fg_class     , name: scheme.Solarized.red.name     }
+            , orange  : { class: scheme.Solarized.orange.fg_class  , name: scheme.Solarized.orange.name  }
+            , yellow  : { class: scheme.Solarized.yellow.fg_class  , name: scheme.Solarized.yellow.name  }
+            , green   : { class: scheme.Solarized.green.fg_class   , name: scheme.Solarized.green.name   }
+            , cyan    : { class: scheme.Solarized.cyan.fg_class    , name: scheme.Solarized.cyan.name    }
+            , blue    : { class: scheme.Solarized.blue.fg_class    , name: scheme.Solarized.blue.name    }
+            , violet  : { class: scheme.Solarized.violet.fg_class  , name: scheme.Solarized.violet.name  }
+            , magenta : { class: scheme.Solarized.magenta.fg_class , name: scheme.Solarized.magenta.name }
+            }
+          }
+        , 'Lunarized': {
+            dark: {
+              text   : { class: scheme.Lunarized.base0.fg_class  , name: scheme.Lunarized.base0.name  }
+            , emph   : { class: scheme.Lunarized.base1.fg_class  , name: scheme.Lunarized.base0.name  }
+            , deemph : { class: scheme.Lunarized.base01.fg_class , name: scheme.Lunarized.base1.name  }
+            , hilite : { class: scheme.Lunarized.base02.bg_class , name: scheme.Lunarized.base02.name }
+            , bg     : { class: scheme.Lunarized.base03.bg_class , name: scheme.Lunarized.base03.name }
+            }
+          , light: {
+              text   : { class: scheme.Lunarized.base00.fg_class , name: scheme.Lunarized.base00.name }
+            , emph   : { class: scheme.Lunarized.base01.fg_class , name: scheme.Lunarized.base01.name }
+            , deemph : { class: scheme.Lunarized.base1.fg_class  , name: scheme.Lunarized.base1.name  }
+            , hilite : { class: scheme.Lunarized.base2.bg_class  , name: scheme.Lunarized.base2.name  }
+            , bg     : { class: scheme.Lunarized.base3.bg_class  , name: scheme.Lunarized.base3.name  }
+            }
+          , accent: {
+              cyan   : { class: scheme.Lunarized.cyan.fg_class   , name: scheme.Lunarized.cyan.name   }
+            , blue   : { class: scheme.Lunarized.blue.fg_class   , name: scheme.Lunarized.blue.name   }
+            , indigo : { class: scheme.Lunarized.indigo.fg_class , name: scheme.Lunarized.indigo.name }
+            , violet : { class: scheme.Lunarized.violet.fg_class , name: scheme.Lunarized.violet.name }
+            , red    : { class: scheme.Lunarized.red.fg_class    , name: scheme.Lunarized.red.name    }
+            , orange : { class: scheme.Lunarized.orange.fg_class , name: scheme.Lunarized.orange.name }
+            , yellow : { class: scheme.Lunarized.yellow.fg_class , name: scheme.Lunarized.yellow.name }
+            , green  : { class: scheme.Lunarized.green.fg_class  , name: scheme.Lunarized.green.name  }
+            }
+          }
+        }
         return {
           //- pay careful attention to the [bg|fg|ac]_scheme here
-          text    : colors[args.fg_scheme][args.mode].text
-        , emph    : colors[args.fg_scheme][args.mode].emph
-        , deemph  : colors[args.fg_scheme][args.mode].deemph
-        , hilite  : colors[args.bg_scheme][args.mode].hilite
-        , bg      : colors[args.bg_scheme][args.mode].bg
-        , red     : colors[args.ac_scheme].accent.red
-        , orange  : colors[args.ac_scheme].accent.orange
-        , yellow  : colors[args.ac_scheme].accent.yellow
-        , green   : colors[args.ac_scheme].accent.green
-        , cyan    : colors[args.ac_scheme].accent.cyan
-        , blue    : colors[args.ac_scheme].accent.blue
-        , purple1 : colors[args.ac_scheme].accent.indigo  || colors[args.ac_scheme].accent.violet
-        , purple2 : colors[args.ac_scheme].accent.magenta || colors[args.ac_scheme].accent.violet
+          text    : theme[args.fg_scheme][args.mode].text
+        , emph    : theme[args.fg_scheme][args.mode].emph
+        , deemph  : theme[args.fg_scheme][args.mode].deemph
+        , hilite  : theme[args.bg_scheme][args.mode].hilite
+        , bg      : theme[args.bg_scheme][args.mode].bg
+        , red     : theme[args.ac_scheme].accent.red
+        , orange  : theme[args.ac_scheme].accent.orange
+        , yellow  : theme[args.ac_scheme].accent.yellow
+        , green   : theme[args.ac_scheme].accent.green
+        , cyan    : theme[args.ac_scheme].accent.cyan
+        , blue    : theme[args.ac_scheme].accent.blue
+        , purple1 : theme[args.ac_scheme].accent.indigo  || theme[args.ac_scheme].accent.violet
+        , purple2 : theme[args.ac_scheme].accent.magenta || theme[args.ac_scheme].accent.violet
         }
       }
   head
