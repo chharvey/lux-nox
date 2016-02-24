@@ -33,51 +33,84 @@ block append body
       , fg_scheme: 'Lunarized'
       , ac_scheme: 'Lunarized'
       })
-    }
-    function removeTheme() {
-      var theme = createTheme({
-        mode: $('.js-theme').attr('data-mode') || 'dark'
-      , bg_scheme: $('.js-theme').attr('data-bg_scheme') || 'Solarized'
-      , fg_scheme: $('.js-theme').attr('data-fg_scheme') || 'Solarized'
-      , ac_scheme: $('.js-theme').attr('data-ac_scheme') || 'Solarized'
+    , solarized_dark_mod: createTheme({
+        mode: 'dark'
+      , bg_scheme: 'Solarized'
+      , fg_scheme: 'Solarized'
+      , ac_scheme: 'Lunarized'
       })
-      $('.js-theme').removeClass(theme.bg.class + ' ' + theme.text.class)
-      $('.js-emph').removeClass(theme.emph.class)
-      $('.js-deemph').removeClass(theme.deemph.class)
-      $('.js-hilite').removeClass(theme.hilite.class)
-      $('.js-ctl').removeClass(theme.ctl.class)
-      $('.js-opr').removeClass(theme.opr.class)
-      $('.js-kwd').removeClass(theme.kwd.class)
-      $('.js-cst').removeClass(theme.cst.class)
-      $('.js-str').removeClass(theme.str.class)
-      $('.js-cmd').removeClass(theme.cmd.class)
-      $('.js-arg').removeClass(theme.arg.class)
-      $('.js-obj').removeClass(theme.obj.class)
-      $('.js-theme').removeAttr('data-mode')
+    , solarized_light_mod: createTheme({
+        mode: 'light'
+      , bg_scheme: 'Solarized'
+      , fg_scheme: 'Lunarized'
+      , ac_scheme: 'Solarized'
+      })
+    , lunarized_dark_mod: createTheme({
+        mode: 'dark'
+      , bg_scheme: 'Lunarized'
+      , fg_scheme: 'Solarized'
+      , ac_scheme: 'Lunarized'
+      })
+    , lunarized_light_mod: createTheme({
+        mode: 'light'
+      , bg_scheme: 'Lunarized'
+      , fg_scheme: 'Lunarized'
+      , ac_scheme: 'Solarized'
+      })
+    }
+    function removeTheme(container) {
+      var theme = createTheme({
+        mode: container.attr('data-mode') || 'dark'
+      , bg_scheme: container.attr('data-bg_scheme') || 'Solarized'
+      , fg_scheme: container.attr('data-fg_scheme') || 'Solarized'
+      , ac_scheme: container.attr('data-ac_scheme') || 'Solarized'
+      })
+      container.removeAttr('data-mode')
         .removeAttr('data-bg_scheme')
         .removeAttr('data-fg_scheme')
         .removeAttr('data-ac_scheme')
+      container.removeClass(theme.bg.class + ' ' + theme.text.class)
+      container.find('.js-emph').removeClass(theme.emph.class)
+      container.find('.js-deemph').removeClass(theme.deemph.class)
+      container.find('.js-hilite').removeClass(theme.hilite.class)
+      container.find('.js-ctl').removeClass(theme.ctl.class)
+      container.find('.js-opr').removeClass(theme.opr.class)
+      container.find('.js-kwd').removeClass(theme.kwd.class)
+      container.find('.js-cst').removeClass(theme.cst.class)
+      container.find('.js-str').removeClass(theme.str.class)
+      container.find('.js-cmd').removeClass(theme.cmd.class)
+      container.find('.js-arg').removeClass(theme.arg.class)
+      container.find('.js-obj').removeClass(theme.obj.class)
+      return theme
     }
-    function applyTheme(theme) {
-      removeTheme()
-      $('.js-theme').attr('data-mode', theme.args.mode)
+    function applyTheme(theme, container) {
+      removeTheme(container)
+      container.attr('data-mode', theme.args.mode)
         .attr('data-bg_scheme', theme.args.bg_scheme)
         .attr('data-fg_scheme', theme.args.fg_scheme)
         .attr('data-ac_scheme', theme.args.ac_scheme)
-      $('.js-theme').addClass(theme.bg.class + ' ' + theme.text.class)
-      $('.js-emph').addClass(theme.emph.class)
-      $('.js-deemph').addClass(theme.deemph.class)
-      $('.js-hilite').addClass(theme.hilite.class)
-      $('.js-ctl').addClass(theme.ctl.class)
-      $('.js-opr').addClass(theme.opr.class)
-      $('.js-kwd').addClass(theme.kwd.class)
-      $('.js-cst').addClass(theme.cst.class)
-      $('.js-str').addClass(theme.str.class)
-      $('.js-cmd').addClass(theme.cmd.class)
-      $('.js-arg').addClass(theme.arg.class)
-      $('.js-obj').addClass(theme.obj.class)
+      container.addClass(theme.bg.class + ' ' + theme.text.class)
+      container.find('.js-emph').addClass(theme.emph.class)
+      container.find('.js-deemph').addClass(theme.deemph.class)
+      container.find('.js-hilite').addClass(theme.hilite.class)
+      container.find('.js-ctl').addClass(theme.ctl.class)
+      container.find('.js-opr').addClass(theme.opr.class)
+      container.find('.js-kwd').addClass(theme.kwd.class)
+      container.find('.js-cst').addClass(theme.cst.class)
+      container.find('.js-str').addClass(theme.str.class)
+      container.find('.js-cmd').addClass(theme.cmd.class)
+      container.find('.js-arg').addClass(theme.arg.class)
+      container.find('.js-obj').addClass(theme.obj.class)
     }
-    applyTheme(preset_theme.solarized_dark)
+    function editTheme(changes, container) {
+      var args = removeTheme(container).args
+      changes(args)
+      applyTheme(createTheme(args), container)
+    }
+    applyTheme(preset_theme.solarized_dark, $('.js-theme'))
+    $('input[name="preset"]').change(function () {
+      applyTheme(preset_theme[$(this).val()], $('.js-theme'))
+    })
   //- script.
     $('.check').change(function () {
       var section = $(this).closest('section.o-Box')
@@ -117,7 +150,46 @@ block append body
     })
 
 block append main
-  //- input.check(style="margin-left: 0.5em;" type="checkbox" name="switch-theme" value="")
+  form.o-FlexContainer
+    fieldset.-w-1o2
+      legend Preset Themes
+      p.
+        Preset #[cite Solarized] themes were created by
+        #[a(href="http://ethanschoonover(class=color.c)om/solarized") Ethan Schoonover];
+        preset #[cite Lunarized] themes were created by me.
+        Read the #[a(href="../index.html") home page] for more information.
+      ul.o-ListBare
+        li: label
+          input#check-t-sol-dark(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark" checked="")
+          | Solarized Dark
+        li: label
+          input#check-t-sol-lite(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_light")
+          | Solarized Light
+        li: label
+          input#check-t-lun-dark(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_dark")
+          | Lunarized Dark
+        li: label
+          input#check-t-lun-lite(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light")
+          | Lunarized Light
+    fieldset.-w-1o2
+      legend Accessible-Friendly Themes
+      p.
+        Accessible-friendly themes choose foreground and accent colors based on their contrast ratios
+        with the background color. Themes denoted with an asterisk (#[sup &lowast;]) are suggested over their
+        counterparts  in the same (dark/light) mode.
+      ul.o-ListBare
+        li: label
+          input#check-t-sol-dark-mod(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark_mod")
+          | modified Solarized Dark
+        li: label
+          input#check-t-sol-lite-mod(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_light_mod")
+          | modified Solarized Light #[sup &lowast;]
+        li: label
+          input#check-t-lun-dark-mod(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_dark_mod")
+          | modified Lunarized Dark #[sup &lowast;]
+        li: label
+          input#check-t-lun-lite-mod(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light_mod")
+          | modified Lunarized Light
   pre.o-Box.js-theme.
     #[span.js-cmd &lt;tag #[span.js-kwd attribute=#[span.js-str &quot;value value&quot;]]&gt;]content #[span.js-cst &amp;amp;] more#[span.js-cmd &lt;#{'/'}tag&gt;]
     #[small.js-deemph &lt;!-- HTML comment --&gt;]
