@@ -4,70 +4,48 @@ block append vars
   - page_names.push('Sample')
   - home_path = '../'
 
-block append main
-  mixin sample(args)
-    - var my_theme = createTheme(args)
-    -
-      var color = {
-          text    : my_theme.text.class
-        , emph    : my_theme.emph.class
-        , deemph  : my_theme.deemph.class
-        , hilite  : my_theme.hilite.class
-        , bg      : my_theme.bg.class
-        , r  : my_theme.red.class
-        , o  : my_theme.orange.class
-        , y  : my_theme.yellow.class
-        , g  : my_theme.green.class
-        , c  : my_theme.cyan.class
-        , b  : my_theme.blue.class
-        , p1 : my_theme.purple1.class
-        , p2 : my_theme.purple2.class
-      }
-    //- input.check(style="margin-left: 0.5em;" type="checkbox" name="switch-theme" value="")
-    pre.o-Box(
-      class=[color.bg, color.text]
-      data-mode=args.mode
-      data-bg_scheme=args.bg_scheme
-      data-fg_scheme=args.fg_scheme
-      data-ac_scheme=args.ac_scheme
-    ).
-      #[span(class=color.b) &lt;tag #[span(class=color.y) attribute=#[span(class=color.c) &quot;value value&quot;]]&gt;]contents#[span(class=color.b) &lt;#{'/'}tag&gt;]
-      #[small(class=color.deemph) &lt;!-- HTML comment --&gt;]
-      #[span(class=color.b) &lt;style #[span(class=color.y) scoped]&gt;]
-        #[small(class=color.deemph) /* block comment */]
-        element,
-        #[span(class=color.b) .class] #[span(class=color.o)= '{']
-          #[small(class=color.deemph) #{'//'} inline comment]
-          #[span(class=color.y) property]: #[span(class=color.c) value];
-          #[span(class=color.y) property]: #[span(class=color.g) 48px];
-          #[span(class=color.b) .command(#[span(class=color.p1) argument, #[span(class=color.p2) 'string']])];
-          #[strong(class=[color.emph, color.hilite]) &amp;#[span(class=color.r) :pseudo] #[span(class=color.o)= '{'] #[span(class=color.y) property]: #[span(class=color.c) value]; #[span(class=color.o)= '}']]
-        #[span(class=color.o)= '}']
-      #[span(class=color.b) &lt;#{'/'}style&gt;]
-      #[span(class=color.b) &lt;script&gt;]
-        #[span(class=color.y) function] #[span(class=color.b) Person(#[span(class=color.p1) name])] #[span(class=color.o)= '{'] #[small(class=color.deemph) #{'//'} constructor for class `Person`]
-          #[span(class=color.p2) this].greetings #[span(class=color.o) =] #[span(class=color.o) #{'['}] #[span(class=color.c) 'hello!']#[span(class=color.o) ,] #[span(class=color.c) 'hi!']#[span(class=color.o) ,] handshake #[span(class=color.o) #{']'}];
-        #[span(class=color.o)= '}']
-        #[span(class=color.y) function] #[span(class=color.b) TestSubject(#[span(class=color.p1) name#[span(class=color.o) ,] adopted])] #[span(class=color.o)= '{'] #[small(class=color.deemph) #{'//'} constructor for class `TestSubject`]
-          #[span(class=color.p2) Person]#[span(class=color.b) .call(#[span(class=color.p1) #[span(class=color.p2) this]#[span(class=color.o) ,] name#[span(class=color.o) ,] adopted])]; #[small(class=color.deemph) #{'//'} calls the parent constructor]
-          #[span(class=color.r) if (#[span(class=color.o) typeof] #[span(class=color.p1) adopted] #[span(class=color.o) ===] #[span(class=color.c) 'boolean'])] #[span(class=color.o)= '{']
-            #[strong(class=[color.emph, color.hilite]) #[span(class=color.p2) this].is_adopted #[span(class=color.o) =] #[span(class=color.p1) adopted];]
-          #[span(class=color.o)= '}'] #[span(class=color.r) else] #[span(class=color.p2) this].is_adopted #[span(class=color.o) =] #[span(class=color.g) false];
-        #[span(class=color.o)= '}']
-        #[span(class=color.p2) this].location #[span(class=color.o) =] #[span(class=color.o) #{'{'}] name#[span(class=color.o) :] #[span(class=color.c) 'Aperture Science Enrichment Center'] #[span(class=color.o) #{'}'}]
-        #[span(class=color.p2) Util]#[span(class=color.b) .extend(#[span(class=color.p1) #[span(class=color.p2) TestSubject]#[span(class=color.o) ,] #[span(class=color.p2) Person]])]; #[small(class=color.deemph) #{'//'} extends `TestSubject` from `Person`]
-        #[span(class=color.y) var] you #[span(class=color.o) =] #[span(class=color.o) new] #[span(class=color.b) TestSubject(#[span(class=color.p1) #[span(class=color.c) 'Chell']#[span(class=color.o) ,] #[span(class=color.g) true]])]; #[small(class=color.deemph) #{'//'} creates an instance of `TestSubject`]
-      #[span(class=color.b) &lt;&#x002f;script&gt;]
-  +sample({
-    mode: 'light'
-  , bg_scheme: 'Solarized'
-  , fg_scheme: 'Solarized'
-  , ac_scheme: 'Solarized'
-  })
-
 block append body
+  -
+    var preset = {
+      solarized_dark: createTheme({
+        mode: 'dark'
+      , bg_scheme: 'Solarized'
+      , fg_scheme: 'Solarized'
+      , ac_scheme: 'Solarized'
+      })
+    , solarized_light: createTheme({
+        mode: 'light'
+      , bg_scheme: 'Solarized'
+      , fg_scheme: 'Solarized'
+      , ac_scheme: 'Solarized'
+      })
+    , lunarized_dark: createTheme({
+        mode: 'dark'
+      , bg_scheme: 'Solarized'
+      , fg_scheme: 'Solarized'
+      , ac_scheme: 'Solarized'
+      })
+    , lunarized_light: createTheme({
+        mode: 'light'
+      , bg_scheme: 'Solarized'
+      , fg_scheme: 'Solarized'
+      , ac_scheme: 'Solarized'
+      })
+    }
+  script.
+    var my_theme = !{JSON.stringify(preset.solarized_light)}
+    $('.js-theme').addClass(my_theme.bg.class + ' ' + my_theme.text.class)
+    $('.js-ctl').addClass(my_theme.red.class)
+    $('.js-opr').addClass(my_theme.orange.class)
+    $('.js-kwd').addClass(my_theme.yellow.class)
+    $('.js-cst').addClass(my_theme.green.class)
+    $('.js-str').addClass(my_theme.cyan.class)
+    $('.js-cmd').addClass(my_theme.blue.class)
+    $('.js-arg').addClass(my_theme.purple1.class)
+    $('.js-obj').addClass(my_theme.purple2.class)
   //- script.
-    var bases = !{JSON.stringify(bases)}
+    var scheme = !{JSON.stringify(scheme)}
+    var createTheme = #{createTheme}
     $('.check').change(function () {
       var section = $(this).closest('section.o-Box')
       var mode = section.attr('data-mode')
@@ -104,3 +82,34 @@ block append body
         children.deemphs.addClass(bases[fg_scheme][mode].deemph.class)
       }
     })
+
+block append main
+  //- input.check(style="margin-left: 0.5em;" type="checkbox" name="switch-theme" value="")
+  pre.o-Box.js-theme.
+    #[span.js-cmd &lt;tag #[span.js-kwd attribute=#[span.js-str &quot;value value&quot;]]&gt;]content #[span.js-cst &amp;amp;] more#[span.js-cmd &lt;#{'/'}tag&gt;]
+    #[small.js-deemph &lt;!-- HTML comment --&gt;]
+    #[span.js-cmd &lt;style #[span.js-kwd scoped]&gt;]
+      #[small.js-deemph /* block comment */]
+      element,
+      #[span.js-cmd .class] #[span.js-opr= '{']
+        #[small.js-deemph #{'//'} inline comment]
+        #[span.js-kwd property]: #[span.js-str value];
+        #[span.js-kwd property]: #[span.js-cst 48px];
+        #[span.js-cmd .command(#[span.js-arg argument, #[span.js-obj 'string']])];
+        #[strong.js-emph.js-hilite &amp;#[span.js-ctl :pseudo] #[span.js-opr= '{'] #[span.js-kwd property]: #[span.js-str value]; #[span.js-opr= '}']]
+      #[span.js-opr= '}']
+    #[span.js-cmd &lt;#{'/'}style&gt;]
+    #[span.js-cmd &lt;script&gt;]
+      #[span.js-kwd function] #[span.js-cmd Person(#[span.js-arg name])] #[span.js-opr= '{'] #[small.js-deemph #{'//'} constructor for class `Person`]
+        #[span.js-obj this].greetings #[span.js-opr =] #[span.js-opr #{'['}] #[span.js-str 'hello!']#[span.js-opr ,] #[span.js-str 'hi!']#[span.js-opr ,] handshake #[span.js-opr #{']'}];
+      #[span.js-opr= '}']
+      #[span.js-kwd function] #[span.js-cmd TestSubject(#[span.js-arg name#[span.js-opr ,] adopted])] #[span.js-opr= '{'] #[small.js-deemph #{'//'} constructor for class `TestSubject`]
+        #[span.js-obj Person]#[span.js-cmd .call(#[span.js-arg #[span.js-obj this]#[span.js-opr ,] name#[span.js-opr ,] adopted])]; #[small.js-deemph #{'//'} calls the parent constructor]
+        #[span.js-ctl if (#[span.js-opr typeof] #[span.js-arg adopted] #[span.js-opr ===] #[span.js-str 'boolean'])] #[span.js-opr= '{']
+          #[strong.js-emph.js-hilite #[span.js-obj this].is_adopted #[span.js-opr =] #[span.js-arg adopted];]
+        #[span.js-opr= '}'] #[span.js-ctl else] #[span.js-obj this].is_adopted #[span.js-opr =] #[span.js-cst false];
+      #[span.js-opr= '}']
+      #[span.js-obj this].location #[span.js-opr =] #[span.js-opr #{'{'}] name#[span.js-opr :] #[span.js-str 'Aperture Science Enrichment Center'] #[span.js-opr #{'}'}]
+      #[span.js-obj Util]#[span.js-cmd .extend(#[span.js-arg #[span.js-obj TestSubject]#[span.js-opr ,] #[span.js-obj Person]])]; #[small.js-deemph #{'//'} extends `TestSubject` from `Person`]
+      #[span.js-kwd var] you #[span.js-opr =] #[span.js-opr new] #[span.js-cmd TestSubject(#[span.js-arg #[span.js-str 'Chell']#[span.js-opr ,] #[span.js-cst true]])]; #[small.js-deemph #{'//'} creates an instance of `TestSubject`]
+    #[span.js-cmd &lt;#{'/'}script&gt;]
