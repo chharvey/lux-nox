@@ -5,8 +5,10 @@ block append vars
   - home_path = '../'
 
 block append body
-  -
-    var preset = {
+  script.
+    var context = !{JSON.stringify(context)}
+    var createTheme = #{createTheme}
+    var preset_theme = {
       solarized_dark: createTheme({
         mode: 'dark'
       , bg_scheme: 'Solarized'
@@ -21,31 +23,33 @@ block append body
       })
     , lunarized_dark: createTheme({
         mode: 'dark'
-      , bg_scheme: 'Solarized'
-      , fg_scheme: 'Solarized'
-      , ac_scheme: 'Solarized'
+      , bg_scheme: 'Lunarized'
+      , fg_scheme: 'Lunarized'
+      , ac_scheme: 'Lunarized'
       })
     , lunarized_light: createTheme({
         mode: 'light'
-      , bg_scheme: 'Solarized'
-      , fg_scheme: 'Solarized'
-      , ac_scheme: 'Solarized'
+      , bg_scheme: 'Lunarized'
+      , fg_scheme: 'Lunarized'
+      , ac_scheme: 'Lunarized'
       })
     }
-  script.
-    var my_theme = !{JSON.stringify(preset.solarized_light)}
-    $('.js-theme').addClass(my_theme.bg.class + ' ' + my_theme.text.class)
-    $('.js-ctl').addClass(my_theme.red.class)
-    $('.js-opr').addClass(my_theme.orange.class)
-    $('.js-kwd').addClass(my_theme.yellow.class)
-    $('.js-cst').addClass(my_theme.green.class)
-    $('.js-str').addClass(my_theme.cyan.class)
-    $('.js-cmd').addClass(my_theme.blue.class)
-    $('.js-arg').addClass(my_theme.purple1.class)
-    $('.js-obj').addClass(my_theme.purple2.class)
+    function applyTheme(my_theme) {
+      $('.js-theme').addClass(my_theme.bg.class + ' ' + my_theme.text.class)
+      $('.js-emph').addClass(my_theme.emph.class)
+      $('.js-deemph').addClass(my_theme.deemph.class)
+      $('.js-hilite').addClass(my_theme.hilite.class)
+      $('.js-ctl').addClass(my_theme.ctl.class)
+      $('.js-opr').addClass(my_theme.opr.class)
+      $('.js-kwd').addClass(my_theme.kwd.class)
+      $('.js-cst').addClass(my_theme.cst.class)
+      $('.js-str').addClass(my_theme.str.class)
+      $('.js-cmd').addClass(my_theme.cmd.class)
+      $('.js-arg').addClass(my_theme.arg.class)
+      $('.js-obj').addClass(my_theme.obj.class)
+    }
+    applyTheme(preset_theme.solarized_light)
   //- script.
-    var scheme = !{JSON.stringify(scheme)}
-    var createTheme = #{createTheme}
     $('.check').change(function () {
       var section = $(this).closest('section.o-Box')
       var mode = section.attr('data-mode')

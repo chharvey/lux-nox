@@ -49,89 +49,91 @@ html(lang="en")
        * 3. background scheme - a set of colors used for the background bases
        * 4. accent scheme     - a set of colors used for the accent colors
        * Example:
-       * var theme = {
+       * var context = {
        *   'Solarized': {
        *     dark: {
        *       text : { class : 'a-c-s0', name: 'Solarized Base0' }
-       *       emph : ...
-       *       ...
+       *     , emph : { ... }
+       *     , ...
        *     }
-       *     light: {
-       *       ...
+       *   , light: { ... }
+       *     accents: {
+       *       ctl : { class : 'a-c-sr', name: 'Solarized Red' }
+       *     , opr : { ... }
+       *     , ...
        *     }
        *   }
-       *   'Lunarzied': {
-       *     ...
-       *   }
+       * , 'Lunarzied': { ... }
        * }
        */
-      var theme = {}
+      var context = {}
       ;(function () {
         var bases = {
           text : {
             ground: 'fg'
-          , base: {
+          , color: {
               dark:  'base0'
             , light: 'base00'
             }
           }
         , emph : {
             ground: 'fg'
-          , base: {
+          , color: {
               dark:  'base1'
             , light: 'base01'
             }
           }
         , deemph : {
             ground: 'fg'
-          , base: {
+          , color: {
               dark:  'base01'
             , light: 'base1'
             }
           }
         , hilite : {
             ground: 'bg'
-          , base: {
+          , color: {
               dark:  'base02'
             , light: 'base2'
             }
           }
         , bg : {
             ground: 'bg'
-          , base: {
+          , color: {
               dark:  'base03'
             , light: 'base3'
             }
           }
         }
+        var accents = {
+          ctl: { color: 'red'     }
+        , opr: { color: 'orange'  }
+        , kwd: { color: 'yellow'  }
+        , cst: { color: 'green'   }
+        , str: { color: 'cyan'    }
+        , cmd: { color: 'blue'    }
+        , arg: { color: 'indigo'  , color_alt : 'violet' }
+        , obj: { color: 'magenta' , color_alt : 'violet' }
+        }
         for (var sch in scheme) {
-          theme[sch] = {}
-          theme[sch].dark = {}
-          theme[sch].light = {}
+          context[sch] = {}
+          context[sch].dark = {}
+          context[sch].light = {}
           for (var mod of ['dark','light']) {
             for (var comp in bases) {
-              theme[sch][mod][comp] = {
-                class: scheme[sch][bases[comp].base[mod]][bases[comp].ground+'_class']
-              , name: scheme[sch][bases[comp].base[mod]].name
+              context[sch][mod][comp] = {
+                class: scheme[sch][bases[comp].color[mod]][bases[comp].ground+'_class']
+              , name:  scheme[sch][bases[comp].color[mod]].name
               }
             }
           }
-          theme[sch].accent = {}
-          for (var acc of ['red','orange','yellow','green','cyan','blue']) {
-            theme[sch].accent[acc] = {
-              class: scheme[sch][acc].fg_class
-            , name:  scheme[sch][acc].name
+          context[sch].accent = {}
+          for (var acc in accents) {
+            var colortest = scheme[sch][accents[acc].color] || scheme[sch][accents[acc].color_alt]
+            context[sch].accent[acc] = {
+              class: colortest.fg_class
+            , name:  colortest.name
             }
-          }
-          var purp1 = scheme[sch].indigo  || scheme[sch].violet
-          var purp2 = scheme[sch].magenta || scheme[sch].violet
-          theme[sch].accent.purple1 = {
-            class: purp1.fg_class
-          , name:  purp1.name
-          }
-          theme[sch].accent.purple2 = {
-            class: purp2.fg_class
-          , name:  purp2.name
           }
         }
       })()
@@ -145,22 +147,21 @@ html(lang="en")
        * @returns - an object with a number of colors corresponding to the theme.
        */
       function createTheme(args) {
-        var x = 'hello';
         return {
           args : args
-        , text    : theme[args.fg_scheme][args.mode].text
-        , emph    : theme[args.fg_scheme][args.mode].emph
-        , deemph  : theme[args.fg_scheme][args.mode].deemph
-        , hilite  : theme[args.bg_scheme][args.mode].hilite
-        , bg      : theme[args.bg_scheme][args.mode].bg
-        , red     : theme[args.ac_scheme].accent.red
-        , orange  : theme[args.ac_scheme].accent.orange
-        , yellow  : theme[args.ac_scheme].accent.yellow
-        , green   : theme[args.ac_scheme].accent.green
-        , cyan    : theme[args.ac_scheme].accent.cyan
-        , blue    : theme[args.ac_scheme].accent.blue
-        , purple1 : theme[args.ac_scheme].accent.purple1
-        , purple2 : theme[args.ac_scheme].accent.purple2
+        , text   : context[args.fg_scheme][args.mode].text
+        , emph   : context[args.fg_scheme][args.mode].emph
+        , deemph : context[args.fg_scheme][args.mode].deemph
+        , hilite : context[args.bg_scheme][args.mode].hilite
+        , bg     : context[args.bg_scheme][args.mode].bg
+        , ctl    : context[args.ac_scheme].accent.ctl
+        , opr    : context[args.ac_scheme].accent.opr
+        , kwd    : context[args.ac_scheme].accent.kwd
+        , cst    : context[args.ac_scheme].accent.cst
+        , str    : context[args.ac_scheme].accent.str
+        , cmd    : context[args.ac_scheme].accent.cmd
+        , arg    : context[args.ac_scheme].accent.arg
+        , obj    : context[args.ac_scheme].accent.obj
         }
       }
   head

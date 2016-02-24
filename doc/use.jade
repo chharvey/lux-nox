@@ -35,69 +35,69 @@ block append main
       section
         h3 Accents
         ul
-          mixin red()
-            li(class=theme.red.class)= theme.red.name + ':'
+          mixin ctl()
+            li(class=theme.ctl.class)= theme.ctl.name + ':'
               ul
                 li programming control (#[code if], #[code for], #[code switch], #[code return])
                 li other control (#[code public], #[code private], #[code static])
                 li Jade buffered comments&nbsp;
                 li CSS pseudo-elements and -classes
-          mixin orange()
-            li(class=theme.orange.class)= theme.orange.name + ':'
+          mixin opr()
+            li(class=theme.opr.class)= theme.opr.name + ':'
               ul
                 li delimiters and operators (#[code +], #[code ==], #[code new], #[code typeof])
                 li Jade class names
-          mixin yellow()
-            li(class=theme.yellow.class)= theme.yellow.name + ':'
+          mixin kwd()
+            li(class=theme.kwd.class)= theme.kwd.name + ':'
               ul
                 li HTML/Jade attribute names
                 li CSS property names
                 li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
-          mixin green()
-            li(class=theme.green.class)= theme.green.name + ':'
+          mixin cst()
+            li(class=theme.cst.class)= theme.cst.name + ':'
               ul
                 li HTML/Jade characters and entities
                 li CSS numeric values with units
                 li constant values (numbers, colors, booleans, #[code null])
-          mixin cyan()
-            li(class=theme.cyan.class)= theme.cyan.name + ':'
+          mixin str()
+            li(class=theme.str.class)= theme.str.name + ':'
               ul
                 li HTML attribute values
                 li CSS property values
                 li strings (except in CSS)
-          mixin blue()
-            li(class=theme.blue.class)= theme.blue.name + ':'
+          mixin cmd()
+            li(class=theme.cmd.class)= theme.cmd.name + ':'
               ul
                 li HTML/Jade tags
                 li CSS/Less class selectors
                 li JS function definitions and function calls
-          mixin purple1()
-            li(class=theme.purple1.class)= theme.purple1.name + ':'
+          mixin arg()
+            li(class=theme.arg.class)= theme.arg.name + ':'
               ul
                 li variable/parameter names
                 li function arguments
                 li Jade tag interpolation
-          mixin purple2()
-            li(class=theme.purple2.class)= theme.purple2.name + ':'
+          mixin obj()
+            li(class=theme.obj.class)= theme.obj.name + ':'
               ul
                 //- li string delimiters (#[code &quot;] and #[code &apos;])
                 li CSS strings
                 li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
                 li Jade id names
           if args.ac_scheme === 'Lunarized'
-            +cyan()
-            +blue()
-            +purple1()
-            +purple2()
-          +red()
-          +orange()
-          +yellow()
-          +green()
+            +str()
+            +cmd()
+            +arg()
+            +obj()
+          +ctl()
+          +opr()
+          +kwd()
+          +cst()
           if args.ac_scheme === 'Solarized'
-            +cyan()
-            +blue()
-            +purple1()
-            +purple2()
+            +str()
+            +cmd()
+            +arg()
+            +obj()
   div.o-FlexContainer
     +demo({
       mode: 'dark'
