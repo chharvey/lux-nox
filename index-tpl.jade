@@ -4,7 +4,7 @@ html(lang="en")
     - var page_names = ['lux-nox']
     -
       var scheme = {
-        'Solarized': {
+        'Solarized' : {
           base03  : { name: 'Solarized Base03'  , code: '#002b36' , bg_class: 'a-bc-s03' , fg_class: 'a-c-s03' }
         , base02  : { name: 'Solarized Base02'  , code: '#073642' , bg_class: 'a-bc-s02' , fg_class: 'a-c-s02' }
         , base01  : { name: 'Solarized Base01'  , code: '#586e75' , bg_class: 'a-bc-s01' , fg_class: 'a-c-s01' }
@@ -22,7 +22,7 @@ html(lang="en")
         , violet  : { name: 'Solarized Violet'  , code: '#6c71c4' , bg_class: 'a-bc-sv'  , fg_class: 'a-c-sv'  }
         , magenta : { name: 'Solarized Magenta' , code: '#d33682' , bg_class: 'a-bc-sm'  , fg_class: 'a-c-sm'  }
         }
-      , 'Lunarized': {
+      , 'Lunarized' : {
           base03  : { name: 'Lunarized Base03'  , code: '#360b00' , bg_class: 'a-bc-l03' , fg_class: 'a-c-l03' }
         , base02  : { name: 'Lunarized Base02'  , code: '#421307' , bg_class: 'a-bc-l02' , fg_class: 'a-c-l02' }
         , base01  : { name: 'Lunarized Base01'  , code: '#755f58' , bg_class: 'a-bc-l01' , fg_class: 'a-c-l01' }
@@ -41,7 +41,6 @@ html(lang="en")
         , green   : { name: 'Lunarized Green'   , code: '#2cc97d' , bg_class: 'a-bc-lg'  , fg_class: 'a-c-lg'  }
         }
       }
-    -
       /*
        * A set of themes comprised of four parameters:
        * 1. mode              - either dark or light (independent of scheme)
@@ -139,30 +138,81 @@ html(lang="en")
       })()
       /*
        * Returns a set of colors for a theme.
-       * @param args - an object with four properties:
-       *               1. `mode` - ['dark'|'light']
-       *               2. `fg_scheme` - ['Solarized'|'Lunarized']
-       *               3. `bg_scheme` - ['Solarized'|'Lunarized']
-       *               4. `ac_scheme` - ['Solarized'|'Lunarized']
+       * @param settings - an object with four properties:
+       *                   1. `mode`      - ['dark'|'light']
+       *                   2. `fg_scheme` - ['Solarized'|'Lunarized']
+       *                   3. `bg_scheme` - ['Solarized'|'Lunarized']
+       *                   4. `ac_scheme` - ['Solarized'|'Lunarized']
        * @returns - an object with a number of colors corresponding to the theme.
        */
-      function createTheme(args) {
+      function createTheme(settings) {
+        var empty_color = { class: '' , name: '' }
         return {
-          args : args
-        , text   : context[args.fg_scheme][args.mode].text
-        , emph   : context[args.fg_scheme][args.mode].emph
-        , deemph : context[args.fg_scheme][args.mode].deemph
-        , hilite : context[args.bg_scheme][args.mode].hilite
-        , bg     : context[args.bg_scheme][args.mode].bg
-        , ctl    : context[args.ac_scheme].accent.ctl
-        , opr    : context[args.ac_scheme].accent.opr
-        , kwd    : context[args.ac_scheme].accent.kwd
-        , cst    : context[args.ac_scheme].accent.cst
-        , str    : context[args.ac_scheme].accent.str
-        , cmd    : context[args.ac_scheme].accent.cmd
-        , arg    : context[args.ac_scheme].accent.arg
-        , obj    : context[args.ac_scheme].accent.obj
+          settings : settings
+        , text   : (settings.fg_scheme && settings.mode) ? context[settings.fg_scheme][settings.mode].text   : empty_color
+        , emph   : (settings.fg_scheme && settings.mode) ? context[settings.fg_scheme][settings.mode].emph   : empty_color
+        , deemph : (settings.fg_scheme && settings.mode) ? context[settings.fg_scheme][settings.mode].deemph : empty_color
+        , hilite : (settings.bg_scheme && settings.mode) ? context[settings.bg_scheme][settings.mode].hilite : empty_color
+        , bg     : (settings.bg_scheme && settings.mode) ? context[settings.bg_scheme][settings.mode].bg     : empty_color
+        , ctl    : (settings.ac_scheme) ? context[settings.ac_scheme].accent.ctl : empty_color
+        , opr    : (settings.ac_scheme) ? context[settings.ac_scheme].accent.opr : empty_color
+        , kwd    : (settings.ac_scheme) ? context[settings.ac_scheme].accent.kwd : empty_color
+        , cst    : (settings.ac_scheme) ? context[settings.ac_scheme].accent.cst : empty_color
+        , str    : (settings.ac_scheme) ? context[settings.ac_scheme].accent.str : empty_color
+        , cmd    : (settings.ac_scheme) ? context[settings.ac_scheme].accent.cmd : empty_color
+        , arg    : (settings.ac_scheme) ? context[settings.ac_scheme].accent.arg : empty_color
+        , obj    : (settings.ac_scheme) ? context[settings.ac_scheme].accent.obj : empty_color
         }
+      }
+      var preset_theme = {
+        solarized_dark : createTheme({
+          mode: 'dark'
+        , bg_scheme: 'Solarized'
+        , fg_scheme: 'Solarized'
+        , ac_scheme: 'Solarized'
+        })
+      , solarized_light : createTheme({
+          mode: 'light'
+        , bg_scheme: 'Solarized'
+        , fg_scheme: 'Solarized'
+        , ac_scheme: 'Solarized'
+        })
+      , lunarized_dark : createTheme({
+          mode: 'dark'
+        , bg_scheme: 'Lunarized'
+        , fg_scheme: 'Lunarized'
+        , ac_scheme: 'Lunarized'
+        })
+      , lunarized_light : createTheme({
+          mode: 'light'
+        , bg_scheme: 'Lunarized'
+        , fg_scheme: 'Lunarized'
+        , ac_scheme: 'Lunarized'
+        })
+      , solarized_dark_mod : createTheme({
+          mode: 'dark'
+        , bg_scheme: 'Solarized'
+        , fg_scheme: 'Solarized'
+        , ac_scheme: 'Lunarized'
+        })
+      , solarized_light_mod : createTheme({
+          mode: 'light'
+        , bg_scheme: 'Solarized'
+        , fg_scheme: 'Lunarized'
+        , ac_scheme: 'Solarized'
+        })
+      , lunarized_dark_mod : createTheme({
+          mode: 'dark'
+        , bg_scheme: 'Lunarized'
+        , fg_scheme: 'Solarized'
+        , ac_scheme: 'Lunarized'
+        })
+      , lunarized_light_mod : createTheme({
+          mode: 'light'
+        , bg_scheme: 'Lunarized'
+        , fg_scheme: 'Lunarized'
+        , ac_scheme: 'Solarized'
+        })
       }
   head
     title= page_names.reduceRight(function (a,b) { return a + ' | ' + b })

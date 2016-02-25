@@ -7,63 +7,14 @@ block append vars
 block append body
   script.
     var context = !{JSON.stringify(context)}
-    var createTheme = #{createTheme}
-    var preset_theme = {
-      solarized_dark: createTheme({
-        mode: 'dark'
-      , bg_scheme: 'Solarized'
-      , fg_scheme: 'Solarized'
-      , ac_scheme: 'Solarized'
-      })
-    , solarized_light: createTheme({
-        mode: 'light'
-      , bg_scheme: 'Solarized'
-      , fg_scheme: 'Solarized'
-      , ac_scheme: 'Solarized'
-      })
-    , lunarized_dark: createTheme({
-        mode: 'dark'
-      , bg_scheme: 'Lunarized'
-      , fg_scheme: 'Lunarized'
-      , ac_scheme: 'Lunarized'
-      })
-    , lunarized_light: createTheme({
-        mode: 'light'
-      , bg_scheme: 'Lunarized'
-      , fg_scheme: 'Lunarized'
-      , ac_scheme: 'Lunarized'
-      })
-    , solarized_dark_mod: createTheme({
-        mode: 'dark'
-      , bg_scheme: 'Solarized'
-      , fg_scheme: 'Solarized'
-      , ac_scheme: 'Lunarized'
-      })
-    , solarized_light_mod: createTheme({
-        mode: 'light'
-      , bg_scheme: 'Solarized'
-      , fg_scheme: 'Lunarized'
-      , ac_scheme: 'Solarized'
-      })
-    , lunarized_dark_mod: createTheme({
-        mode: 'dark'
-      , bg_scheme: 'Lunarized'
-      , fg_scheme: 'Solarized'
-      , ac_scheme: 'Lunarized'
-      })
-    , lunarized_light_mod: createTheme({
-        mode: 'light'
-      , bg_scheme: 'Lunarized'
-      , fg_scheme: 'Lunarized'
-      , ac_scheme: 'Solarized'
-      })
-    }
+    var createTheme = !{createTheme}
+    var preset_theme = !{JSON.stringify(preset_theme)}
     function removeTheme(container) {
       var theme = createTheme({
-        mode: container.attr('data-mode') || 'dark'
-      , bg_scheme: container.attr('data-bg_scheme') || 'Solarized'
-      , fg_scheme: container.attr('data-fg_scheme') || 'Solarized'
-      , ac_scheme: container.attr('data-ac_scheme') || 'Solarized'
+        mode: container.attr('data-mode')
+      , bg_scheme: container.attr('data-bg_scheme')
+      , fg_scheme: container.attr('data-fg_scheme')
+      , ac_scheme: container.attr('data-ac_scheme')
       })
       container.removeAttr('data-mode')
         .removeAttr('data-bg_scheme')
@@ -85,10 +36,10 @@ block append body
     }
     function applyTheme(theme, container) {
       removeTheme(container)
-      container.attr('data-mode', theme.args.mode)
-        .attr('data-bg_scheme', theme.args.bg_scheme)
-        .attr('data-fg_scheme', theme.args.fg_scheme)
-        .attr('data-ac_scheme', theme.args.ac_scheme)
+      container.attr('data-mode', theme.settings.mode)
+        .attr('data-bg_scheme', theme.settings.bg_scheme)
+        .attr('data-fg_scheme', theme.settings.fg_scheme)
+        .attr('data-ac_scheme', theme.settings.ac_scheme)
       container.addClass(theme.bg.class + ' ' + theme.text.class)
       container.find('.js-emph').addClass(theme.emph.class)
       container.find('.js-deemph').addClass(theme.deemph.class)
@@ -103,18 +54,23 @@ block append body
       container.find('.js-obj').addClass(theme.obj.class)
     }
     function editTheme(changes, container) {
-      var args = removeTheme(container).args
-      changes(args)
-      applyTheme(createTheme(args), container)
+      var settings = removeTheme(container).settings
+      changes(settings)
+      applyTheme(createTheme(settings), container)
     }
-    applyTheme(preset_theme.solarized_dark, $('.js-theme'))
     $('input[name="preset"]').change(function () {
-      applyTheme(preset_theme[$(this).val()], $('.js-theme'))
+      var theme = preset_theme[$(this).val()]
+      $('select[data-param="mode"]').val(theme.settings.mode)
+      $('select[data-param="bg_scheme"]').val(theme.settings.bg_scheme)
+      $('select[data-param="fg_scheme"]').val(theme.settings.fg_scheme)
+      $('select[data-param="ac_scheme"]').val(theme.settings.ac_scheme)
+      applyTheme(theme, $('.js-theme'))
     })
     $('select[name="cyo"]').change(function () {
       var self = this
-      editTheme(function (args) {
-        args[$(self).attr('data-param')] = $(self).val()
+      $('input[name="preset"').removeAttr('checked')
+      editTheme(function (settings) {
+        settings[$(self).attr('data-param')] = $(self).val()
       }, $('.js-theme'))
     })
 
@@ -129,7 +85,7 @@ block append main
         Read the #[a(href="../index.html") home page] for more information.
       ul.o-ListBare
         li: label
-          input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark" checked="")
+          input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark")
           | Solarized Dark
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_light")
@@ -143,45 +99,56 @@ block append main
     fieldset.-w-1o2
       legend Accessible-Friendly Themes
       p.
-        Accessible-friendly themes choose foreground and accent colors based on their contrast ratios
+        Accessible-friendly themes choose foreground and accent colors based on their
+        #[a(href="accessibility.html") contrast ratios]
         with the background color.
       ul.o-ListBare
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark_mod")
-          | Solarized Dark with Lunarized Accents
+          | Modified Solarized Dark
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_light_mod")
-          | Solarized Light with Lunarized Bases#[sup &lowast;]
+          | Modified Solarized Light#[sup &lowast;]
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_dark_mod")
-          | Lunarized Dark with Solarized Bases#[sup &lowast;]
+          | Modified Lunarized Dark#[sup &dagger;]
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light_mod")
-          | Lunarized Light with Solarized Accents
-      p #[sup &lowast;]These themes are suggested over their counterparts in the same (dark/light) mode.
+          | Modified Lunarized Light
+      foooter: ul.o-ListBare
+        li #[sup &lowast;]recommended over #[b Modified Lunarized Light]
+        li #[sup &dagger;]recommended over #[b Modified Solarized Dark]
     fieldset.-w-1o1
       legend Create Your Own Theme
       ul.o-ListBare.o-FlexContainer
         li.-w-1o4: label
-          | Mode 
+          | Mode
+          br
           select(name="cyo" data-param="mode")
-            option dark
-            option light
+            option
+            option(value="dark") dark
+            option(value="light") light
         li.-w-1o4: label
-          | Background Scheme 
+          | Background Scheme
+          br
           select(name="cyo" data-param="bg_scheme")
-            option Solarized
-            option Lunarized
+            option
+            option(value="Solarized") Solarized Backgrounds
+            option(value="Lunarized") Lunarized Backgrounds
         li.-w-1o4: label
-          | Foreground Scheme 
+          | Foreground Scheme
+          br
           select(name="cyo" data-param="fg_scheme")
-            option Solarized
-            option Lunarized
+            option
+            option(value="Solarized") Solarized Bases
+            option(value="Lunarized") Lunarized Bases
         li.-w-1o4: label
-          | Accent Scheme 
+          | Accent Scheme
+          br
           select(name="cyo" data-param="ac_scheme")
-            option Solarized
-            option Lunarized
+            option
+            option(value="Solarized") Solarized Accents
+            option(value="Lunarized") Lunarized Accents
   pre.o-Box.js-theme.
     #[span.js-cmd &lt;tag #[span.js-kwd attribute=#[span.js-str &quot;value value&quot;]]&gt;]content #[span.js-cst &amp;amp;] more#[span.js-cmd &lt;#{'/'}tag&gt;]
     #[small.js-deemph &lt;!-- HTML comment --&gt;]

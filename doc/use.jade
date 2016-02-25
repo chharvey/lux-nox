@@ -5,15 +5,14 @@ block append vars
   - home_path = '../'
 
 block append main
-  mixin demo(args)
-    - var theme = createTheme(args)
+  mixin demo(theme)
     section.o-Box.a-w-1o2(class=[ theme.bg.class , theme.text.class ])
-      h2= args.mode.charAt(0).toUpperCase() + args.mode.slice(1) + ' Color Theme'
+      h2= theme.settings.mode.charAt(0).toUpperCase() + theme.settings.mode.slice(1) + ' Color Theme'
       section
         h3 Bases
         ul
           mixin emphasizeWhenSchemesDisagree(content)
-            if (args.bg_scheme !== args.fg_scheme)
+            if (theme.settings.bg_scheme !== theme.settings.fg_scheme)
               em= content
             else
               = content
@@ -84,7 +83,7 @@ block append main
                 li CSS strings
                 li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
                 li Jade id names
-          if args.ac_scheme === 'Lunarized'
+          if theme.settings.ac_scheme === 'Lunarized'
             +str()
             +cmd()
             +arg()
@@ -93,21 +92,11 @@ block append main
           +opr()
           +kwd()
           +cst()
-          if args.ac_scheme === 'Solarized'
+          if theme.settings.ac_scheme === 'Solarized'
             +str()
             +cmd()
             +arg()
             +obj()
   div.o-FlexContainer
-    +demo({
-      mode: 'dark'
-    , bg_scheme: 'Lunarized'
-    , fg_scheme: 'Solarized'
-    , ac_scheme: 'Lunarized'
-    })
-    +demo({
-      mode: 'light'
-    , bg_scheme: 'Solarized'
-    , fg_scheme: 'Lunarized'
-    , ac_scheme: 'Solarized'
-    })
+    +demo(preset_theme.lunarized_dark_mod)
+    +demo(preset_theme.solarized_light_mod)
