@@ -46,13 +46,13 @@ block append main
           li syntax highlighting
           li remain constant, independent of mode
   section
+    mixin colorBox(color)
+      li.o-ColorBox(class=[color.bg_class, (color.name.slice(14)==='03' || color.name.slice(14)==='02')? 'h-darkbg' : ''])
+        h4= color.name
+        p: code #{color.code}#[br]#{color.bg_class}#[br]#{color.fg_class}
     h2 The Colors
     section
       h3 #[cite Solarized] Color Scheme
-      mixin colorBox(color)
-        li.o-ColorBox(class=[color.bg_class, (color.name.slice(14)==='03' || color.name.slice(14)==='02')? 'h-darkbg' : ''])
-          h4= color.name
-          p: code #{color.code}#[br]#{color.bg_class}#[br]#{color.fg_class}
       ul.o-ListBare.o-FlexContainer
         each color in scheme.Solarized
           +colorBox(color)
