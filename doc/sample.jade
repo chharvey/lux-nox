@@ -111,42 +111,11 @@ block append body
     $('input[name="preset"]').change(function () {
       applyTheme(preset_theme[$(this).val()], $('.js-theme'))
     })
-  //- script.
-    $('.check').change(function () {
-      var section = $(this).closest('section.o-Box')
-      var mode = section.attr('data-mode')
-      var bg_scheme = section.attr('data-bg_scheme')
-      var fg_scheme = section.attr('data-fg_scheme')
-      var ac_scheme = section.attr('data-ac_scheme')
-      var invert = {
-        'modes': {
-          'dark': 'light'
-        , 'light': 'dark'
-        }
-      , 'schemes': {
-          'Solarized': 'Lunarized'
-        , 'Lunarized': 'Solarized'
-        }
-      }
-      var bg_scheme_invert = invert.schemes[bg_scheme]
-      var fg_scheme_invert = invert.schemes[fg_scheme]
-      var ac_scheme_invert = invert.schemes[ac_scheme]
-      section.removeClass(bases[fg_scheme][mode].text.class + ' ' + bases[fg_scheme_invert][mode].text.class)
-      var children = {
-        emphs: section.find('.' + bases[fg_scheme][mode].emph.class + ', ' + '.' + bases[fg_scheme_invert][mode].emph.class)
-      , deemphs: section.find('.' + bases[fg_scheme][mode].deemph.class + ', ' + '.' + bases[fg_scheme_invert][mode].deemph.class)
-      }
-      children.emphs.removeClass(bases[fg_scheme][mode].emph.class + ' ' + bases[fg_scheme_invert][mode].emph.class)
-      children.deemphs.removeClass(bases[fg_scheme][mode].deemph.class + ' ' + bases[fg_scheme_invert][mode].deemph.class)
-      if (this.checked) {
-        section.addClass(bases[fg_scheme_invert][mode].text.class)
-        children.emphs.addClass(bases[fg_scheme_invert][mode].emph.class)
-        children.deemphs.addClass(bases[fg_scheme_invert][mode].deemph.class)
-      } else {
-        section.addClass(bases[fg_scheme][mode].text.class)
-        children.emphs.addClass(bases[fg_scheme][mode].emph.class)
-        children.deemphs.addClass(bases[fg_scheme][mode].deemph.class)
-      }
+    $('select[name="cyo"]').change(function () {
+      var self = this
+      editTheme(function (args) {
+        args[$(self).attr('data-param')] = $(self).val()
+      }, $('.js-theme'))
     })
 
 block append main
@@ -160,36 +129,59 @@ block append main
         Read the #[a(href="../index.html") home page] for more information.
       ul.o-ListBare
         li: label
-          input#check-t-sol-dark(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark" checked="")
+          input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark" checked="")
           | Solarized Dark
         li: label
-          input#check-t-sol-lite(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_light")
+          input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_light")
           | Solarized Light
         li: label
-          input#check-t-lun-dark(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_dark")
+          input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_dark")
           | Lunarized Dark
         li: label
-          input#check-t-lun-lite(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light")
+          input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light")
           | Lunarized Light
     fieldset.-w-1o2
       legend Accessible-Friendly Themes
       p.
         Accessible-friendly themes choose foreground and accent colors based on their contrast ratios
-        with the background color. Themes denoted with an asterisk (#[sup &lowast;]) are suggested over their
-        counterparts  in the same (dark/light) mode.
+        with the background color.
       ul.o-ListBare
         li: label
-          input#check-t-sol-dark-mod(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark_mod")
-          | modified Solarized Dark
+          input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark_mod")
+          | Solarized Dark with Lunarized Accents
         li: label
-          input#check-t-sol-lite-mod(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_light_mod")
-          | modified Solarized Light #[sup &lowast;]
+          input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_light_mod")
+          | Solarized Light with Lunarized Bases#[sup &lowast;]
         li: label
-          input#check-t-lun-dark-mod(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_dark_mod")
-          | modified Lunarized Dark #[sup &lowast;]
+          input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_dark_mod")
+          | Lunarized Dark with Solarized Bases#[sup &lowast;]
         li: label
-          input#check-t-lun-lite-mod(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light_mod")
-          | modified Lunarized Light
+          input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light_mod")
+          | Lunarized Light with Solarized Accents
+      p #[sup &lowast;]These themes are suggested over their counterparts in the same (dark/light) mode.
+    fieldset.-w-1o1
+      legend Create Your Own Theme
+      ul.o-ListBare.o-FlexContainer
+        li.-w-1o4: label
+          | Mode 
+          select(name="cyo" data-param="mode")
+            option dark
+            option light
+        li.-w-1o4: label
+          | Background Scheme 
+          select(name="cyo" data-param="bg_scheme")
+            option Solarized
+            option Lunarized
+        li.-w-1o4: label
+          | Foreground Scheme 
+          select(name="cyo" data-param="fg_scheme")
+            option Solarized
+            option Lunarized
+        li.-w-1o4: label
+          | Accent Scheme 
+          select(name="cyo" data-param="ac_scheme")
+            option Solarized
+            option Lunarized
   pre.o-Box.js-theme.
     #[span.js-cmd &lt;tag #[span.js-kwd attribute=#[span.js-str &quot;value value&quot;]]&gt;]content #[span.js-cst &amp;amp;] more#[span.js-cmd &lt;#{'/'}tag&gt;]
     #[small.js-deemph &lt;!-- HTML comment --&gt;]
