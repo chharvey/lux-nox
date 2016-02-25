@@ -68,10 +68,13 @@ block append body
     })
     $('select[name="cyo"]').change(function () {
       var self = this
-      $('input[name="preset"').removeAttr('checked')
+      $('input[name="preset"]').removeAttr('checked')
       editTheme(function (settings) {
         settings[$(self).attr('data-param')] = $(self).val()
       }, $('.js-theme'))
+    })
+    $('input[type="reset"]').click(function () {
+      removeTheme($('.js-theme'))
     })
 
 block append main
@@ -149,6 +152,7 @@ block append main
             option
             option(value="Solarized") Solarized Accents
             option(value="Lunarized") Lunarized Accents
+    p.-w-1o1: input(type="reset")
   pre.o-Box.js-theme.
     #[span.js-cmd &lt;tag #[span.js-kwd attribute=#[span.js-str &quot;value value&quot;]]&gt;]content #[span.js-cst &amp;amp;] more#[span.js-cmd &lt;#{'/'}tag&gt;]
     #[small.js-deemph &lt;!-- HTML comment --&gt;]
