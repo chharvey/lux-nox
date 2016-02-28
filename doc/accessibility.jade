@@ -6,6 +6,49 @@ block append vars
 
 block append main
   section
+    -
+      var rows = [
+        scheme.Solarized.base01
+      , scheme.Solarized.base00
+      , scheme.Solarized.base0
+      , scheme.Solarized.base1
+      , scheme.Solarized.red
+      , scheme.Solarized.orange
+      , scheme.Solarized.yellow
+      , scheme.Solarized.green
+      , scheme.Solarized.cyan
+      , scheme.Solarized.blue
+      , scheme.Solarized.violet
+      , scheme.Solarized.magenta
+      , scheme.Lunarized.base01
+      , scheme.Lunarized.base00
+      , scheme.Lunarized.base0
+      , scheme.Lunarized.base1
+      , scheme.Lunarized.cyan
+      , scheme.Lunarized.blue
+      , scheme.Lunarized.indigo
+      , scheme.Lunarized.violet
+      , scheme.Lunarized.red
+      , scheme.Lunarized.orange
+      , scheme.Lunarized.yellow
+      , scheme.Lunarized.green
+      ]
+      var cols = [
+        scheme.Solarized.base03
+      , scheme.Solarized.base02
+      , scheme.Solarized.base2
+      , scheme.Solarized.base3
+      , scheme.Lunarized.base03
+      , scheme.Lunarized.base02
+      , scheme.Lunarized.base2
+      , scheme.Lunarized.base3
+      ]
+      function dataRating(ratio) {
+        if (ratio < 3.0)                 return 1
+        if (3.0 <= ratio && ratio < 4.5) return 2
+        if (4.5 <= ratio && ratio < 7.0) return 3
+        if (7.0 <= ratio)                return 4
+      }
     h2 Table of Contrast Ratios
     table.-w-1o1
       caption
@@ -16,268 +59,30 @@ block append main
           #[a(href="#contrast-ratio-table") Contrast ratios] are shown in each cell.
       colgroup
       colgroup
-        col.a-bc-s03
-        col.a-bc-s02
-        col.a-bc-s2
-        col.a-bc-s3
+        each color in cols.slice(0,4)
+          col(class=color.bg_class)
       colgroup
-        col.a-bc-l03
-        col.a-bc-l02
-        col.a-bc-l2
-        col.a-bc-l3
+        each color in cols.slice(4)
+          col(class=color.bg_class)
       thead
         tr
           td
-          th(scope="col") Solarized Base03
-          th(scope="col") Solarized Base02
-          th(scope="col") Solarized Base2
-          th(scope="col") Solarized Base3
-          th(scope="col") Lunarized Base03
-          th(scope="col") Lunarized Base02
-          th(scope="col") Lunarized Base2
-          th(scope="col") Lunarized Base3
+        each color in cols
+          th(scope="col")= color.name
+      mixin tableRow(fg_color)
+        - var fg_color_obj = Color.newColorHexString(fg_color.code)
+        tr(class=fg_color.fg_class)
+          th(scope="row")= fg_color.name
+          each bg_color in cols
+            - var bg_color_obj = Color.newColorHexString(bg_color.code)
+            - var ratio = Math.round(fg_color_obj.contrastRatio(bg_color_obj)*100)/100
+            td(data-rating=dataRating(ratio))= ratio
       tbody
-        tr.a-c-s01
-          th(scope="row") Solarized Base01
-          td(data-rating="1" title="sol dark de-emphasis") 2.8
-          td(data-rating="1") 2.4
-          td(data-rating="2") 4.4
-          td(data-rating="3" title="sol light emphasis") 5.0
-          td(data-rating="2"): strong 3.2
-          td(data-rating="1") 2.9
-          td(data-rating="2") 3.9
-          td(data-rating="3") 4.5
-        tr.a-c-s00
-          th(scope="row") Solarized Base00
-          td(data-rating="2") 3.4
-          td(data-rating="1") 2.9
-          td(data-rating="2") 3.6
-          td(data-rating="2" title="sol light text") 4.1
-          td(data-rating="2"): strong 3.9
-          td(data-rating="2") 3.6
-          td(data-rating="2") 3.2
-          td(data-rating="2") 3.7
-        tr.a-c-s0
-          th(scope="row") Solarized Base0
-          td(data-rating="3" title="sol dark text") 4.7
-          td(data-rating="2") 4.1
-          td(data-rating="1") 2.6
-          td(data-rating="1") 2.9
-          td(data-rating="3"): strong 5.5
-          td(data-rating="3") 5.0
-          td(data-rating="1") 2.3
-          td(data-rating="1") 2.6
-        tr.a-c-s1
-          th(scope="row") Solarized Base1
-          td(data-rating="3" title="sol dark emphasis") 5.6
-          td(data-rating="3") 4.9
-          td(data-rating="1") 2.2
-          td(data-rating="1" title="sol light de-emphasis") 2.5
-          td(data-rating="3"): strong 6.5
-          td(data-rating="3") 5.9
-          td(data-rating="1") 1.9
-          td(data-rating="1") 2.2
-        tr.a-c-sr
-          th(scope="row") Solarized Red
-          td(data-rating="2") 3.2
-          td(data-rating="1") 2.8
-          td(data-rating="2") 3.8
-          td(data-rating="2"): strong 4.3
-          td(data-rating="2") 3.8
-          td(data-rating="2") 3.4
-          td(data-rating="2") 3.3
-          td(data-rating="2") 3.8
-        tr.a-c-so
-          th(scope="row") Solarized Orange
-          td(data-rating="2") 3.3
-          td(data-rating="1") 2.8
-          td(data-rating="2") 3.8
-          td(data-rating="2"): strong 4.3
-          td(data-rating="2") 3.8
-          td(data-rating="2") 3.4
-          td(data-rating="2") 3.3
-          td(data-rating="2") 3.8
-        tr.a-c-sy
-          th(scope="row") Solarized Yellow
-          td(data-rating="3") 4.7
-          td(data-rating="2") 4.1
-          td(data-rating="1") 2.6
-          td(data-rating="2"): strong 3.0
-          td(data-rating="3") 5.4
-          td(data-rating="3") 4.9
-          td(data-rating="1") 2.3
-          td(data-rating="1") 2.7
-        tr.a-c-sg
-          th(scope="row") Solarized Green
-          td(data-rating="3") 4.7
-          td(data-rating="2") 4.1
-          td(data-rating="1") 2.6
-          td(data-rating="2"): strong 3.0
-          td(data-rating="3") 5.4
-          td(data-rating="3") 4.9
-          td(data-rating="1") 2.3
-          td(data-rating="1") 2.7
-        tr.a-c-sc
-          th(scope="row") Solarized Cyan
-          td(data-rating="3") 4.8
-          td(data-rating="2") 4.1
-          td(data-rating="1") 2.6
-          td(data-rating="1"): strong 2.9
-          td(data-rating="3") 5.5
-          td(data-rating="3") 5.0
-          td(data-rating="1") 2.3
-          td(data-rating="1") 2.6
-        tr.a-c-sb
-          th(scope="row") Solarized Blue
-          td(data-rating="2") 4.1
-          td(data-rating="2") 3.5
-          td(data-rating="2") 3.0
-          td(data-rating="2"): strong 3.4
-          td(data-rating="3") 4.7
-          td(data-rating="2") 4.3
-          td(data-rating="1") 2.7
-          td(data-rating="2") 3.1
-        tr.a-c-sv
-          th(scope="row") Solarized Violet
-          td(data-rating="2") 3.4
-          td(data-rating="2") 3.0
-          td(data-rating="2") 3.6
-          td(data-rating="2"): strong 4.1
-          td(data-rating="2") 4.0
-          td(data-rating="2") 3.6
-          td(data-rating="2") 3.2
-          td(data-rating="2") 3.6
-        tr.a-c-sm
-          th(scope="row") Solarized Magenta
-          td(data-rating="2") 3.3
-          td(data-rating="1") 2.9
-          td(data-rating="2") 3.7
-          td(data-rating="2"): strong 4.2
-          td(data-rating="2") 3.8
-          td(data-rating="2") 3.5
-          td(data-rating="2") 3.3
-          td(data-rating="2") 3.8
+        each fg_color in rows.slice(0,12)
+          +tableRow(fg_color)
       tbody
-        tr.a-c-l01
-          th(scope="row") Lunarized Base01
-          td(data-rating="1") 2.5
-          td(data-rating="1") 2.2
-          td(data-rating="3") 4.8
-          td(data-rating="3"): strong 5.5
-          td(data-rating="2" title="lun dark de-emphasis") 2.9
-          td(data-rating="2") 2.7
-          td(data-rating="2") 4.3
-          td(data-rating="3" title="lun light emphasis") 4.9
-        tr.a-c-l00
-          th(scope="row") Lunarized Base00
-          td(data-rating="2") 3.1
-          td(data-rating="1") 2.7
-          td(data-rating="2") 3.9
-          td(data-rating="3"): strong 4.5
-          td(data-rating="2") 3.6
-          td(data-rating="2") 3.3
-          td(data-rating="2") 3.5
-          td(data-rating="2" title="lun light text") 4.0
-        tr.a-c-l0
-          th(scope="row") Lunarized Base0
-          td(data-rating="2") 4.3
-          td(data-rating="2") 3.7
-          td(data-rating="1") 2.9
-          td(data-rating="2"): strong 3.3
-          td(data-rating="3" title="lun dark text") 5.0
-          td(data-rating="3") 4.5
-          td(data-rating="1") 2.5
-          td(data-rating="1") 2.9
-        tr.a-c-l1
-          th(scope="row") Lunarized Base1
-          td(data-rating="3") 5.1
-          td(data-rating="2") 4.4
-          td(data-rating="1") 2.4
-          td(data-rating="1"): strong 2.7
-          td(data-rating="3" title="lun dark emphasis") 5.9
-          td(data-rating="3") 5.4
-          td(data-rating="1") 2.1
-          td(data-rating="1" title="lun light de-emphasis") 2.5
-        tr.a-c-lc
-          th(scope="row") Lunarized Cyan
-          td(data-rating="4") 7.7
-          td(data-rating="3") 6.6
-          td(data-rating="1") 1.6
-          td(data-rating="1") 1.8
-          td(data-rating="4"): strong 8.9
-          td(data-rating="4") 8.1
-          td(data-rating="1") 1.4
-          td(data-rating="1") 1.6
-        tr.a-c-lb
-          th(scope="row") Lunarized Blue
-          td(data-rating="3") 6.3
-          td(data-rating="3") 5.5
-          td(data-rating="1") 1.9
-          td(data-rating="1") 2.2
-          td(data-rating="4"): strong 7.3
-          td(data-rating="3") 6.7
-          td(data-rating="1") 1.7
-          td(data-rating="1") 2.0
-        tr.a-c-li
-          th(scope="row") Lunarized Indigo
-          td(data-rating="2") 3.8
-          td(data-rating="2") 3.3
-          td(data-rating="2") 3.2
-          td(data-rating="2") 3.7
-          td(data-rating="2"): strong 4.4
-          td(data-rating="2") 4.0
-          td(data-rating="1") 2.9
-          td(data-rating="2") 3.3
-        tr.a-c-lv
-          th(scope="row") Lunarized Violet
-          td(data-rating="2") 3.7
-          td(data-rating="2") 3.2
-          td(data-rating="2") 3.3
-          td(data-rating="2") 3.8
-          td(data-rating="2"): strong 4.3
-          td(data-rating="2") 3.9
-          td(data-rating="1") 2.9
-          td(data-rating="2") 3.4
-        tr.a-c-lr
-          th(scope="row") Lunarized Red
-          td(data-rating="2") 4.0
-          td(data-rating="2") 3.5
-          td(data-rating="2") 3.0
-          td(data-rating="2") 3.5
-          td(data-rating="3"): strong 4.7
-          td(data-rating="2") 4.2
-          td(data-rating="1") 2.7
-          td(data-rating="2") 3.1
-        tr.a-c-lo
-          th(scope="row") Lunarized Orange
-          td(data-rating="3") 4.6
-          td(data-rating="2") 4.0
-          td(data-rating="1") 2.6
-          td(data-rating="2") 3.0
-          td(data-rating="3"): strong 5.4
-          td(data-rating="3") 4.9
-          td(data-rating="1") 2.3
-          td(data-rating="1") 2.7
-        tr.a-c-ly
-          th(scope="row") Lunarized Yellow
-          td(data-rating="2") 4.4
-          td(data-rating="2") 3.8
-          td(data-rating="1") 2.8
-          td(data-rating="2") 3.2
-          td(data-rating="3"): strong 5.1
-          td(data-rating="3") 4.6
-          td(data-rating="1") 2.5
-          td(data-rating="1") 2.8
-        tr.a-c-lg
-          th(scope="row") Lunarized Green
-          td(data-rating="4") 7.0
-          td(data-rating="3") 6.0
-          td(data-rating="1") 1.8
-          td(data-rating="1") 2.0
-          td(data-rating="4"): strong 8.1
-          td(data-rating="4") 7.3
-          td(data-rating="1") 1.6
-          td(data-rating="1") 1.8
+        each fg_color in rows.slice(12)
+          +tableRow(fg_color)
     table#contrast-ratio-table
       caption A summary of #[a(href="http://leaverou.github.io/contrast-ratio/") contrast ratios].
       thead
