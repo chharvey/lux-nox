@@ -5,10 +5,11 @@
   "main": "lux-nox.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lessc:lux-nox": "lessc lux-nox.less lux-nox.css",
+    "jade": "jade",
+    "jade:all": "jade {layout.tpl,index,doc/{sample,use,accessibility}}.jade",
+    "lessc:all": "lessc doc/styles/doc.less doc/styles/doc.css  ;  lessc lux-nox.less lux-nox.css",
     "minify": "cleancss lux-nox.css -o lux-nox.min.css",
-    "docs": "jade -P lux-nox.jade",
-    "build": "npm run lessc:lux-nox  ;  npm run minify  ;  npm run docs"
+    "build": "npm run jade:all  ;  npm run lessc:all  ;  npm run minify"
   },
   "repository": {
     "type": "git",
