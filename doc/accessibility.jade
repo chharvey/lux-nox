@@ -54,7 +54,7 @@ block append main
       , scheme.Lunarized.base3
       ]
     h2 Table of Contrast Ratios
-    table.-w-1o1
+    table.-w-1o1.-ta-c
       caption
         p.
           A demonstration of background colors and foreground colors.
@@ -80,7 +80,7 @@ block append main
           each bg_color in cols
             - var bg_color_obj = Color.newColorHexString(bg_color.code)
             - var ratio = ratioDisplay(fg_color_obj,bg_color_obj)
-            td(data-rating=dataRating(ratio))= ratio
+            td.h-crdata(style="" data-rating=dataRating(ratio))= ratio
       tbody
         each fg_color in rows.slice(0,12)
           +tableRow(fg_color)
@@ -88,7 +88,7 @@ block append main
         each fg_color in rows.slice(12)
           +tableRow(fg_color)
     p The #[a(href="use.html") Suggested Use] page demonstrates the most accessible contrast ratios.
-    table#contrast-ratio-table
+    table#contrast-ratio-table(style="margin-left: auto; margin-right: auto; font-size: 0.75rem; line-height: 2;")
       caption A summary of #[a(href="http://leaverou.github.io/contrast-ratio/") contrast ratios].
       thead
         tr
@@ -121,4 +121,4 @@ block append main
       sup
         a.Fn#fn-large1(href="#rf-large1") 1
         a.Fn#fn-large2(href="#rf-large2") 2
-      |  above 18pt (24px), or above 14pt (19px) and bold
+      |  #[dfn large text] is defined as above 18pt (24px), or above 14pt (19px) and bold

@@ -6,7 +6,7 @@ block append vars
 
 block append main
   mixin demo(theme)
-    section.o-Box.a-w-1o2(class=[ theme.bg.class , theme.text.class ])
+    section.o-Box.-w-1o2(class=[ theme.bg.class , theme.text.class ])
       h2= theme.settings.mode.charAt(0).toUpperCase() + theme.settings.mode.slice(1) + ' Color Theme'
       section
         h3 Bases
