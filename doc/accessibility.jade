@@ -11,6 +11,12 @@ block append main
       return Math.round(fg_color_obj.contrastRatio(bg_color_obj)*100)/100
     }
     function dataRating(ratio) {
+      var bounds = [3, 4.5, 7]
+      var value = 1
+      for (var i in bounds) {
+        if (ratio >= bounds[i]) value += 1
+      }
+      return value
       if (ratio < 3.0)                 return 1
       if (3.0 <= ratio && ratio < 4.5) return 2
       if (4.5 <= ratio && ratio < 7.0) return 3
