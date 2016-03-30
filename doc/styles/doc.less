@@ -4,6 +4,7 @@
     project documentation stylesheet
 \*================================*/
 @import (reference) url('../../node_modules/xmeter/src/__tool.fallback.flexbox.less');
+@import (reference) url('../../node_modules/xmeter/src/__tool.module.fontsize.less');
 @import (reference) url('../../node_modules/xmeter/src/__tool.module.delims.less');
 
 
@@ -66,7 +67,7 @@
 //++++++++++++++++++++++++++++++++//
 //    # COMPOSED
 //++++++++++++++++++++++++++++++++//
-body {
+main {
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -97,7 +98,7 @@ th, td {
   height: @p-height;
   padding: 0.25rem 0.5rem;
   margin: 0 @p-marg_horiz 0.75rem;
-  overflow: hidden;
+  overflow: auto;
   .breakpoint-mx(@n) {
     @media screen and (min-width: (@n*(@p-height + 2*@p-marg_horiz))) {
       width: calc((1/@n * 100%)~' - '(2*@p-marg_horiz));
@@ -107,8 +108,14 @@ th, td {
   .breakpoint-mx(4);
   .breakpoint-mx(8);
   .breakpoint-mx(16);
-  h4, p, ul {
+  h4, pre {
     margin-bottom: 0;
+  }
+  h4 {
+    white-space: nowrap;
+  }
+  pre {
+    .font-size-block(0.75);
   }
 }
 .h-crdata {

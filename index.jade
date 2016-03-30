@@ -52,7 +52,11 @@ block append main
     mixin colorBox(color)
       li.o-ColorBox(class=[color.bg_class, (color.name.slice(14)==='03' || color.name.slice(14)==='02')? 'h-darkbg' : ''])
         h4= color.name
-        p: code #{color.code}#[br]#{color.bg_class}#[br]#{color.fg_class}
+        pre.
+          #{color.code}
+          #{color.bg_class}
+          #{color.fg_class}
+          #{color.br_class}
     h2 The Colors
     section
       h3 #[cite Solarized] Color Scheme
