@@ -1,0 +1,119 @@
+
+/*================================*\
+    lux-nox  |  doc.less
+    project documentation stylesheet
+\*================================*/
+@import (reference) url('../../node_modules/xmeter/src/__tool.fallback.flexbox.less');
+@import (reference) url('../../node_modules/xmeter/src/__tool.module.fontsize.less');
+@import (reference) url('../../node_modules/xmeter/src/__tool.module.delims.less');
+
+
+//Table of Contents
+//# IMPORTED --- styles stolen from other projects
+//# COMPOSED --- styles written for this project
+
+
+//++++++++++++++++++++++++++++++++//
+//    # IMPORTED
+//++++++++++++++++++++++++++++++++//
+.o-ListBare {
+  padding: 0;
+  list-style: none;
+}
+.o-GridFlex {
+  .flexbox();
+  .flex-wrap(wrap);
+  line-height: inherit;
+}
+
+.o-GridFlex__Item {
+  width: 100%;
+}
+//++++ end # IMPORTED ++++//
+
+
+//++++++++++++++++++++++++++++++++//
+//    # COMPOSED
+//++++++++++++++++++++++++++++++++//
+main {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+pre small {
+  font-size: inherit;
+}
+th, td {
+  padding: 0.375rem 0.25rem;
+}
+[data-rating="1"]::after,
+[data-rating="2"]::after,
+[data-rating="3"]::after,
+[data-rating="4"]::after {
+  font-family: serif;
+  margin-left: 1rem;
+}
+[data-rating="1"]::after { font-size: 0.33em; content: 'bad.'   ; }
+[data-rating="2"]::after { font-size: 0.67em; content: 'okay…'  ; }
+[data-rating="3"]::after { font-size: 1.00em; content: 'good!'  ; }
+[data-rating="4"]::after { font-size: 1.25em; content: 'great!!'; }
+.o-Box {
+  padding: 0.75rem 0.5rem;
+}
+@p-marg_horiz: 0.25rem;
+@p-height: 8rem;
+.o-ColorBox {
+  width: 100%;
+  height: @p-height;
+  padding: 0.25rem 0.5rem;
+  margin: 0 @p-marg_horiz 0.75rem;
+  overflow: auto;
+  .breakpoint-mx(@n) {
+    @media screen and (min-width: (@n*(@p-height + 2*@p-marg_horiz))) {
+      width: calc((1/@n * 100%)~' - '(2*@p-marg_horiz));
+    }
+  }
+  .breakpoint-mx(2);
+  .breakpoint-mx(4);
+  .breakpoint-mx(8);
+  .breakpoint-mx(16);
+  h4, pre {
+    margin-bottom: 0;
+  }
+  h4 {
+    white-space: nowrap;
+  }
+  pre {
+    .font-size-block(0.75);
+  }
+}
+.c-CrTable {
+  width: 100%;
+  text-align: center;
+  tbody {
+    vertical-align: middle;
+  }
+  td {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+}
+.h-darkbg {
+  color: fadeout(#fff, 20%);
+}
+.xo-mx(@n) {
+  @media screen and (min-width: (@n*(@p-height + 2*@p-marg_horiz))) {
+    .a-xo-z-s@{n} { .flex-order(0) !important; }
+    .a-xo-1-s@{n} { .flex-order(1) !important; }
+    .a-xo-2-s@{n} { .flex-order(2) !important; }
+    .a-xo-3-s@{n} { .flex-order(3) !important; }
+    .a-xo-4-s@{n} { .flex-order(4) !important; }
+    .a-xo-5-s@{n} { .flex-order(5) !important; }
+    .a-xo-6-s@{n} { .flex-order(6) !important; }
+    .a-xo-7-s@{n} { .flex-order(7) !important; }
+  }
+}
+.xo-mx(2);
+.xo-mx(4);
+.xo-mx(8);
+.xo-mx(16);
+//++++ end # COMPOSED ++++//
