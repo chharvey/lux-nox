@@ -20,46 +20,14 @@
   padding: 0;
   list-style: none;
 }
-.o-FlexContainer {
+.o-GridFlex {
   .flexbox();
-  .flex-direction(row);
   .flex-wrap(wrap);
-  .flex-justify-content(space-between);
+  line-height: inherit;
 }
-.c-ListFootnotes {
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 2;
-  padding-left: 1rem;
-  text-indent: -1rem;
-  list-style: none;
-}
-.c-ListFootnotes::before {
-  content: '';
-  display: block;
-  border-top-width: 1px;
-  margin-top: -1px;
-  border-top-style: solid;
-  border-top-color: currentColor;
-  position: relative;
-  bottom: 0.75rem;
-}
-.c-ListFootnotes::before {
-  width: 61.80339887%;
-  margin-left: -1rem;
-  opacity: 0.25;
-}
-.Rf,
-.Fn {
-  quotes: '[' ']';
-}
-.Rf::before,
-.Fn::before {
-  content: open-quote;
-}
-.Rf::after,
-.Fn::after {
-  content: close-quote;
+
+.o-GridFlex__Item {
+  width: 100%;
 }
 //++++ end # IMPORTED ++++//
 
@@ -118,10 +86,16 @@ th, td {
     .font-size-block(0.75);
   }
 }
-.h-crdata {
-  font-size: 1.25rem;
-  line-height: 1.2;
-  vertical-align: middle;
+.c-CrTable {
+  width: 100%;
+  text-align: center;
+  tbody {
+    vertical-align: middle;
+  }
+  td {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
 }
 .h-darkbg {
   color: fadeout(#fff, 20%);

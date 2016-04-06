@@ -61,7 +61,7 @@ block append main
       , scheme.Lunarized.base3
       ]
     h2 Table of Contrast Ratios
-    table.-w-1o1.-ta-c
+    table.c-CrTable
       caption
         p.
           A demonstration of background colors and foreground colors.
@@ -87,7 +87,7 @@ block append main
           each bg_color in cols
             - var bg_color_obj = Color.newColorHexString(bg_color.code)
             - var ratio = ratioDisplay(fg_color_obj,bg_color_obj)
-            td.h-crdata(style="" data-rating=dataRating(ratio))= ratio
+            td(data-rating=dataRating(ratio))= ratio
       tbody
         each fg_color in rows.slice(0,12)
           +tableRow(fg_color)
@@ -96,7 +96,10 @@ block append main
           +tableRow(fg_color)
     p The #[a(href="use.html") Suggested Use] page demonstrates the most accessible contrast ratios.
     table.-mh-a#contrast-ratio-table(style="font-size: 0.75rem; line-height: 2;")
-      caption A summary of #[a(href="http://leaverou.github.io/contrast-ratio/") contrast ratios].
+      caption
+        | A summary of #[a(href="http://leaverou.github.io/contrast-ratio/") contrast ratios].
+        br
+        small #[dfn Large text] is defined as above 18pt (24px), or above 14pt (19px) and bold.
       thead
         tr
           th(scope="col") Contrast Ratio
@@ -113,19 +116,14 @@ block append main
           td &#x005b;3.0, 4.5&#x0029;
           td 2
           td okay&hellip;
-          td Passes AA level for large text#[sup: a.Rf#rf-large1(href="#fn-large1") 1]
+          td Passes AA level for large text
         tr
           td &#x005b;4.5, 7.0&#x0029;
           td 3
           td good!
-          td Passes AA level for any size text and AAA for large text#[sup: a.Rf#rf-large2(href="#fn-large2") 2]
+          td Passes AA level for any size text and AAA for large text
         tr
           td &#x005b;7.0, 21&#x005d;
           td 4
           td great!!
           td Passes AAA level for any size text
-    footer: ul.c-ListFootnotes: li
-      sup
-        a.Fn#fn-large1(href="#rf-large1") 1
-        a.Fn#fn-large2(href="#rf-large2") 2
-      |  #[dfn large text] is defined as above 18pt (24px), or above 14pt (19px) and bold

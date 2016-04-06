@@ -6,7 +6,7 @@ block append vars
 
 block append main
   mixin demo(theme)
-    section.o-Box.-w-1o2(class=[ theme.bg.class , theme.text.class ])
+    section.o-GridFlex__Item.o-Box.-w-1o2(class=[ theme.bg.class , theme.text.class ])
       h2= theme.settings.mode.charAt(0).toUpperCase() + theme.settings.mode.slice(1) + ' Color Theme'
       section
         h3 Bases
@@ -97,6 +97,6 @@ block append main
             +cmd()
             +arg()
             +obj()
-  div.o-FlexContainer
+  div.o-GridFlex
     +demo(preset_theme.lunarized_dark_mod)
     +demo(preset_theme.solarized_light_mod)
