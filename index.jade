@@ -19,6 +19,17 @@ block append main
       h3.o-Box.a-bc-s03.a-c-lc Solarized Base03 background, Lunarized Cyan foreground!
       h4.o-Box.a-rc-sb(style="border: 3px solid;") Solarized Blue border!
   section
+    h2 Usage
+    p Locally
+    pre.
+      $ npm install bangs
+    pre.
+      &lt;link rel="stylesheet" href="/node_modules/bangs/bangs[.min].css"/&gt;
+    p Remotely (from a CDN; not recommended)
+    pre.
+      &lt;link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/#[var ‹master›]/bangs[.min].css"/&gt;
+    p where #[code #[var ‹master›]] can be a branch or a tag, and optional #[code [.min]] is for the minified version.
+  section
     h2 Description
     p Each color scheme contains 16 colors total, shared among two modes:
     ul
