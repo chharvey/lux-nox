@@ -1,275 +1,96 @@
-doctype html
-html(lang="en")
-  head
-    title lux-nox
-    meta(charset="utf-8")
-    meta(name="author", content="Chris Harvey")
-    meta(name="description", content="Solarized and Lunaried colors for any project.")
-    link(rel="stylesheet", href="node_modules/xmeter/xmeter.min.css")
-    link(rel="stylesheet", href="lux-nox.min.css")
-    link(rel="stylesheet", href="doc/styles/doc.css")
-  body
-    main
-      header
-        h1 lux-nox
-        p.
-          This repo is specifically designed for using colors from the
-          #[cite Solarized] and #[cite Lunarized] color schemes.
-          These color schemes were originally designed for displaying computer code, though
-          they can be applied #[abbr(title="practically") literally] anywhere.
-          Import them into any project to use the variables and classes in your codebase.
-      footer: p by #[a(href="https://github.com/chharvey/lux-nox/") Chris Harvey]
-      section
-        h2 Example
-        figure.a-bc-s3(style="padding: 0.5rem;")
-          pre
-            span.a-c-sb
-              | &lt;h3 
-              span.a-c-sy
-                | class=
-                span.a-c-sc
-                  span.a-c-sm &quot;
-                  | a-bc-s03 a-c-lc
-                  span.a-c-sm &quot;
-              | &gt;
-            | Solarized Base 03 background, Lunarized Cyan foreground!
-            span.a-c-sb &lt;/h3&gt;
-          h3.a-bc-s03.a-c-lc(style="padding: 0.5rem;") Solarized Base 03 background, Lunarized Cyan foreground!
-      section
-        h2 Description
-        p Each color scheme contains 16 colors total, shared among two modes:
+extends layout.tpl.jade
+
+block append header
+  p.
+    This repo is specifically designed for using colors from the
+    #[cite Solarized] and #[cite Lunarized] color schemes.
+    These color schemes were originally designed for displaying computer code, though
+    they can be applied #[abbr(title="practically") literally] anywhere.
+    Import them into any project to use the variables and classes in your codebase.
+
+block append main
+  footer: p by #[a(href="https://github(class=color.c)om/chharvey/lux-nox/") Chris Harvey]
+  section
+    h2 Example
+    figure.o-Box.a-bc-s3.a-c-s00
+      pre.
+        #[span.a-c-sb &lt;h3 #[span.a-c-sy class=#[span.a-c-sc #[span.a-c-sm &quot;]a-bc-s03  a-c-lc#[span.a-c-sm &quot;]]]&gt;]Solarized Base03 background, Lunarized Cyan foreground!#[span.a-c-sb &lt;&#x002f;h3&gt;]
+        #[span.a-c-sb &lt;h4 #[span.a-c-sy class=#[span.a-c-sc #[span.a-c-sm &quot;]a-rc-sb#[span.a-c-sm &quot;]]]&gt;]Solarized Blue border!#[span.a-c-sb &lt;&#x002f;h4&gt;]
+      h3.o-Box.a-bc-s03.a-c-lc Solarized Base03 background, Lunarized Cyan foreground!
+      h4.o-Box.a-rc-sb(style="border: 3px solid;") Solarized Blue border!
+  section
+    h2 Description
+    p Each color scheme contains 16 colors total, shared among two modes:
+    ul
+      li Dark mode
         ul
-          li Light mode
-            ul
-              li light background
-              li dark text
-              li emphasis = darker text
-              li de-emphasis = lighter text
-          li Dark mode
-            ul
-              li dark background
-              li light text
-              li emphasis = lighter text
-              li de-emphasis = darker text
-        p Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:
+          li medium-light text
+          li light emphasis
+          li dark de-emphasis
+          li darker highlight
+          li darkest background
+      li Light mode
         ul
-          li Bases
-            ul
-              li dull tones
-              li foreground, background, emphasis, de-emphasis
-              li interchanged based on the mode
-          li Accents
-            ul
-              li sharp tones
-              li syntax highlighting
-              li remain constant, independent of mode
-      section
-        h2 Inspiration and Construction
-        p.
-          #[cite Solarized] was developed by
-          #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover].
-          Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
-          cool the Solarized Light background colors. I liked the idea of using a Light mode
-          but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
-          it gave me a bluish tint, #[strong(title="hence, “lunar”") like the full moon]. I tried inverting the accent colors
-          but got ugly results, so I complemented them instead.
-        p.
-          In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
-          the accents are complements of the Solarized Accents.
-          The inverse of a color is a 180&deg; hue rotation of that color, while the complement
-          of a color is the difference between that color and white.
+          li medium-dark text
+          li dark emphasis
+          li light de-emphasis
+          li lighter highlight
+          li lightest background
+    p Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:
+    ul
+      li Bases
+        ul
+          li dull tones
+          li foreground, emphasis, de-emphasis, highlight, background
+          li interchanged based on the mode
+      li Accents
+        ul
+          li sharp tones
+          li syntax highlighting
+          li remain constant, independent of mode
+  section
+    mixin colorBox(color)
+      li.o-GridFlex__Item.o-ColorBox(class=[color.bg_class, (color.name.slice(14)==='03' || color.name.slice(14)==='02')? 'h-darkbg' : ''])
+        h4= color.name
         pre.
-          inverse(@color)    : spin(@color, 180);
-          complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );
-      section
-        h2 The Colors
-        section.o-ListBare.o-FlexContainer
-          h3.a-w-1o1 #[cite Solarized] Color Scheme
-          section.o-Box.a-w-1o2.a-bc-s03.h-darkbg
-            h4 Solarized Base03
-            p: code #002b36 &emsp; .a-bc-s03 &emsp; .a-c-s03
-            ul
-              li dark code background
-          section.o-Box.a-w-1o2.a-bc-s3
-            h4 Solarized Base3
-            p: code #fdf6e3 &emsp; .a-bc-s3 &emsp; .a-c-s3
-            ul
-              li light code background
-          section.o-Box.a-w-1o2.a-bc-s02.h-darkbg
-            h4 Solarized Base02
-            p: code #073642 &emsp; .a-bc-s02 &emsp; .a-c-s02
-            ul
-              li dark code border
-          section.o-Box.a-w-1o2.a-bc-s2
-            h4 Solarized Base2
-            p: code #eee8d5 &emsp; .a-bc-s2 &emsp; .a-c-s2
-            ul
-              li light code border
-          section.o-Box.a-w-1o2.a-bc-s01
-            h4 Solarized Base01
-            p: code #586e75 &emsp; .a-bc-s01 &emsp; .a-c-s01
-            ul
-              li light code emphasis
-              li dark code comment
-          section.o-Box.a-w-1o2.a-bc-s1
-            h4 Solarized Base1
-            p: code #93a1a1 &emsp; .a-bc-s1 &emsp; .a-c-s1
-            ul
-              li light code comment
-              li dark code emphasis
-          section.o-Box.a-w-1o2.a-bc-s00
-            h4 Solarized Base00
-            p: code #657b83 &emsp; .a-bc-s00 &emsp; .a-c-s00
-            ul
-              li light code text
-          section.o-Box.a-w-1o2.a-bc-s0
-            h4 Solarized Base0
-            p: code #839496 &emsp; .a-bc-s0 &emsp; .a-c-s0
-            ul
-              li dark code text
-          section.o-Box.a-w-1o2.a-bc-sr
-            h4 Solarized Red
-            p: code #dc322f &emsp; .a-bc-sr &emsp; .a-c-sr
-            ul
-              li programming control (#[code if], #[code for], #[code switch], #[code return])
-              li other control (#[code public], #[code private], #[code static])
-              li Jade buffered comments
-              li CSS pseudo-elements and -classes
-          section.o-Box.a-w-1o2.a-bc-sc
-            h4 Solarized Cyan
-            p: code #2aa198 &emsp; .a-bc-sc &emsp; .a-c-sc
-            ul
-              li HTML attribute values
-              li CSS property values
-              li strings (except in CSS#[sup: a.Rf#rf-cssstring(rel="this" href="#fn-cssstring") 2])
-          section.o-Box.a-w-1o2.a-bc-so
-            h4 Solarized Orange
-            p: code #cb4b16 &emsp; .a-bc-so &emsp; .a-c-so
-            ul
-              li delimiters and operators (#[code +], #[code ==], #[code .], #[code new], #[code typeof])
-              li Jade class names
-          section.o-Box.a-w-1o2.a-bc-sb
-            h4 Solarized Blue
-            p: code #268bd2 &emsp; .a-bc-sb &emsp; .a-c-sb
-            ul
-              li HTML/Jade tags
-              li CSS/Less class selectors
-              li JS function definitions and function calls
-          section.o-Box.a-w-1o2.a-bc-sy
-            h4 Solarized Yellow
-            p: code #b58900 &emsp; .a-bc-sy &emsp; .a-c-sy
-            ul
-              li HTML/Jade attribute names
-              li CSS property names
-              li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
-          section.o-Box.a-w-1o2.a-bc-sv
-            h4 Solarized Violet
-            p: code #6c71c4 &emsp; .a-bc-sv &emsp; .a-c-sv
-            ul
-              li variable names
-              li function arguments
-              li Jade tag interpolation
-          section.o-Box.a-w-1o2.a-bc-sg
-            h4 Solarized Green
-            p: code #859900 &emsp; .a-bc-sg &emsp; .a-c-sg
-            ul
-              li HTML/Jade characters and entities
-              li CSS numeric values with units
-              li constant values (numbers, colors, booleans, #[code null])
-          section.o-Box.a-w-1o2.a-bc-sm
-            h4 Solarized Magenta
-            p: code #d33682 &emsp; .a-bc-sm &emsp; .a-c-sm
-            ul
-              li string delimiters (#[code &quot;] and #[code &apos;])
-              li #[sup: a.Fn#fn-cssstring(rel="this" href="#rf-cssstring") 2]CSS strings
-              li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
-              li Jade id names
-        section.o-ListBare.o-FlexContainer
-          h3.a-w-1o1 #[cite Lunarized] Color Scheme
-          section.o-Box.a-w-1o2.a-bc-l03.h-darkbg
-            h4 Lunarized Base03
-            p: code #360b00 &emsp; .a-bc-l03 &emsp; .a-c-l03
-            p: small inverse of Solarized Base 03
-            ul
-              li dark code background
-          section.o-Box.a-w-1o2.a-bc-l3
-            h4 Lunarized Base3
-            p: code #e3eafd &emsp; .a-bc-l03 &emsp; .a-c-l03
-            p: small inverse of Solarized Base 3
-            ul
-              li light code background
-          section.o-Box.a-w-1o2.a-bc-l02.h-darkbg
-            h4 Lunarized Base02
-            p: code #421307 &emsp; .a-bc-l02 &emsp; .a-c-l02
-            p: small inverse of Solarized Base 02
-            ul
-              li dark code border
-          section.o-Box.a-w-1o2.a-bc-l2
-            h4 Lunarized Base2
-            p: code #d5dbee &emsp; .a-bc-l2 &emsp; .a-c-l2
-            p: small inverse of Solarized Base 2
-            ul
-              li light code border
-          section.o-Box.a-w-1o2.a-bc-l01
-            h4 Lunarized Base01
-            p: code #755f58 &emsp; .a-bc-l01 &emsp; .a-c-l01
-            p: small inverse of Solarized Base 01
-            ul
-              li light code emphasis
-              li dark code comment
-          section.o-Box.a-w-1o2.a-bc-l1
-            h4 Lunarized Base1
-            p: code #a19393 &emsp; .a-bc-l1 &emsp; .a-c-l1
-            p: small inverse of Solarized Base 1
-            ul
-              li light code comment
-              li dark code emphasis
-          section.o-Box.a-w-1o2.a-bc-l00
-            h4 Lunarized Base00
-            p: code #836d65 &emsp; .a-bc-l00 &emsp; .a-c-l00
-            p: small inverse of Solarized Base 00
-            ul
-              li light code text
-          section.o-Box.a-w-1o2.a-bc-l0
-            h4 Lunarized Base0
-            p: code #968583 &emsp; .a-bc-l0 &emsp; .a-c-l0
-            p: small inverse of Solarized Base 0
-            ul
-              li dark code text
-          section.o-Box.a-w-1o2.a-bc-lc
-            h4 Lunarized Cyan
-            p: code #23cdd0 &emsp; .a-bc-lc &emsp; .a-c-lc
-            p: small complement of Solarized Red
-          section.o-Box.a-w-1o2.a-bc-lr
-            h4 Lunarized Red
-            p: code #d55e67 &emsp; .a-bc-lr &emsp; .a-c-lr
-            p: small complement of Solarized Cyan
-          section.o-Box.a-w-1o2.a-bc-lb
-            h4 Lunarized Blue
-            p: code #34b4e9 &emsp; .a-bc-lb &emsp; .a-c-lb
-            p: small complement of Solarized Orange
-          section.o-Box.a-w-1o2.a-bc-lo
-            h4 Lunarized Orange
-            p: code #d9742d &emsp; .a-bc-lo &emsp; .a-c-lo
-            p: small complement of Solarized Blue
-          section.o-Box.a-w-1o2.a-bc-li
-            h4 Lunarized Indigo
-            p: code #4a76ff &emsp; .a-bc-li &emsp; .a-c-li
-            p: small complement of Solarized Yellow
-          section.o-Box.a-w-1o2.a-bc-ly
-            h4 Lunarized Yellow
-            p: code #938e3b &emsp; .a-bc-ly &emsp; .a-c-ly
-            p: small complement of Solarized Violet
-          section.o-Box.a-w-1o2.a-bc-lv
-            h4 Lunarized Violet
-            p: code #7a66ff &emsp; .a-bc-lv &emsp; .a-c-lv
-            p: small complement of Solarized Green
-          section.o-Box.a-w-1o2.a-bc-lg
-            h4 Lunarized Green
-            p: code #2cc97d &emsp; .a-bc-lg &emsp; .a-c-lg
-            p: small complement of Solarized Magenta
-      section
-        h2 More Pages
-        ul
-          li: a(href="doc/code.html") The Code
-          li: a(href="doc/accessibility.html") Accessibiltiy
+          #{color.code}
+          #{color.bg_class}
+          #{color.fg_class}
+          #{color.br_class}
+    h2 The Colors
+    section
+      h3 #[cite Solarized] Color Scheme
+      ul.o-ListBare.o-GridFlex
+        each color in scheme.Solarized
+          +colorBox(color)
+    section
+      h3 #[cite Lunarized] Color Scheme
+      ul.o-ListBare.o-GridFlex
+        each color in scheme.Lunarized
+          +colorBox(color)
+    p: a(href="doc/sample.html") See samples in action.
+  section
+    h2 Inspiration and Construction
+    p.
+      #[cite Solarized] was developed by
+      #[a(href="http://ethanschoonover(class=color.c)om/solarized") Ethan Schoonover].
+      Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
+      cool the Solarized Light background colors. The Light mode was appealing to me
+      but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
+      it gave me a bluish tint, #[strong(title="hence, “lunar”") like the full moon].
+      I tried inverting the accent colors as well,
+      but got ugly results, so I complemented them instead.
+    p.
+      In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
+      the accents are complements of the Solarized Accents.
+      The inverse of a color is a 180&deg; hue rotation of that color, while the complement
+      of a color is the difference between that color and white.
+    pre.
+      inverse(@color)    : spin(@color, 180);
+      complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );
+  nav
+    h2 More Pages
+    ul
+      li: a(href="doc/sample.html") Sample
+      li: a(href="doc/use.html") Suggested Use
+      li: a(href="doc/accessibility.html") Accessibiltiy
