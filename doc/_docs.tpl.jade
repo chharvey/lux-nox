@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
   block vars
-    include doc/scripts/lux-nox.js.jade
+    include scripts/lux-nox.js.jade
     - var page_names = ['lux-nox']
   head
     title= page_names.reduceRight(function (a,b) { return a + ' | ' + b })
@@ -10,8 +10,8 @@ html(lang="en")
     meta(name="description" content="Solarized and Lunaried colors for any project.")
     link(rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v4.0.0/xmeter.min.css")
     link(rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.8.0/bangs.min.css")
-    link(rel="stylesheet" href="#{home_path||''}lux-nox.min.css")
-    link(rel="stylesheet" href="#{home_path||''}doc/styles/doc.css")
+    link(rel="stylesheet" href="../lux-nox.css")
+    link(rel="stylesheet" href="styles/doc.css")
   body
     block body
       main
