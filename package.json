@@ -5,11 +5,11 @@
   "main": "lux-nox.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "jade": "jade",
-    "jade:all": "jade {index,doc/{sample,use,accessibility}}.jade",
-    "lessc:all": "lessc doc/styles/doc.less doc/styles/doc.css  ;  lessc lux-nox.less lux-nox.css",
+    "pug:docs": "pug -O docs/_models/options.js docs/{index,sample,use,accessibility}.jade",
+    "lessc:docs": "lessc docs/styles/docs.less docs/styles/docs.css",
+    "lessc:core": "lessc lux-nox.less lux-nox.css",
     "minify": "cleancss lux-nox.css -o lux-nox.min.css",
-    "build": "npm run jade:all  ;  npm run lessc:all  ;  npm run minify"
+    "build": "npm run pug:docs  &&  npm run lessc:docs  &&  npm run lessc:core  &&  npm run minify"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "clean-css": "^3.4.6",
     "jade": "^1.11.0",
     "less": "^2.5.3",
+    "pug-cli": "^1.0.0-alpha6",
     "xmeter": "^4.0.0"
   }
 }
