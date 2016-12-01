@@ -30,9 +30,9 @@
   "devDependencies": {
     "clean-css": "^3.4.6",
     "csscolor": "^1.2.0",
-    "jade": "^1.11.0",
     "less": "^2.5.3",
     "pug-cli": "^1.0.0-alpha6",
+    "sitepage": "^1.0.0",
     "xmeter": "^4.0.0"
   }
 }
