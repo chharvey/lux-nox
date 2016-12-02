@@ -27,10 +27,13 @@ block append main
     pre.
       $ npm install bangs
     pre.
-      &lt;link rel="stylesheet" href="/node_modules/bangs/bangs[.min].css"/&gt;
-    p Remotely (from a CDN; not recommended)
+      &lt;link rel="stylesheet" href="/node_modules/lux-nox/lux-nox[.min].css"/&gt;
+    p Remotely from a CDN (not recommended)
     pre.
-      &lt;link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/#[var ‹master›]/bangs[.min].css"/&gt;
+      &lt;link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/lux-nox/#[var ‹master›]/lux-nox[.min].css"/&gt;
+    p Remotely from this site (not recommended)
+    pre.
+      &lt;link rel="stylesheet" href="https://chharvey.github.io/lux-nox/lux-nox[.min].css"/&gt;
     p where #[code #[var ‹master›]] can be a branch or a tag, and optional #[code [.min]] is for the minified version.
   section
     h2 Description
@@ -38,18 +41,18 @@ block append main
     ul
       li Dark mode
         ul
-          li medium-light text
-          li light emphasis
-          li dark de-emphasis
-          li darker highlight
-          li darkest background
+          li medium-light text  (Base0)
+          li light emphasis     (Base1)
+          li dark de-emphasis   (Base01)
+          li darker highlight   (Base02)
+          li darkest background (Base03)
       li Light mode
         ul
-          li medium-dark text
-          li dark emphasis
-          li light de-emphasis
-          li lighter highlight
-          li lightest background
+          li medium-dark text    (Base00)
+          li dark emphasis       (Base01)
+          li light de-emphasis   (Base1)
+          li lighter highlight   (Base2)
+          li lightest background (Base3)
     p Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:
     ul
       li Bases
@@ -82,12 +85,12 @@ block append main
       ul.o-ListBare.o-GridFlex
         each color in scheme.Lunarized
           +colorBox(color)
-    p: a(href="doc/sample.html") See samples in action.
+    p: a(href="sample.html") See samples in action.
   section
     h2 Inspiration and Construction
     p.
       #[cite Solarized] was developed by
-      #[a(href="http://ethanschoonover(class=color.c)om/solarized") Ethan Schoonover].
+      #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover].
       Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
       cool the Solarized Light background colors. The Light mode was appealing to me
       but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
