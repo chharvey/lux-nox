@@ -51,6 +51,20 @@ module.exports = (function () {
     .addColor('Blue'   , Color.fromString('#268bd2'), '-sb' )
     .addColor('Violet' , Color.fromString('#6c71c4'), '-sv' )
     .addColor('Magenta', Color.fromString('#d33682'), '-sm' )
+    .addMode('dark', {
+      text:   'Base0'
+    , emph:   'Base1'
+    , deemph: 'Base01'
+    , hilite: 'Base02'
+    , bg:     'Base03'
+    })
+    .addMode('light', {
+      text:   'Base00'
+    , emph:   'Base01'
+    , deemph: 'Base1'
+    , hilite: 'Base2'
+    , bg:     'Base3'
+    })
     .accents({
       ctl: 'Red'
     , opr: 'Orange'
@@ -83,6 +97,20 @@ module.exports = (function () {
     .addColor('Orange' , Color.fromString('#d9742d'), '-lo' )
     .addColor('Yellow' , Color.fromString('#938e3b'), '-ly' )
     .addColor('Green'  , Color.fromString('#2cc97d'), '-lg' )
+    .addMode('dark', {
+      text:   'Base0'
+    , emph:   'Base1'
+    , deemph: 'Base01'
+    , hilite: 'Base02'
+    , bg:     'Base03'
+    })
+    .addMode('light', {
+      text:   'Base00'
+    , emph:   'Base01'
+    , deemph: 'Base1'
+    , hilite: 'Base2'
+    , bg:     'Base3'
+    })
     .accents({
       ctl: 'Red'
     , opr: 'Orange'
