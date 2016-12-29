@@ -51,6 +51,16 @@ module.exports = (function () {
     .addColor('Blue'   , Color.fromString('#268bd2'), '-sb' )
     .addColor('Violet' , Color.fromString('#6c71c4'), '-sv' )
     .addColor('Magenta', Color.fromString('#d33682'), '-sm' )
+    .accents({
+      ctl: 'Red'
+    , opr: 'Orange'
+    , kwd: 'Yellow'
+    , cst: 'Green'
+    , str: 'Cyan'
+    , cmd: 'Blue'
+    , arg: 'Violet'
+    , obj: 'Magenta'
+    })
 
   /**
    * The Lunarized color palette
@@ -73,6 +83,16 @@ module.exports = (function () {
     .addColor('Orange' , Color.fromString('#d9742d'), '-lo' )
     .addColor('Yellow' , Color.fromString('#938e3b'), '-ly' )
     .addColor('Green'  , Color.fromString('#2cc97d'), '-lg' )
+    .accents({
+      ctl: 'Red'
+    , opr: 'Orange'
+    , kwd: 'Yellow'
+    , cst: 'Green'
+    , str: 'Cyan'
+    , cmd: 'Blue'
+    , arg: 'Indigo'
+    , obj: 'Violet'
+    })
 
   return Docs
 })()

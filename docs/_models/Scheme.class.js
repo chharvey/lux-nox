@@ -14,6 +14,7 @@ module.exports = (function () {
   function Scheme(name) {
     this._NAME = name
     this._colors = []
+    this._accents = {}
   }
 
   // METHODS
@@ -31,7 +32,7 @@ module.exports = (function () {
   /**
    * Return a colorish object, by name, added to this scheme.
    * @param  {string} name the name associated with the colorish object to get
-   * @return {?object} an object with a `name`, `color`, and `suffix`
+   * @return {?Object} an Object of type { name: <string>, color: <Color>, suffix: <string> }
    */
   Scheme.prototype.getColor = function getColor(name) {
     return this._colors.find(function (el) { return el.name === name }) || null
@@ -39,11 +40,27 @@ module.exports = (function () {
   }
   /**
    * Get the total name of the color. Includes Scheme name and color name.
-   * @param  {object} $colorish a colorish object added to this scheme
+   * @param  {Object} $colorish a colorish object added to this scheme
    * @return {string} total name of the color, including this scheme
    */
   Scheme.prototype.colorName = function colorName($colorish) {
     return this._NAME + ' ' + $colorish.name
+  }
+
+  /**
+   * Set or get the collection of accent colors for this scheme.
+   * Accent colors do not change based on [dark|light] mode.
+   * The argument, if given, must be an object
+   * whose keys are the names of the accent usage, and
+   * whose values are the names of colorish objects added to this scheme.
+   * @param  {Object<string>} $obj an Object with string-string pairs
+   * @return {Scheme|Object<Color>} this scheme || the accent colors
+   */
+  Scheme.prototype.accents = function accents($obj) {
+    if (arguments.length >= 1) {
+      this._accents = $obj
+      return this
+    } else return this._accents
   }
 
   // STATIC MEMBERS
