@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  block vars
+  head
+    title= page.title() || (page.name() + ' | ' + Docs.SITE.name())
+    meta(charset="utf-8")
+    meta(name="author" content="Chris Harvey")
+    meta(name="description" content=page.description())
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    block styles
+      link(rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v4.0.0/xmeter.min.css")
+      link(rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.8.0/bangs.min.css")
+      link(rel="stylesheet" href="../lux-nox.css")
+      link(rel="stylesheet" href="styles/docs.css")
+  body
+    main
+      block main
+        header
+          block header
+            h1= page.name()
+    block scripts
+      script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous")

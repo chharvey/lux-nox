@@ -1,4 +1,7 @@
-extends layout.tpl.jade
+extends _docs.tpl.jade
+
+block append vars
+  - var page = Docs.SITE.find('index.html')
 
 block append header
   p.
@@ -38,18 +41,18 @@ block append main
     ul
       li Dark mode
         ul
-          li medium-light text
-          li light emphasis
-          li dark de-emphasis
-          li darker highlight
-          li darkest background
+          li medium-light text  (Base0)
+          li light emphasis     (Base1)
+          li dark de-emphasis   (Base01)
+          li darker highlight   (Base02)
+          li darkest background (Base03)
       li Light mode
         ul
-          li medium-dark text
-          li dark emphasis
-          li light de-emphasis
-          li lighter highlight
-          li lightest background
+          li medium-dark text    (Base00)
+          li dark emphasis       (Base01)
+          li light de-emphasis   (Base1)
+          li lighter highlight   (Base2)
+          li lightest background (Base3)
     p Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:
     ul
       li Bases
@@ -63,31 +66,34 @@ block append main
           li syntax highlighting
           li remain constant, independent of mode
   section
-    mixin colorBox(color)
-      li.o-GridFlex__Item.o-ColorBox(class=[color.bg_class, (color.name.slice(14)==='03' || color.name.slice(14)==='02')? 'h-darkbg' : ''])
-        h4= color.name
+    mixin colorBox($namedColor)
+      li.o-GridFlex__Item.o-ColorBox(class=[
+        $namedColor.bgClass()
+      , { 'h-darkbg': $namedColor.name().slice(14)==='03' || $namedColor.name().slice(14)==='02' }
+      ])
+        h4= $namedColor.name()
         pre.
-          #{color.code}
-          #{color.bg_class}
-          #{color.fg_class}
-          #{color.br_class}
+          #{$namedColor.toString('hex')}
+          #{$namedColor.bgClass()}
+          #{$namedColor.fgClass()}
+          #{$namedColor.brClass()}
     h2 The Colors
     section
       h3 #[cite Solarized] Color Scheme
       ul.o-ListBare.o-GridFlex
-        each color in scheme.Solarized
+        each color in Docs.SOLARIZED._colors
           +colorBox(color)
     section
       h3 #[cite Lunarized] Color Scheme
       ul.o-ListBare.o-GridFlex
-        each color in scheme.Lunarized
+        each color in Docs.LUNARIZED._colors
           +colorBox(color)
-    p: a(href="doc/sample.html") See samples in action.
+    p: a(href="sample.html") See samples in action.
   section
     h2 Inspiration and Construction
     p.
       #[cite Solarized] was developed by
-      #[a(href="http://ethanschoonover(class=color.c)om/solarized") Ethan Schoonover].
+      #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover].
       Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
       cool the Solarized Light background colors. The Light mode was appealing to me
       but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
@@ -105,6 +111,6 @@ block append main
   nav
     h2 More Pages
     ul
-      li: a(href="doc/sample.html") Sample
-      li: a(href="doc/use.html") Suggested Use
-      li: a(href="doc/accessibility.html") Accessibiltiy
+      li: a(href="sample.html") Sample
+      li: a(href="use.html") Suggested Use
+      li: a(href="accessibility.html") Accessibiltiy
