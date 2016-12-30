@@ -1,5 +1,3 @@
-var Color = require('csscolor').Color
-
 /**
  * A color palette.
  * @type {Scheme}

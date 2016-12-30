@@ -1,7 +1,7 @@
 var Page = require('sitepage').Page
 var Color = require('csscolor').Color
-var NamedColor = require('../NamedColor.class.js')
-var Scheme = require('../Scheme.class.js')
+var NamedColor = require('./NamedColor.class.js')
+var Scheme = require('./Scheme.class.js')
 
 /**
  * A set of static members used for the site.
