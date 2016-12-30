@@ -66,26 +66,28 @@ block append main
           li syntax highlighting
           li remain constant, independent of mode
   section
-    mixin listSchemeColors(scheme)
-      ul.o-ListBare.o-GridFlex
-        each colorish in scheme._colors
-          li.o-GridFlex__Item.o-ColorBox(class=[
-            Scheme.bgClass(colorish)
-          , { 'h-darkbg': colorish.name.slice(14)==='03' || colorish.name.slice(14)==='02' }
-          ])
-            h4= colorish.name
-            pre.
-              #{colorish.color.toString('hex')}
-              #{Scheme.bgClass(colorish)}
-              #{Scheme.fgClass(colorish)}
-              #{Scheme.brClass(colorish)}
+    mixin colorBox($namedColor)
+      li.o-GridFlex__Item.o-ColorBox(class=[
+        $namedColor.bgClass()
+      , { 'h-darkbg': $namedColor.name().slice(14)==='03' || $namedColor.name().slice(14)==='02' }
+      ])
+        h4= $namedColor.name()
+        pre.
+          #{$namedColor.toString('hex')}
+          #{$namedColor.bgClass()}
+          #{$namedColor.fgClass()}
+          #{$namedColor.brClass()}
     h2 The Colors
     section
       h3 #[cite Solarized] Color Scheme
-      +listSchemeColors(Docs.SOLARIZED)
+      ul.o-ListBare.o-GridFlex
+        each color in Docs.SOLARIZED._colors
+          +colorBox(color)
     section
       h3 #[cite Lunarized] Color Scheme
-      +listSchemeColors(Docs.LUNARIZED)
+      ul.o-ListBare.o-GridFlex
+        each color in Docs.LUNARIZED._colors
+          +colorBox(color)
     p: a(href="sample.html") See samples in action.
   section
     h2 Inspiration and Construction
