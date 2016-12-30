@@ -4,100 +4,117 @@ block append vars
   - var page = Docs.SITE.find('use.html')
 
 block append main
-  mixin demo(theme)
-    section.o-GridFlex__Item.o-Box.-w-1o2(class=[ theme.bg.class , theme.text.class ])
-      h2= theme.settings.mode.charAt(0).toUpperCase() + theme.settings.mode.slice(1) + ' Color Theme'
+  div.o-GridFlex
+    mixin ctl(colorish)
+      li(class=Scheme.fgClass(colorish))= colorish.name + ':'
+        ul
+          li programming control (#[code if], #[code for], #[code switch], #[code return])
+          li other control (#[code public], #[code private], #[code static])
+          li CSS tag selectors
+          li CSS pseudo-element and -class selectors
+          li CSS at-rules (#[code @media], #[code @font-face])
+          li Jade buffered comments
+    mixin opr(colorish)
+      li(class=Scheme.fgClass(colorish))= colorish.name + ':'
+        ul
+          li delimiters and operators (#[code= '[]'], #[code {}], #[code +], #[code ==], #[code new], #[code typeof])
+          li HTML class names
+    mixin kwd(colorish)
+      li(class=Scheme.fgClass(colorish))= colorish.name + ':'
+        ul
+          li HTML attribute names
+          li CSS property names
+          li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
+    mixin cst(colorish)
+      li(class=Scheme.fgClass(colorish))= colorish.name + ':'
+        ul
+          li HTML characters and entities
+          li CSS numeric values with units
+          li constant values (numbers, colors, booleans, #[code null])
+    mixin str(colorish)
+      li(class=Scheme.fgClass(colorish))= colorish.name + ':'
+        ul
+          li HTML attribute values
+          li CSS property values
+          li strings (except in CSS)
+    mixin cmd(colorish)
+      li(class=Scheme.fgClass(colorish))= colorish.name + ':'
+        ul
+          li HTML tags
+          li CSS class selectors
+          li JS function definitions and function calls
+    mixin arg(colorish)
+      li(class=Scheme.fgClass(colorish))= colorish.name + ':'
+        ul
+          li CSS media query keywords
+          li variable/parameter names
+          li function arguments
+    mixin obj(colorish)
+      li(class=Scheme.fgClass(colorish))= colorish.name + ':'
+        ul
+          li string delimiters (#[code &quot;] and #[code &apos;])
+          li CSS strings
+          li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
+          li HTML id names
+    section.o-GridFlex__Item.o-Box.-w-1o2.a-bc-l03.a-c-s0
+      h2 Dark Color Theme
       section
         h3 Bases
         ul
-          mixin emphasizeWhenSchemesDisagree(content)
-            if (theme.settings.bg_scheme !== theme.settings.fg_scheme)
-              em= content
-            else
-              = content
           li
-            +emphasizeWhenSchemesDisagree(theme.text.name)
-            |: text
-          li(class=theme.emph.class)
-            +emphasizeWhenSchemesDisagree(theme.emph.name)
-            |: emphasis
-          li(class=theme.deemph.class)
-            +emphasizeWhenSchemesDisagree(theme.deemph.name)
-            |: de-emphasis
-          li(class=theme.hilite.class)
-            = theme.hilite.name
-            |: highlight
+            em Solarized Base 0
+            | : text
+          li.a-c-s1
+            em Solarized Base 1
+            | : emphasis
+          li.a-c-s01
+            em Solarized Base 01
+            | : de-emphasis
+          li.a-bc-l02
+            | Lunarized Base 02
+            | : highlight
           li
-            = theme.bg.name
-            |: background
+            | Lunarized Base 03
+            | : background
       section
         h3 Accents
         ul
-          mixin ctl()
-            li(class=theme.ctl.class)= theme.ctl.name + ':'
-              ul
-                li programming control (#[code if], #[code for], #[code switch], #[code return])
-                li other control (#[code public], #[code private], #[code static])
-                li CSS tag selectors
-                li CSS pseudo-element and -class selectors
-                li CSS at-rules (#[code @media], #[code @font-face])
-                li Jade buffered comments
-          mixin opr()
-            li(class=theme.opr.class)= theme.opr.name + ':'
-              ul
-                li delimiters and operators (#[code= '[]'], #[code {}], #[code +], #[code ==], #[code new], #[code typeof])
-                li HTML class names
-          mixin kwd()
-            li(class=theme.kwd.class)= theme.kwd.name + ':'
-              ul
-                li HTML attribute names
-                li CSS property names
-                li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
-          mixin cst()
-            li(class=theme.cst.class)= theme.cst.name + ':'
-              ul
-                li HTML characters and entities
-                li CSS numeric values with units
-                li constant values (numbers, colors, booleans, #[code null])
-          mixin str()
-            li(class=theme.str.class)= theme.str.name + ':'
-              ul
-                li HTML attribute values
-                li CSS property values
-                li strings (except in CSS)
-          mixin cmd()
-            li(class=theme.cmd.class)= theme.cmd.name + ':'
-              ul
-                li HTML tags
-                li CSS class selectors
-                li JS function definitions and function calls
-          mixin arg()
-            li(class=theme.arg.class)= theme.arg.name + ':'
-              ul
-                li CSS media query keywords
-                li variable/parameter names
-                li function arguments
-          mixin obj()
-            li(class=theme.obj.class)= theme.obj.name + ':'
-              ul
-                li string delimiters (#[code &quot;] and #[code &apos;])
-                li CSS strings
-                li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
-                li HTML id names
-          if theme.settings.ac_scheme === 'Lunarized'
-            +str()
-            +cmd()
-            +arg()
-            +obj()
-          +ctl()
-          +opr()
-          +kwd()
-          +cst()
-          if theme.settings.ac_scheme === 'Solarized'
-            +str()
-            +cmd()
-            +arg()
-            +obj()
-  div.o-GridFlex
-    +demo(preset_theme.lunarized_dark_mod)
-    +demo(preset_theme.solarized_light_mod)
+          +str(Docs.LUNARIZED.getColor('Cyan'))
+          +cmd(Docs.LUNARIZED.getColor('Blue'))
+          +arg(Docs.LUNARIZED.getColor('Indigo'))
+          +obj(Docs.LUNARIZED.getColor('Violet'))
+          +ctl(Docs.LUNARIZED.getColor('Red'))
+          +opr(Docs.LUNARIZED.getColor('Orange'))
+          +kwd(Docs.LUNARIZED.getColor('Yellow'))
+          +cst(Docs.LUNARIZED.getColor('Green'))
+    section.o-GridFlex__Item.o-Box.-w-1o2.a-bc-s3.a-c-l00
+      h2 Light Color Theme
+      section
+        h3 Bases
+        ul
+          li
+            em Lunarized Base 00
+            | : text
+          li.a-c-l01
+            em Lunarized Base 01
+            | : emphasis
+          li.a-c-l1
+            em Lunarized Base 1
+            | : de-emphasis
+          li.a-bc-s2
+            | Solarized Base 2
+            | : highlight
+          li
+            | Solarized Base 3
+            | : background
+      section
+        h3 Accents
+        ul
+          +ctl(Docs.SOLARIZED.getColor('Red'))
+          +opr(Docs.SOLARIZED.getColor('Orange'))
+          +kwd(Docs.SOLARIZED.getColor('Yellow'))
+          +cst(Docs.SOLARIZED.getColor('Green'))
+          +str(Docs.SOLARIZED.getColor('Cyan'))
+          +cmd(Docs.SOLARIZED.getColor('Blue'))
+          +arg(Docs.SOLARIZED.getColor('Violet'))
+          +obj(Docs.SOLARIZED.getColor('Magenta'))

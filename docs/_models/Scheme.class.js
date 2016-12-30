@@ -60,11 +60,11 @@ module.exports = (function () {
   Scheme.prototype.addMode = function addMode(name, $obj) {
     this._modes.push({
       name:   name
-    , text:   $obj.text
-    , emph:   $obj.emph
-    , deemph: $obj.deemph
-    , hilite: $obj.hilite
-    , bg:     $obj.bg
+    , text:   this.getColor($obj.text)
+    , emph:   this.getColor($obj.emph)
+    , deemph: this.getColor($obj.deemph)
+    , hilite: this.getColor($obj.hilite)
+    , bg:     this.getColor($obj.bg)
     })
     return this
   }
