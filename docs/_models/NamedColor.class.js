@@ -14,10 +14,12 @@ module.exports = (function () {
    * @param {string} suffix the suffix for any CSS classes
    */
   function NamedColor($color, name, suffix) {
-    return Color.call(this, $color.rgb())
+    Color.call(this, $color.rgb())
     this._NAME = name
     this._SUFFIX = suffix
   }
+  NamedColor.prototype = Object.create(Color.prototype)
+  NamedColor.prototype.constructor = NamedColor
 
   // METHODS
   /**

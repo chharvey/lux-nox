@@ -87,9 +87,6 @@ module.exports = (function () {
   }
 
   // STATIC MEMBERS
-  Scheme.bgClass = function bgClass($namedColor) { return $namedColor.bgClass() }
-  Scheme.fgClass = function fgClass($namedColor) { return $namedColor.fgClass() }
-  Scheme.brClass = function brClass($namedColor) { return $namedColor.brClass() }
 
   return Scheme
 })()
