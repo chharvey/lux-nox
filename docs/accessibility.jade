@@ -4,59 +4,43 @@ block append vars
   - var page = Docs.SITE.find('accessibility.html')
 
 block append main
-  -
-    function ratioDisplay(fg_color_obj, bg_color_obj) {
-      return Math.round(fg_color_obj.contrastRatio(bg_color_obj)*100)/100
-    }
-    function dataRating(ratio) {
-      var bounds = [3, 4.5, 7]
-      var value = 1
-      for (var i in bounds) {
-        if (ratio >= bounds[i]) value += 1
-      }
-      return value
-      if (ratio < 3.0)                 return 1
-      if (3.0 <= ratio && ratio < 4.5) return 2
-      if (4.5 <= ratio && ratio < 7.0) return 3
-      if (7.0 <= ratio)                return 4
-    }
   section
     -
       var rows = [
-        scheme.Solarized.base01
-      , scheme.Solarized.base00
-      , scheme.Solarized.base0
-      , scheme.Solarized.base1
-      , scheme.Solarized.red
-      , scheme.Solarized.orange
-      , scheme.Solarized.yellow
-      , scheme.Solarized.green
-      , scheme.Solarized.cyan
-      , scheme.Solarized.blue
-      , scheme.Solarized.violet
-      , scheme.Solarized.magenta
-      , scheme.Lunarized.base01
-      , scheme.Lunarized.base00
-      , scheme.Lunarized.base0
-      , scheme.Lunarized.base1
-      , scheme.Lunarized.cyan
-      , scheme.Lunarized.blue
-      , scheme.Lunarized.indigo
-      , scheme.Lunarized.violet
-      , scheme.Lunarized.red
-      , scheme.Lunarized.orange
-      , scheme.Lunarized.yellow
-      , scheme.Lunarized.green
+        Docs.SOLARIZED.getColor('Solarized Base01')
+      , Docs.SOLARIZED.getColor('Solarized Base00')
+      , Docs.SOLARIZED.getColor('Solarized Base0')
+      , Docs.SOLARIZED.getColor('Solarized Base1')
+      , Docs.SOLARIZED.getColor('Solarized Red')
+      , Docs.SOLARIZED.getColor('Solarized Orange')
+      , Docs.SOLARIZED.getColor('Solarized Yellow')
+      , Docs.SOLARIZED.getColor('Solarized Green')
+      , Docs.SOLARIZED.getColor('Solarized Cyan')
+      , Docs.SOLARIZED.getColor('Solarized Blue')
+      , Docs.SOLARIZED.getColor('Solarized Violet')
+      , Docs.SOLARIZED.getColor('Solarized Magenta')
+      , Docs.LUNARIZED.getColor('Lunarized Base01')
+      , Docs.LUNARIZED.getColor('Lunarized Base00')
+      , Docs.LUNARIZED.getColor('Lunarized Base0')
+      , Docs.LUNARIZED.getColor('Lunarized Base1')
+      , Docs.LUNARIZED.getColor('Lunarized Cyan')
+      , Docs.LUNARIZED.getColor('Lunarized Blue')
+      , Docs.LUNARIZED.getColor('Lunarized Indigo')
+      , Docs.LUNARIZED.getColor('Lunarized Violet')
+      , Docs.LUNARIZED.getColor('Lunarized Red')
+      , Docs.LUNARIZED.getColor('Lunarized Orange')
+      , Docs.LUNARIZED.getColor('Lunarized Yellow')
+      , Docs.LUNARIZED.getColor('Lunarized Green')
       ]
       var cols = [
-        scheme.Solarized.base03
-      , scheme.Solarized.base02
-      , scheme.Solarized.base2
-      , scheme.Solarized.base3
-      , scheme.Lunarized.base03
-      , scheme.Lunarized.base02
-      , scheme.Lunarized.base2
-      , scheme.Lunarized.base3
+        Docs.SOLARIZED.getColor('Solarized Base03')
+      , Docs.SOLARIZED.getColor('Solarized Base02')
+      , Docs.SOLARIZED.getColor('Solarized Base2')
+      , Docs.SOLARIZED.getColor('Solarized Base3')
+      , Docs.LUNARIZED.getColor('Lunarized Base03')
+      , Docs.LUNARIZED.getColor('Lunarized Base02')
+      , Docs.LUNARIZED.getColor('Lunarized Base2')
+      , Docs.LUNARIZED.getColor('Lunarized Base3')
       ]
     h2 Table of Contrast Ratios
     table.c-CrTable
@@ -68,30 +52,33 @@ block append main
           #[a(href="#contrast-ratio-table") Contrast ratios] are shown in each cell.
       colgroup
       colgroup
-        each color in cols.slice(0,4)
-          col(class=color.bg_class)
+        each $namedColor in cols.slice(0,4)
+          col(class=$namedColor.bgClass())
       colgroup
-        each color in cols.slice(4)
-          col(class=color.bg_class)
+        each $namedColor in cols.slice(4)
+          col(class=$namedColor.bgClass())
       thead
         tr
           td
-          each color in cols
-            th(scope="col")= color.name
-      mixin tableRow(fg_color)
-        - var fg_color_obj = Color.fromString(fg_color.code)
-        tr(class=fg_color.fg_class)
-          th(scope="row")= fg_color.name
-          each bg_color in cols
-            - var bg_color_obj = Color.fromString(bg_color.code)
-            - var ratio = ratioDisplay(fg_color_obj,bg_color_obj)
-            td(data-rating=dataRating(ratio))= ratio
+          each $namedColor in cols
+            th(scope="col")= $namedColor.name()
+      mixin tableRow($named_fg)
+        tr(class=$named_fg.fgClass())
+          th(scope="row")= $named_fg.name()
+          each $named_bg in cols
+            - var ratio = Math.round($named_fg.contrastRatio($named_bg)*100)/100
+            td(data-rating=(function (r) {
+              var bounds = [3, 4.5, 7]
+              var value = 1
+              for (var i in bounds) if (r >= bounds[i]) value += 1
+              return value
+            })(ratio))= ratio
       tbody
-        each fg_color in rows.slice(0,12)
-          +tableRow(fg_color)
+        each color in rows.slice(0,12)
+          +tableRow(color)
       tbody
-        each fg_color in rows.slice(12)
-          +tableRow(fg_color)
+        each color in rows.slice(12)
+          +tableRow(color)
     p The #[a(href="use.html") Suggested Use] page demonstrates the most accessible contrast ratios.
     table.-mh-a#contrast-ratio-table(style="font-size: 0.75rem; line-height: 2;")
       caption

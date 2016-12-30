@@ -1,7 +1,6 @@
 doctype html
 html(lang="en")
   block vars
-    include scripts/lux-nox.js.jade
   head
     title= page.title() || (page.name() + ' | ' + Docs.SITE.name())
     meta(charset="utf-8")
@@ -14,11 +13,10 @@ html(lang="en")
       link(rel="stylesheet" href="../lux-nox.css")
       link(rel="stylesheet" href="styles/docs.css")
   body
-    block body
-      main
-        block main
-          header
-            block header
-              h1= page.name()
-      block scripts
-        script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous")
+    main
+      block main
+        header
+          block header
+            h1= page.name()
+    block scripts
+      script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous")

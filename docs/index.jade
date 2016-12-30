@@ -66,24 +66,27 @@ block append main
           li syntax highlighting
           li remain constant, independent of mode
   section
-    mixin colorBox(color)
-      li.o-GridFlex__Item.o-ColorBox(class=[color.bg_class, (color.name.slice(14)==='03' || color.name.slice(14)==='02')? 'h-darkbg' : ''])
-        h4= color.name
+    mixin colorBox($namedColor)
+      li.o-GridFlex__Item.o-ColorBox(class=[
+        $namedColor.bgClass()
+      , { 'h-darkbg': $namedColor.name().slice(14)==='03' || $namedColor.name().slice(14)==='02' }
+      ])
+        h4= $namedColor.name()
         pre.
-          #{color.code}
-          #{color.bg_class}
-          #{color.fg_class}
-          #{color.br_class}
+          #{$namedColor.toString('hex')}
+          #{$namedColor.bgClass()}
+          #{$namedColor.fgClass()}
+          #{$namedColor.brClass()}
     h2 The Colors
     section
       h3 #[cite Solarized] Color Scheme
       ul.o-ListBare.o-GridFlex
-        each color in scheme.Solarized
+        each color in Docs.SOLARIZED._colors
           +colorBox(color)
     section
       h3 #[cite Lunarized] Color Scheme
       ul.o-ListBare.o-GridFlex
-        each color in scheme.Lunarized
+        each color in Docs.LUNARIZED._colors
           +colorBox(color)
     p: a(href="sample.html") See samples in action.
   section
