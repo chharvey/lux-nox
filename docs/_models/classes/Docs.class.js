@@ -52,30 +52,6 @@ module.exports = (function () {
     .addColor(new NamedColor(Color.fromString('#268bd2'), 'Solarized Blue'   , '-sb' ))
     .addColor(new NamedColor(Color.fromString('#6c71c4'), 'Solarized Violet' , '-sv' ))
     .addColor(new NamedColor(Color.fromString('#d33682'), 'Solarized Magenta', '-sm' ))
-    .addMode('dark', {
-      text:   'Base0'
-    , emph:   'Base1'
-    , deemph: 'Base01'
-    , hilite: 'Base02'
-    , bg:     'Base03'
-    })
-    .addMode('light', {
-      text:   'Base00'
-    , emph:   'Base01'
-    , deemph: 'Base1'
-    , hilite: 'Base2'
-    , bg:     'Base3'
-    })
-    .accents({
-      ctl: 'Red'
-    , opr: 'Orange'
-    , kwd: 'Yellow'
-    , cst: 'Green'
-    , str: 'Cyan'
-    , cmd: 'Blue'
-    , arg: 'Violet'
-    , obj: 'Magenta'
-    })
 
   /**
    * The Lunarized color palette
@@ -98,30 +74,6 @@ module.exports = (function () {
     .addColor(new NamedColor(Color.fromString('#d9742d'), 'Lunarized Orange' , '-lo' ))
     .addColor(new NamedColor(Color.fromString('#938e3b'), 'Lunarized Yellow' , '-ly' ))
     .addColor(new NamedColor(Color.fromString('#2cc97d'), 'Lunarized Green'  , '-lg' ))
-    .addMode('dark', {
-      text:   'Base0'
-    , emph:   'Base1'
-    , deemph: 'Base01'
-    , hilite: 'Base02'
-    , bg:     'Base03'
-    })
-    .addMode('light', {
-      text:   'Base00'
-    , emph:   'Base01'
-    , deemph: 'Base1'
-    , hilite: 'Base2'
-    , bg:     'Base3'
-    })
-    .accents({
-      ctl: 'Red'
-    , opr: 'Orange'
-    , kwd: 'Yellow'
-    , cst: 'Green'
-    , str: 'Cyan'
-    , cmd: 'Blue'
-    , arg: 'Indigo'
-    , obj: 'Violet'
-    })
 
   return Docs
 })()
