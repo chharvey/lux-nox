@@ -87,9 +87,6 @@ module.exports = (function () {
   }
 
   // STATIC MEMBERS
-  Scheme.bgClass = function bgClass($colorish) { return 'a-bc' + $colorish.suffix }
-  Scheme.fgClass = function fgClass($colorish) { return 'a-c'  + $colorish.suffix }
-  Scheme.brClass = function brClass($colorish) { return 'a-rc' + $colorish.suffix }
 
   return Scheme
 })()

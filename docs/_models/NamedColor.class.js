@@ -14,10 +14,12 @@ module.exports = (function () {
    * @param {string} suffix the suffix for any CSS classes
    */
   function NamedColor($color, name, suffix) {
-    return Color.call(this, $color.rgb())
+    Color.call(this, $color.rgb())
     this._NAME = name
     this._SUFFIX = suffix
   }
+  NamedColor.prototype = Object.create(Color.prototype)
+  NamedColor.prototype.constructor = NamedColor
 
   // METHODS
   /**
@@ -35,6 +37,22 @@ module.exports = (function () {
   NamedColor.prototype.suffix = function suffix() {
     return this._SUFFIX
   }
+
+  /**
+   * Return the CSS atom class for background color.
+   * @return {string} css classname assigning background color
+   */
+  NamedColor.prototype.bgClass = function bgClass() { return 'a-bc' + this._SUFFIX }
+  /**
+   * Return the CSS atom class for foreground color.
+   * @return {string} css classname assigning foreground color
+   */
+  NamedColor.prototype.fgClass = function fgClass() { return 'a-c'  + this._SUFFIX }
+  /**
+   * Return the CSS atom class for border color.
+   * @return {string} css classname assigning border color
+   */
+  NamedColor.prototype.brClass = function brClass() { return 'a-rc' + this._SUFFIX }
 
   // STATIC MEMBERS
 
