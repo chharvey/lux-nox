@@ -21,31 +21,26 @@ module.exports = (function () {
   // METHODS
   /**
    * Add a colorish object to this scheme.
-   * @param {string} name   a name associated with the color
+   * @param {string} id     a unique name associated with the color
    * @param {Color}  $color the Color object to add
    * @param {string} suffix a css-class suffix
    */
-  Scheme.prototype.addColor = function addColor(name, $color, suffix) {
-    this._colors.push({ name: name, color: $color, suffix: suffix })
-    // this._colors[name] = { color: $color, suffix: suffix }
+  Scheme.prototype.addColor = function addColor(id, $color, suffix) {
+    this._colors.push({
+      id: id
+    , name: this._NAME + ' ' + id
+    , color: $color
+    , suffix: suffix
+    })
     return this
   }
   /**
    * Return a colorish object, by name, added to this scheme.
-   * @param  {string} name the name associated with the colorish object to get
-   * @return {?Object} an Object of type { name: <string>, color: <Color>, suffix: <string> }
+   * @param  {string} id the name associated with the colorish object to get
+   * @return {?Object} an Object of type { id:<string>, name:<string>, color:<Color>, suffix:<string> }
    */
-  Scheme.prototype.getColor = function getColor(name) {
-    return this._colors.find(function (el) { return el.name === name }) || null
-    // return this._colors[name] || null
-  }
-  /**
-   * Get the total name of the color. Includes Scheme name and color name.
-   * @param  {Object} $colorish a colorish object added to this scheme
-   * @return {string} total name of the color, including this scheme
-   */
-  Scheme.prototype.colorName = function colorName($colorish) {
-    return this._NAME + ' ' + $colorish.name
+  Scheme.prototype.getColor = function getColor(id) {
+    return this._colors.find(function (el) { return el.id === id }) || null
   }
 
   /**
@@ -60,6 +55,7 @@ module.exports = (function () {
    * @param {string} $obj.deemph the string name of the colorish object added to this scheme used for deemphasized text
    * @param {string} $obj.hilite the string name of the colorish object added to this scheme used for hilighted text
    * @param {string} $obj.bg     the string name of the colorish object added to this scheme used for background
+   * @return {Scheme} this scheme
    */
   Scheme.prototype.addMode = function addMode(name, $obj) {
     this._modes.push({
@@ -70,6 +66,7 @@ module.exports = (function () {
     , hilite: $obj.hilite
     , bg:     $obj.bg
     })
+    return this
   }
   /**
    * Return a mode, by name, added to this scheme.
