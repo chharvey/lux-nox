@@ -230,3 +230,70 @@
     , ac_scheme: 'Solarized'
     })
   }
+    function removeTheme(container) {
+      var theme = createTheme({
+        mode: container.attr('data-mode')
+      , bg_scheme: container.attr('data-bg_scheme')
+      , fg_scheme: container.attr('data-fg_scheme')
+      , ac_scheme: container.attr('data-ac_scheme')
+      })
+      container.removeAttr('data-mode')
+        .removeAttr('data-bg_scheme')
+        .removeAttr('data-fg_scheme')
+        .removeAttr('data-ac_scheme')
+      container.removeClass(theme.bg.class + ' ' + theme.text.class)
+      container.find('.js-emph').removeClass(theme.emph.class)
+      container.find('.js-deemph').removeClass(theme.deemph.class)
+      container.find('.js-hilite').removeClass(theme.hilite.class)
+      container.find('.js-ctl').removeClass(theme.ctl.class)
+      container.find('.js-opr').removeClass(theme.opr.class)
+      container.find('.js-kwd').removeClass(theme.kwd.class)
+      container.find('.js-cst').removeClass(theme.cst.class)
+      container.find('.js-str').removeClass(theme.str.class)
+      container.find('.js-cmd').removeClass(theme.cmd.class)
+      container.find('.js-arg').removeClass(theme.arg.class)
+      container.find('.js-obj').removeClass(theme.obj.class)
+      return theme
+    }
+    function applyTheme(theme, container) {
+      removeTheme(container)
+      container.attr('data-mode', theme.settings.mode)
+        .attr('data-bg_scheme', theme.settings.bg_scheme)
+        .attr('data-fg_scheme', theme.settings.fg_scheme)
+        .attr('data-ac_scheme', theme.settings.ac_scheme)
+      container.addClass(theme.bg.class + ' ' + theme.text.class)
+      container.find('.js-emph').addClass(theme.emph.class)
+      container.find('.js-deemph').addClass(theme.deemph.class)
+      container.find('.js-hilite').addClass(theme.hilite.class)
+      container.find('.js-ctl').addClass(theme.ctl.class)
+      container.find('.js-opr').addClass(theme.opr.class)
+      container.find('.js-kwd').addClass(theme.kwd.class)
+      container.find('.js-cst').addClass(theme.cst.class)
+      container.find('.js-str').addClass(theme.str.class)
+      container.find('.js-cmd').addClass(theme.cmd.class)
+      container.find('.js-arg').addClass(theme.arg.class)
+      container.find('.js-obj').addClass(theme.obj.class)
+    }
+    function editTheme(changes, container) {
+      var settings = removeTheme(container).settings
+      changes(settings)
+      applyTheme(createTheme(settings), container)
+    }
+    $('input[name="preset"]').change(function () {
+      var theme = preset_theme[$(this).val()]
+      $('select[data-param="mode"]').val(theme.settings.mode)
+      $('select[data-param="bg_scheme"]').val(theme.settings.bg_scheme)
+      $('select[data-param="fg_scheme"]').val(theme.settings.fg_scheme)
+      $('select[data-param="ac_scheme"]').val(theme.settings.ac_scheme)
+      applyTheme(theme, $('.js-theme'))
+    })
+    $('select[name="cyo"]').change(function () {
+      var self = this
+      $('input[name="preset"]').removeAttr('checked')
+      editTheme(function (settings) {
+        settings[$(self).attr('data-param')] = $(self).val()
+      }, $('.js-theme'))
+    })
+    $('input[type="reset"]').click(function () {
+      removeTheme($('.js-theme'))
+    })
