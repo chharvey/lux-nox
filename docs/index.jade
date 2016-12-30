@@ -66,25 +66,26 @@ block append main
           li syntax highlighting
           li remain constant, independent of mode
   section
-    mixin colorBox(color)
-      li.o-GridFlex__Item.o-ColorBox(class=[color.bg_class, (color.name.slice(14)==='03' || color.name.slice(14)==='02')? 'h-darkbg' : ''])
-        h4= color.name
-        pre.
-          #{color.code}
-          #{color.bg_class}
-          #{color.fg_class}
-          #{color.br_class}
+    mixin listSchemeColors(scheme)
+      ul.o-ListBare.o-GridFlex
+        each colorish in scheme._colors
+          li.o-GridFlex__Item.o-ColorBox(class=[
+            Scheme.bgClass(colorish)
+          , { 'h-darkbg': colorish.name.slice(14)==='03' || colorish.name.slice(14)==='02' }
+          ])
+            h4= colorish.name
+            pre.
+              #{colorish.color.toString('hex')}
+              #{Scheme.bgClass(colorish)}
+              #{Scheme.fgClass(colorish)}
+              #{Scheme.brClass(colorish)}
     h2 The Colors
     section
       h3 #[cite Solarized] Color Scheme
-      ul.o-ListBare.o-GridFlex
-        each color in scheme.Solarized
-          +colorBox(color)
+      +listSchemeColors(Docs.SOLARIZED)
     section
       h3 #[cite Lunarized] Color Scheme
-      ul.o-ListBare.o-GridFlex
-        each color in scheme.Lunarized
-          +colorBox(color)
+      +listSchemeColors(Docs.LUNARIZED)
     p: a(href="sample.html") See samples in action.
   section
     h2 Inspiration and Construction
