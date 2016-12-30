@@ -1,4 +1,3 @@
--
   var scheme = {
     'Solarized' : {
       base03  : { name: 'Solarized Base03'  , code: '#002b36' , bg_class: 'a-bc-s03' , fg_class: 'a-c-s03' , br_class: 'a-rc-s03' }
@@ -164,7 +163,6 @@
       returned.ctl = returned.opr = returned.kwd = returned.cst = returned.str = returned.cmd = returned.arg = returned.obj = empty_color
     }
     return returned
-  //-
     return {
       settings : settings
     , text   : (settings.fg_scheme && settings.mode) ? context[settings.fg_scheme][settings.mode].text   : empty_color

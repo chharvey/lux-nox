@@ -4,10 +4,8 @@ block append vars
   - var page = Docs.SITE.find('sample.html')
 
 block append scripts
+  script(src="scripts/sample.js")
   script.
-    var context = !{JSON.stringify(context)}
-    var createTheme = !{createTheme}
-    var preset_theme = !{JSON.stringify(preset_theme)}
     function removeTheme(container) {
       var theme = createTheme({
         mode: container.attr('data-mode')
