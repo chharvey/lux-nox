@@ -20,27 +20,20 @@ module.exports = (function () {
 
   // METHODS
   /**
-   * Add a colorish object to this scheme.
-   * @param {string} id     a unique name associated with the color
-   * @param {Color}  $color the Color object to add
-   * @param {string} suffix a css-class suffix
+   * Add a NamedColor object to this scheme.
+   * @param {NamedColor} $namedColor the NamedColor object to add
    */
-  Scheme.prototype.addColor = function addColor(id, $color, suffix) {
-    this._colors.push({
-      id: id
-    , name: this._NAME + ' ' + id
-    , color: $color
-    , suffix: suffix
-    })
+  Scheme.prototype.addColor = function addColor($namedColor) {
+    this._colors.push($namedColor)
     return this
   }
   /**
-   * Return a colorish object, by name, added to this scheme.
-   * @param  {string} id the name associated with the colorish object to get
-   * @return {?Object} an Object of type { id:<string>, name:<string>, color:<Color>, suffix:<string> }
+   * Return a NamedColor object, by name, added to this scheme.
+   * @param  {string} name the name associated with the NamedColor object to get
+   * @return {?NamedColor} a NamedColor object
    */
-  Scheme.prototype.getColor = function getColor(id) {
-    return this._colors.find(function (el) { return el.id === id }) || null
+  Scheme.prototype.getColor = function getColor(name) {
+    return this._colors.find(function ($namedColor) { return $namedColor.name() === name }) || null
   }
 
   /**

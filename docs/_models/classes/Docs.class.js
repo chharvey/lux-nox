@@ -1,5 +1,6 @@
 var Page = require('sitepage').Page
 var Color = require('csscolor').Color
+var NamedColor = require('../NamedColor.class.js')
 var Scheme = require('../Scheme.class.js')
 
 /**
@@ -35,22 +36,22 @@ module.exports = (function () {
    * @type {Scheme}
    */
   Docs.SOLARIZED = new Scheme('Solarized')
-    .addColor('Base03' , Color.fromString('#002b36'), '-s03')
-    .addColor('Base02' , Color.fromString('#073642'), '-s02')
-    .addColor('Base01' , Color.fromString('#586e75'), '-s01')
-    .addColor('Base00' , Color.fromString('#657b83'), '-s00')
-    .addColor('Base0'  , Color.fromString('#839496'), '-s0' )
-    .addColor('Base1'  , Color.fromString('#93a1a1'), '-s1' )
-    .addColor('Base2'  , Color.fromString('#eee8d5'), '-s2' )
-    .addColor('Base3'  , Color.fromString('#fdf6e3'), '-s3' )
-    .addColor('Red'    , Color.fromString('#dc322f'), '-sr' )
-    .addColor('Orange' , Color.fromString('#cb4b16'), '-so' )
-    .addColor('Yellow' , Color.fromString('#b58900'), '-sy' )
-    .addColor('Green'  , Color.fromString('#859900'), '-sg' )
-    .addColor('Cyan'   , Color.fromString('#2aa198'), '-sc' )
-    .addColor('Blue'   , Color.fromString('#268bd2'), '-sb' )
-    .addColor('Violet' , Color.fromString('#6c71c4'), '-sv' )
-    .addColor('Magenta', Color.fromString('#d33682'), '-sm' )
+    .addColor(new NamedColor(Color.fromString('#002b36'), 'Solarized Base03' , '-s03'))
+    .addColor(new NamedColor(Color.fromString('#073642'), 'Solarized Base02' , '-s02'))
+    .addColor(new NamedColor(Color.fromString('#586e75'), 'Solarized Base01' , '-s01'))
+    .addColor(new NamedColor(Color.fromString('#657b83'), 'Solarized Base00' , '-s00'))
+    .addColor(new NamedColor(Color.fromString('#839496'), 'Solarized Base0'  , '-s0' ))
+    .addColor(new NamedColor(Color.fromString('#93a1a1'), 'Solarized Base1'  , '-s1' ))
+    .addColor(new NamedColor(Color.fromString('#eee8d5'), 'Solarized Base2'  , '-s2' ))
+    .addColor(new NamedColor(Color.fromString('#fdf6e3'), 'Solarized Base3'  , '-s3' ))
+    .addColor(new NamedColor(Color.fromString('#dc322f'), 'Solarized Red'    , '-sr' ))
+    .addColor(new NamedColor(Color.fromString('#cb4b16'), 'Solarized Orange' , '-so' ))
+    .addColor(new NamedColor(Color.fromString('#b58900'), 'Solarized Yellow' , '-sy' ))
+    .addColor(new NamedColor(Color.fromString('#859900'), 'Solarized Green'  , '-sg' ))
+    .addColor(new NamedColor(Color.fromString('#2aa198'), 'Solarized Cyan'   , '-sc' ))
+    .addColor(new NamedColor(Color.fromString('#268bd2'), 'Solarized Blue'   , '-sb' ))
+    .addColor(new NamedColor(Color.fromString('#6c71c4'), 'Solarized Violet' , '-sv' ))
+    .addColor(new NamedColor(Color.fromString('#d33682'), 'Solarized Magenta', '-sm' ))
     .addMode('dark', {
       text:   'Base0'
     , emph:   'Base1'
@@ -81,22 +82,22 @@ module.exports = (function () {
    * @type {Scheme}
    */
   Docs.LUNARIZED = new Scheme('Lunarized')
-    .addColor('Base03' , Color.fromString('#360b00'), '-l03')
-    .addColor('Base02' , Color.fromString('#421307'), '-l02')
-    .addColor('Base01' , Color.fromString('#755f58'), '-l01')
-    .addColor('Base00' , Color.fromString('#836d65'), '-l00')
-    .addColor('Base0'  , Color.fromString('#968583'), '-l0' )
-    .addColor('Base1'  , Color.fromString('#a19393'), '-l1' )
-    .addColor('Base2'  , Color.fromString('#d5dbee'), '-l2' )
-    .addColor('Base3'  , Color.fromString('#e3eafd'), '-l3' )
-    .addColor('Cyan'   , Color.fromString('#23cdd0'), '-lc' )
-    .addColor('Blue'   , Color.fromString('#34b4e9'), '-lb' )
-    .addColor('Indigo' , Color.fromString('#4a76ff'), '-li' )
-    .addColor('Violet' , Color.fromString('#7a66ff'), '-lv' )
-    .addColor('Red'    , Color.fromString('#d55e67'), '-lr' )
-    .addColor('Orange' , Color.fromString('#d9742d'), '-lo' )
-    .addColor('Yellow' , Color.fromString('#938e3b'), '-ly' )
-    .addColor('Green'  , Color.fromString('#2cc97d'), '-lg' )
+    .addColor(new NamedColor(Color.fromString('#360b00'), 'Lunarized Base03' , '-l03'))
+    .addColor(new NamedColor(Color.fromString('#421307'), 'Lunarized Base02' , '-l02'))
+    .addColor(new NamedColor(Color.fromString('#755f58'), 'Lunarized Base01' , '-l01'))
+    .addColor(new NamedColor(Color.fromString('#836d65'), 'Lunarized Base00' , '-l00'))
+    .addColor(new NamedColor(Color.fromString('#968583'), 'Lunarized Base0'  , '-l0' ))
+    .addColor(new NamedColor(Color.fromString('#a19393'), 'Lunarized Base1'  , '-l1' ))
+    .addColor(new NamedColor(Color.fromString('#d5dbee'), 'Lunarized Base2'  , '-l2' ))
+    .addColor(new NamedColor(Color.fromString('#e3eafd'), 'Lunarized Base3'  , '-l3' ))
+    .addColor(new NamedColor(Color.fromString('#23cdd0'), 'Lunarized Cyan'   , '-lc' ))
+    .addColor(new NamedColor(Color.fromString('#34b4e9'), 'Lunarized Blue'   , '-lb' ))
+    .addColor(new NamedColor(Color.fromString('#4a76ff'), 'Lunarized Indigo' , '-li' ))
+    .addColor(new NamedColor(Color.fromString('#7a66ff'), 'Lunarized Violet' , '-lv' ))
+    .addColor(new NamedColor(Color.fromString('#d55e67'), 'Lunarized Red'    , '-lr' ))
+    .addColor(new NamedColor(Color.fromString('#d9742d'), 'Lunarized Orange' , '-lo' ))
+    .addColor(new NamedColor(Color.fromString('#938e3b'), 'Lunarized Yellow' , '-ly' ))
+    .addColor(new NamedColor(Color.fromString('#2cc97d'), 'Lunarized Green'  , '-lg' ))
     .addMode('dark', {
       text:   'Base0'
     , emph:   'Base1'
