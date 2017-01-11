@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><title>lux-nox</title><meta charset="utf-8"><meta name="author" content="Chris Harvey"><meta name="description" content="Solarized and Lunaried colors for any project."><link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v4.0.0/xmeter.min.css"><link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.8.0/bangs.min.css"><link rel="stylesheet" href="lux-nox.min.css"><link rel="stylesheet" href="doc/styles/doc.css"></head><body><main><header><h1>lux-nox</h1><p>This repo is specifically designed for using colors from the
+<cite>Solarized</cite> and <cite>Lunarized</cite> color schemes.
+These color schemes were originally designed for displaying computer code, though
+they can be applied <abbr title="practically">literally</abbr> anywhere.
+Import them into any project to use the variables and classes in your codebase.
+</p></header><footer><p>by <a href="https://github.com/chharvey/lux-nox/">Chris Harvey</a></p></footer><section><h2>Example</h2><figure class="o-Box a-bc-s3 a-c-s00"><pre><span class="a-c-sb">&lt;h3 <span class="a-c-sy">class=<span class="a-c-sc"><span class="a-c-sm">&quot;</span>a-bc-s03  a-c-lc<span class="a-c-sm">&quot;</span></span></span>&gt;</span>Solarized Base03 background, Lunarized Cyan foreground!<span class="a-c-sb">&lt;&#x002f;h3&gt;</span>
+<span class="a-c-sb">&lt;h4 <span class="a-c-sy">class=<span class="a-c-sc"><span class="a-c-sm">&quot;</span>a-rc-sb<span class="a-c-sm">&quot;</span></span></span>&gt;</span>Solarized Blue border!<span class="a-c-sb">&lt;&#x002f;h4&gt;</span></pre><h3 class="o-Box a-bc-s03 a-c-lc">Solarized Base03 background, Lunarized Cyan foreground!</h3><h4 style="border: 3px solid;" class="o-Box a-rc-sb">Solarized Blue border!</h4></figure></section><section><h2>Usage</h2><p>Locally</p><pre>$ npm install bangs</pre><pre>&lt;link rel="stylesheet" href="/node_modules/lux-nox/lux-nox[.min].css"/&gt;</pre><p>Remotely from a CDN (not recommended)</p><pre>&lt;link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/lux-nox/<var>‹master›</var>/lux-nox[.min].css"/&gt;</pre><p>Remotely from this site (not recommended)</p><pre>&lt;link rel="stylesheet" href="https://chharvey.github.io/lux-nox/lux-nox[.min].css"/&gt;</pre><p>where <code><var>‹master›</var></code> can be a branch or a tag, and optional <code>[.min]</code> is for the minified version.</p></section><section><h2>Description</h2><p>Each color scheme contains 16 colors total, shared among two modes:</p><ul><li>Dark mode<ul><li>medium-light text</li><li>light emphasis</li><li>dark de-emphasis</li><li>darker highlight</li><li>darkest background</li></ul></li><li>Light mode<ul><li>medium-dark text</li><li>dark emphasis</li><li>light de-emphasis</li><li>lighter highlight</li><li>lightest background</li></ul></li></ul><p>Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:</p><ul><li>Bases<ul><li>dull tones</li><li>foreground, emphasis, de-emphasis, highlight, background</li><li>interchanged based on the mode</li></ul></li><li>Accents<ul><li>sharp tones</li><li>syntax highlighting</li><li>remain constant, independent of mode</li></ul></li></ul></section><section><h2>The Colors</h2><section><h3><cite>Solarized</cite> Color Scheme</h3><ul class="o-ListBare o-GridFlex"><li class="o-GridFlex__Item o-ColorBox a-bc-s03 h-darkbg"><h4>Solarized Base03</h4><pre>#002b36
+a-bc-s03
+a-c-s03
+a-rc-s03</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-s02 h-darkbg"><h4>Solarized Base02</h4><pre>#073642
+a-bc-s02
+a-c-s02
+a-rc-s02</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-s01"><h4>Solarized Base01</h4><pre>#586e75
+a-bc-s01
+a-c-s01
+a-rc-s01</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-s00"><h4>Solarized Base00</h4><pre>#657b83
+a-bc-s00
+a-c-s00
+a-rc-s00</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-s0"><h4>Solarized Base0</h4><pre>#839496
+a-bc-s0
+a-c-s0
+a-rc-s0</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-s1"><h4>Solarized Base1</h4><pre>#93a1a1
+a-bc-s1
+a-c-s1
+a-rc-s1</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-s2"><h4>Solarized Base2</h4><pre>#eee8d5
+a-bc-s2
+a-c-s2
+a-rc-s2</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-s3"><h4>Solarized Base3</h4><pre>#fdf6e3
+a-bc-s3
+a-c-s3
+a-rc-s3</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-sr"><h4>Solarized Red</h4><pre>#dc322f
+a-bc-sr
+a-c-sr
+a-rc-sr</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-so"><h4>Solarized Orange</h4><pre>#cb4b16
+a-bc-so
+a-c-so
+a-rc-so</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-sy"><h4>Solarized Yellow</h4><pre>#b58900
+a-bc-sy
+a-c-sy
+a-rc-sy</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-sg"><h4>Solarized Green</h4><pre>#859900
+a-bc-sg
+a-c-sg
+a-rc-sg</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-sc"><h4>Solarized Cyan</h4><pre>#2aa198
+a-bc-sc
+a-c-sc
+a-rc-sc</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-sb"><h4>Solarized Blue</h4><pre>#268bd2
+a-bc-sb
+a-c-sb
+a-rc-sb</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-sv"><h4>Solarized Violet</h4><pre>#6c71c4
+a-bc-sv
+a-c-sv
+a-rc-sv</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-sm"><h4>Solarized Magenta</h4><pre>#d33682
+a-bc-sm
+a-c-sm
+a-rc-sm</pre></li></ul></section><section><h3><cite>Lunarized</cite> Color Scheme</h3><ul class="o-ListBare o-GridFlex"><li class="o-GridFlex__Item o-ColorBox a-bc-l03 h-darkbg"><h4>Lunarized Base03</h4><pre>#360b00
+a-bc-l03
+a-c-l03
+a-rc-l03</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-l02 h-darkbg"><h4>Lunarized Base02</h4><pre>#421307
+a-bc-l02
+a-c-l02
+a-rc-l02</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-l01"><h4>Lunarized Base01</h4><pre>#755f58
+a-bc-l01
+a-c-l01
+a-rc-l01</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-l00"><h4>Lunarized Base00</h4><pre>#836d65
+a-bc-l00
+a-c-l00
+a-rc-l00</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-l0"><h4>Lunarized Base0</h4><pre>#968583
+a-bc-l0
+a-c-l0
+a-rc-l0</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-l1"><h4>Lunarized Base1</h4><pre>#a19393
+a-bc-l1
+a-c-l1
+a-rc-l1</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-l2"><h4>Lunarized Base2</h4><pre>#d5dbee
+a-bc-l2
+a-c-l2
+a-rc-l2</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-l3"><h4>Lunarized Base3</h4><pre>#e3eafd
+a-bc-l3
+a-c-l3
+a-rc-l3</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-lc"><h4>Lunarized Cyan</h4><pre>#23cdd0
+a-bc-lc
+a-c-lc
+a-rc-lc</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-lb"><h4>Lunarized Blue</h4><pre>#34b4e9
+a-bc-lb
+a-c-lb
+a-rc-lb</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-li"><h4>Lunarized Indigo</h4><pre>#4a76ff
+a-bc-li
+a-c-li
+a-rc-li</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-lv"><h4>Lunarized Violet</h4><pre>#7a66ff
+a-bc-lv
+a-c-lv
+a-rc-lv</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-lr"><h4>Lunarized Red</h4><pre>#d55e67
+a-bc-lr
+a-c-lr
+a-rc-lr</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-lo"><h4>Lunarized Orange</h4><pre>#d9742d
+a-bc-lo
+a-c-lo
+a-rc-lo</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-ly"><h4>Lunarized Yellow</h4><pre>#938e3b
+a-bc-ly
+a-c-ly
+a-rc-ly</pre></li><li class="o-GridFlex__Item o-ColorBox a-bc-lg"><h4>Lunarized Green</h4><pre>#2cc97d
+a-bc-lg
+a-c-lg
+a-rc-lg</pre></li></ul></section><p><a href="doc/sample.html">See samples in action.</a></p></section><section><h2>Inspiration and Construction</h2><p><cite>Solarized</cite> was developed by
+<a href="http://ethanschoonover(class=color.c)om/solarized">Ethan Schoonover</a>.
+Inspired by his work, I developed the <cite>Lunarized</cite> Scheme in an attempt to
+cool the Solarized Light background colors. The Light mode was appealing to me
+but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
+it gave me a bluish tint, <strong title="hence, “lunar”">like the full moon</strong>.
+I tried inverting the accent colors as well,
+but got ugly results, so I complemented them instead.</p><p>In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
+the accents are complements of the Solarized Accents.
+The inverse of a color is a 180&deg; hue rotation of that color, while the complement
+of a color is the difference between that color and white.</p><pre>inverse(@color)    : spin(@color, 180);
+complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );</pre></section><nav><h2>More Pages</h2><ul><li><a href="doc/sample.html">Sample</a></li><li><a href="doc/use.html">Suggested Use</a></li><li><a href="doc/accessibility.html">Accessibiltiy</a></li></ul></nav></main><script src="//code.jquery.com/jquery-1.12.0.min.js"></script></body></html>
