@@ -67,7 +67,7 @@ block append main
           li remain constant, independent of mode
   section
     mixin colorBox($namedColor)
-      li.o-GridFlex__Item.o-ColorBox(class=[
+      li.o-Grid__Item.o-ColorBox(class=[
         $namedColor.bgClass()
       , { 'h-darkbg': $namedColor.name().slice(14)==='03' || $namedColor.name().slice(14)==='02' }
       ])
@@ -80,12 +80,12 @@ block append main
     h2 The Colors
     section
       h3 #[cite Solarized] Color Scheme
-      ul.o-List.o-GridFlex
+      ul.o-List.o-Grid
         each color in Docs.SOLARIZED._colors
           +colorBox(color)
     section
       h3 #[cite Lunarized] Color Scheme
-      ul.o-List.o-GridFlex
+      ul.o-List.o-Grid
         each color in Docs.LUNARIZED._colors
           +colorBox(color)
     p: a(href="sample.html") See samples in action.

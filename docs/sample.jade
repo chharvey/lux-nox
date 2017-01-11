@@ -7,8 +7,8 @@ block append scripts
   script(src="scripts/sample.js")
 
 block append main
-  form.o-GridFlex
-    fieldset.o-GridFlex__Item.-w-1o2
+  form.o-Grid
+    fieldset.o-Grid__Item.-w-1o2
       legend Preset Themes
       p.
         Preset #[cite Solarized] themes were created by
@@ -28,7 +28,7 @@ block append main
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light")
           | Lunarized Light
-    fieldset.o-GridFlex__Item.-w-1o2
+    fieldset.o-Grid__Item.-w-1o2
       legend Accessible-Friendly Themes
       p.
         Accessible-friendly themes choose foreground and accent colors based on their
@@ -50,38 +50,38 @@ block append main
       foooter: ul.o-List
         li #[sup &lowast;]recommended over #[b Modified Lunarized Light]
         li #[sup &dagger;]recommended over #[b Modified Solarized Dark]
-    fieldset.o-GridFlex__Item
+    fieldset.o-Grid__Item
       legend Create Your Own Theme
-      ul.o-List.o-GridFlex
-        li.o-GridFlex__Item.-w-1o4: label
+      ul.o-List.o-Grid
+        li.o-Grid__Item.-w-1o4: label
           | Mode
           br
           select(name="cyo" data-param="mode")
             option
             option(value="dark") dark
             option(value="light") light
-        li.o-GridFlex__Item.-w-1o4: label
+        li.o-Grid__Item.-w-1o4: label
           | Background Scheme
           br
           select(name="cyo" data-param="bg_scheme")
             option
             option(value="Solarized") Solarized Backgrounds
             option(value="Lunarized") Lunarized Backgrounds
-        li.o-GridFlex__Item.-w-1o4: label
+        li.o-Grid__Item.-w-1o4: label
           | Foreground Scheme
           br
           select(name="cyo" data-param="fg_scheme")
             option
             option(value="Solarized") Solarized Bases
             option(value="Lunarized") Lunarized Bases
-        li.o-GridFlex__Item.-w-1o4: label
+        li.o-Grid__Item.-w-1o4: label
           | Accent Scheme
           br
           select(name="cyo" data-param="ac_scheme")
             option
             option(value="Solarized") Solarized Accents
             option(value="Lunarized") Lunarized Accents
-    p.o-GridFlex__Item: input(type="reset")
+    p.o-Grid__Item: input(type="reset")
   pre.o-Box.js-theme.
     #[span.js-cmd &lt;tag #[span.js-kwd attribute=#[span.js-str &quot;value value&quot;]]&gt;]content #[span.js-cst &amp;amp;] more#[span.js-cmd &lt;#{'/'}tag&gt;]
     #[small.js-deemph &lt;!-- HTML comment --&gt;]
