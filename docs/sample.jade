@@ -15,7 +15,7 @@ block append main
         #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover];
         preset #[cite Lunarized] themes were created by me.
         Read the #[a(href="index.html") home page] for more information.
-      ul.o-ListBare
+      ul.o-List
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark")
           | Solarized Dark
@@ -34,7 +34,7 @@ block append main
         Accessible-friendly themes choose foreground and accent colors based on their
         #[a(href="accessibility.html") contrast ratios]
         with the background color.
-      ul.o-ListBare
+      ul.o-List
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark_mod")
           | Modified Solarized Dark
@@ -47,12 +47,12 @@ block append main
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light_mod")
           | Modified Lunarized Light
-      foooter: ul.o-ListBare
+      foooter: ul.o-List
         li #[sup &lowast;]recommended over #[b Modified Lunarized Light]
         li #[sup &dagger;]recommended over #[b Modified Solarized Dark]
     fieldset.o-GridFlex__Item
       legend Create Your Own Theme
-      ul.o-ListBare.o-GridFlex
+      ul.o-List.o-GridFlex
         li.o-GridFlex__Item.-w-1o4: label
           | Mode
           br
