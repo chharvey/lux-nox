@@ -39,23 +39,25 @@ block append main
               ul
                 li programming control (#[code if], #[code for], #[code switch], #[code return])
                 li other control (#[code public], #[code private], #[code static])
-                li Jade buffered comments&nbsp;
-                li CSS pseudo-elements and -classes
+                li CSS tag selectors
+                li CSS pseudo-element and -class selectors
+                li CSS at-rules (#[code @media], #[code @font-face])
+                li Jade buffered comments
           mixin opr()
             li(class=theme.opr.class)= theme.opr.name + ':'
               ul
-                li delimiters and operators (#[code +], #[code ==], #[code new], #[code typeof])
-                li Jade class names
+                li delimiters and operators (#[code= '[]'], #[code {}], #[code +], #[code ==], #[code new], #[code typeof])
+                li HTML class names
           mixin kwd()
             li(class=theme.kwd.class)= theme.kwd.name + ':'
               ul
-                li HTML/Jade attribute names
+                li HTML attribute names
                 li CSS property names
                 li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
           mixin cst()
             li(class=theme.cst.class)= theme.cst.name + ':'
               ul
-                li HTML/Jade characters and entities
+                li HTML characters and entities
                 li CSS numeric values with units
                 li constant values (numbers, colors, booleans, #[code null])
           mixin str()
@@ -67,22 +69,22 @@ block append main
           mixin cmd()
             li(class=theme.cmd.class)= theme.cmd.name + ':'
               ul
-                li HTML/Jade tags
-                li CSS/Less class selectors
+                li HTML tags
+                li CSS class selectors
                 li JS function definitions and function calls
           mixin arg()
             li(class=theme.arg.class)= theme.arg.name + ':'
               ul
+                li CSS media query keywords
                 li variable/parameter names
                 li function arguments
-                li Jade tag interpolation
           mixin obj()
             li(class=theme.obj.class)= theme.obj.name + ':'
               ul
-                //- li string delimiters (#[code &quot;] and #[code &apos;])
+                li string delimiters (#[code &quot;] and #[code &apos;])
                 li CSS strings
                 li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
-                li Jade id names
+                li HTML id names
           if theme.settings.ac_scheme === 'Lunarized'
             +str()
             +cmd()

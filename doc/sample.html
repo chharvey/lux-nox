@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><title>Sample | lux-nox</title><meta charset="utf-8"><meta name="author" content="Chris Harvey"><meta name="description" content="Solarized and Lunaried colors for any project."><link rel="stylesheet" href="../node_modules/xmeter/xmeter.min.css"><link rel="stylesheet" href="../node_modules/bangs/bangs.min.css"><link rel="stylesheet" href="../lux-nox.min.css"><link rel="stylesheet" href="../doc/styles/doc.css"></head><body><main><header><h1>lux-nox &mdash; Sample</h1></header><form class="o-GridFlex"><fieldset class="o-GridFlex__Item -w-1o2"><legend>Preset Themes</legend><p>Preset <cite>Solarized</cite> themes were created by
+<!DOCTYPE html><html lang="en"><head><title>Sample | lux-nox</title><meta charset="utf-8"><meta name="author" content="Chris Harvey"><meta name="description" content="Solarized and Lunaried colors for any project."><link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/xmeter/v4.0.0/xmeter.min.css"><link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/bangs/v0.8.0/bangs.min.css"><link rel="stylesheet" href="../lux-nox.min.css"><link rel="stylesheet" href="../doc/styles/doc.css"></head><body><main><header><h1>lux-nox &mdash; Sample</h1></header><form class="o-GridFlex"><fieldset class="o-GridFlex__Item -w-1o2"><legend>Preset Themes</legend><p>Preset <cite>Solarized</cite> themes were created by
 <a href="http://ethanschoonover(class=color.c)om/solarized">Ethan Schoonover</a>;
 preset <cite>Lunarized</cite> themes were created by me.
 Read the <a href="../index.html">home page</a> for more information.</p><ul class="o-ListBare"><li><label><input style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark">Solarized Dark</label></li><li><label><input style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_light">Solarized Light</label></li><li><label><input style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_dark">Lunarized Dark</label></li><li><label><input style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light">Lunarized Light</label></li></ul></fieldset><fieldset class="o-GridFlex__Item -w-1o2"><legend>Accessible-Friendly Themes</legend><p>Accessible-friendly themes choose foreground and accent colors based on their
@@ -32,6 +32,30 @@ with the background color.</p><ul class="o-ListBare"><li><label><input style="ma
 <span class="js-cmd">&lt;/script&gt;</span></pre></main><script src="//code.jquery.com/jquery-1.12.0.min.js"></script><script>var context = {"Solarized":{"dark":{"text":{"class":"a-c-s0","name":"Solarized Base0"},"emph":{"class":"a-c-s1","name":"Solarized Base1"},"deemph":{"class":"a-c-s01","name":"Solarized Base01"},"hilite":{"class":"a-bc-s02","name":"Solarized Base02"},"bg":{"class":"a-bc-s03","name":"Solarized Base03"}},"light":{"text":{"class":"a-c-s00","name":"Solarized Base00"},"emph":{"class":"a-c-s01","name":"Solarized Base01"},"deemph":{"class":"a-c-s1","name":"Solarized Base1"},"hilite":{"class":"a-bc-s2","name":"Solarized Base2"},"bg":{"class":"a-bc-s3","name":"Solarized Base3"}},"accent":{"ctl":{"class":"a-c-sr","name":"Solarized Red"},"opr":{"class":"a-c-so","name":"Solarized Orange"},"kwd":{"class":"a-c-sy","name":"Solarized Yellow"},"cst":{"class":"a-c-sg","name":"Solarized Green"},"str":{"class":"a-c-sc","name":"Solarized Cyan"},"cmd":{"class":"a-c-sb","name":"Solarized Blue"},"arg":{"class":"a-c-sv","name":"Solarized Violet"},"obj":{"class":"a-c-sm","name":"Solarized Magenta"}}},"Lunarized":{"dark":{"text":{"class":"a-c-l0","name":"Lunarized Base0"},"emph":{"class":"a-c-l1","name":"Lunarized Base1"},"deemph":{"class":"a-c-l01","name":"Lunarized Base01"},"hilite":{"class":"a-bc-l02","name":"Lunarized Base02"},"bg":{"class":"a-bc-l03","name":"Lunarized Base03"}},"light":{"text":{"class":"a-c-l00","name":"Lunarized Base00"},"emph":{"class":"a-c-l01","name":"Lunarized Base01"},"deemph":{"class":"a-c-l1","name":"Lunarized Base1"},"hilite":{"class":"a-bc-l2","name":"Lunarized Base2"},"bg":{"class":"a-bc-l3","name":"Lunarized Base3"}},"accent":{"ctl":{"class":"a-c-lr","name":"Lunarized Red"},"opr":{"class":"a-c-lo","name":"Lunarized Orange"},"kwd":{"class":"a-c-ly","name":"Lunarized Yellow"},"cst":{"class":"a-c-lg","name":"Lunarized Green"},"str":{"class":"a-c-lc","name":"Lunarized Cyan"},"cmd":{"class":"a-c-lb","name":"Lunarized Blue"},"arg":{"class":"a-c-li","name":"Lunarized Indigo"},"obj":{"class":"a-c-lv","name":"Lunarized Violet"}}}}
 var createTheme = function createTheme(settings) {
   var empty_color = { class: '' , name: '' }
+  var returned = { settings : settings }
+  if (settings.fg_scheme && settings.mode) {
+    returned.text   = context[settings.fg_scheme][settings.mode].text
+    returned.emph   = context[settings.fg_scheme][settings.mode].emph
+    returned.deemph = context[settings.fg_scheme][settings.mode].deemph
+    returned.hilite = context[settings.bg_scheme][settings.mode].hilite
+    returned.bg     = context[settings.bg_scheme][settings.mode].bg
+  } else {
+    returned.text = returned.emph = returned.deemph = returned.hilite = returned.bg = empty_color
+  }
+  if (settings.ac_scheme) {
+    returned.ctl = context[settings.ac_scheme].accent.ctl
+    returned.opr = context[settings.ac_scheme].accent.opr
+    returned.kwd = context[settings.ac_scheme].accent.kwd
+    returned.cst = context[settings.ac_scheme].accent.cst
+    returned.str = context[settings.ac_scheme].accent.str
+    returned.cmd = context[settings.ac_scheme].accent.cmd
+    returned.arg = context[settings.ac_scheme].accent.arg
+    returned.obj = context[settings.ac_scheme].accent.obj
+  } else {
+    returned.ctl = returned.opr = returned.kwd = returned.cst = returned.str = returned.cmd = returned.arg = returned.obj = empty_color
+  }
+  return returned
+//-
   return {
     settings : settings
   , text   : (settings.fg_scheme && settings.mode) ? context[settings.fg_scheme][settings.mode].text   : empty_color

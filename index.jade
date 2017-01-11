@@ -9,7 +9,7 @@ block append header
     Import them into any project to use the variables and classes in your codebase.
 
 block append main
-  footer: p by #[a(href="https://github(class=color.c)om/chharvey/lux-nox/") Chris Harvey]
+  footer: p by #[a(href="https://github.com/chharvey/lux-nox/") Chris Harvey]
   section
     h2 Example
     figure.o-Box.a-bc-s3.a-c-s00
@@ -18,6 +18,20 @@ block append main
         #[span.a-c-sb &lt;h4 #[span.a-c-sy class=#[span.a-c-sc #[span.a-c-sm &quot;]a-rc-sb#[span.a-c-sm &quot;]]]&gt;]Solarized Blue border!#[span.a-c-sb &lt;&#x002f;h4&gt;]
       h3.o-Box.a-bc-s03.a-c-lc Solarized Base03 background, Lunarized Cyan foreground!
       h4.o-Box.a-rc-sb(style="border: 3px solid;") Solarized Blue border!
+  section
+    h2 Usage
+    p Locally
+    pre.
+      $ npm install bangs
+    pre.
+      &lt;link rel="stylesheet" href="/node_modules/lux-nox/lux-nox[.min].css"/&gt;
+    p Remotely from a CDN (not recommended)
+    pre.
+      &lt;link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/lux-nox/#[var ‹master›]/lux-nox[.min].css"/&gt;
+    p Remotely from this site (not recommended)
+    pre.
+      &lt;link rel="stylesheet" href="https://chharvey.github.io/lux-nox/lux-nox[.min].css"/&gt;
+    p where #[code #[var ‹master›]] can be a branch or a tag, and optional #[code [.min]] is for the minified version.
   section
     h2 Description
     p Each color scheme contains 16 colors total, shared among two modes:

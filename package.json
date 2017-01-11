@@ -1,15 +1,15 @@
 {
   "name": "lux-nox",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A repository containing the Solarized and Lunarized color schemes.",
   "main": "lux-nox.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "jade": "jade",
-    "jade:all": "jade {layout.tpl,index,doc/{sample,use,accessibility}}.jade",
-    "lessc:all": "lessc doc/styles/doc.less doc/styles/doc.css  ;  lessc lux-nox.less lux-nox.css",
+    "jade:all": "jade {index,doc/{sample,use,accessibility}}.jade",
+    "lessc:all": "lessc doc/styles/doc.less doc/styles/doc.css  &&  lessc lux-nox.less lux-nox.css",
     "minify": "cleancss lux-nox.css -o lux-nox.min.css",
-    "build": "npm run jade:all  ;  npm run lessc:all  ;  npm run minify"
+    "build": "npm run jade:all  &&  npm run lessc:all  &&  npm run minify"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,6 @@
   },
   "homepage": "https://chharvey.github.io/lux-nox/",
   "devDependencies": {
-    "bangs": "^0.8.0",
     "clean-css": "^3.4.6",
     "jade": "^1.11.0",
     "less": "^2.5.3",

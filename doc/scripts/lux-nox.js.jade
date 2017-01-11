@@ -107,13 +107,11 @@
     , cst: { color: 'green'   }
     , str: { color: 'cyan'    }
     , cmd: { color: 'blue'    }
-    , arg: { color: 'indigo'  , color_alt : 'violet' }
-    , obj: { color: 'magenta' , color_alt : 'violet' }
+    , arg: { color: 'indigo'  , color_alt: 'violet' }
+    , obj: { color: 'magenta' , color_alt: 'violet' }
     }
     for (var sch in scheme) {
-      context[sch] = {}
-      context[sch].dark = {}
-      context[sch].light = {}
+      context[sch] = { dark: {}, light: {} }
       for (var mod of ['dark','light']) {
         for (var comp in bases) {
           context[sch][mod][comp] = {
@@ -143,6 +141,30 @@
    */
   function createTheme(settings) {
     var empty_color = { class: '' , name: '' }
+    var returned = { settings : settings }
+    if (settings.fg_scheme && settings.mode) {
+      returned.text   = context[settings.fg_scheme][settings.mode].text
+      returned.emph   = context[settings.fg_scheme][settings.mode].emph
+      returned.deemph = context[settings.fg_scheme][settings.mode].deemph
+      returned.hilite = context[settings.bg_scheme][settings.mode].hilite
+      returned.bg     = context[settings.bg_scheme][settings.mode].bg
+    } else {
+      returned.text = returned.emph = returned.deemph = returned.hilite = returned.bg = empty_color
+    }
+    if (settings.ac_scheme) {
+      returned.ctl = context[settings.ac_scheme].accent.ctl
+      returned.opr = context[settings.ac_scheme].accent.opr
+      returned.kwd = context[settings.ac_scheme].accent.kwd
+      returned.cst = context[settings.ac_scheme].accent.cst
+      returned.str = context[settings.ac_scheme].accent.str
+      returned.cmd = context[settings.ac_scheme].accent.cmd
+      returned.arg = context[settings.ac_scheme].accent.arg
+      returned.obj = context[settings.ac_scheme].accent.obj
+    } else {
+      returned.ctl = returned.opr = returned.kwd = returned.cst = returned.str = returned.cmd = returned.arg = returned.obj = empty_color
+    }
+    return returned
+  //-
     return {
       settings : settings
     , text   : (settings.fg_scheme && settings.mode) ? context[settings.fg_scheme][settings.mode].text   : empty_color
