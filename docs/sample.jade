@@ -8,7 +8,7 @@ block append scripts
 
 block append main
   form.o-Grid
-    fieldset.o-Grid__Item.-w-1o2
+    fieldset.o-Grid__Item.-x-1o2
       legend Preset Themes
       p.
         Preset #[cite Solarized] themes were created by
@@ -28,7 +28,7 @@ block append main
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light")
           | Lunarized Light
-    fieldset.o-Grid__Item.-w-1o2
+    fieldset.o-Grid__Item.-x-1o2
       legend Accessible-Friendly Themes
       p.
         Accessible-friendly themes choose foreground and accent colors based on their
@@ -53,28 +53,28 @@ block append main
     fieldset.o-Grid__Item
       legend Create Your Own Theme
       ul.o-List.o-Grid
-        li.o-Grid__Item.-w-1o4: label
+        li.o-Grid__Item.-x-1o4: label
           | Mode
           br
           select(name="cyo" data-param="mode")
             option
             option(value="dark") dark
             option(value="light") light
-        li.o-Grid__Item.-w-1o4: label
+        li.o-Grid__Item.-x-1o4: label
           | Background Scheme
           br
           select(name="cyo" data-param="bg_scheme")
             option
             option(value="Solarized") Solarized Backgrounds
             option(value="Lunarized") Lunarized Backgrounds
-        li.o-Grid__Item.-w-1o4: label
+        li.o-Grid__Item.-x-1o4: label
           | Foreground Scheme
           br
           select(name="cyo" data-param="fg_scheme")
             option
             option(value="Solarized") Solarized Bases
             option(value="Lunarized") Lunarized Bases
-        li.o-Grid__Item.-w-1o4: label
+        li.o-Grid__Item.-x-1o4: label
           | Accent Scheme
           br
           select(name="cyo" data-param="ac_scheme")

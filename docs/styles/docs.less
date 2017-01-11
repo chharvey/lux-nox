@@ -55,7 +55,7 @@ th, td {
   overflow: auto;
   .breakpoint-mx(@n) {
     @media screen and (min-width: (@n*(@p-height + 2*@p-marg_horiz))) {
-      width: calc((1/@n * 100%)~' - '(2*@p-marg_horiz));
+      .flex(calc((1/@n * 100%)~' - '(2*@p-marg_horiz)));
     }
   }
   .breakpoint-mx(2);
