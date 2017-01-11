@@ -1,0 +1,147 @@
+extends _docs.tpl.jade
+
+block append vars
+  - var page = Docs.SITE.find('use.html')
+
+block append main
+  div.o-Grid
+    mixin baselist(theme)
+      ul
+        li
+          em= theme.text.name()
+          | : text
+        li(class=theme.emph.fgClass())
+          em= theme.emph.name()
+          | : emphasis
+        li(class=theme.deemph.fgClass())
+          em= theme.deemph.name()
+          | : de-emphasis
+        li(class=theme.hilite.bgClass())
+          = theme.hilite.name()
+          | : highlight
+        li
+          = theme.bg.name()
+          | : background
+    mixin ctl($namedColor)
+      li(class=$namedColor.fgClass())
+        = $namedColor.name() + ':'
+        ul
+          li programming control (#[code if], #[code for], #[code switch], #[code return])
+          li other control (#[code public], #[code private], #[code static])
+          li CSS tag selectors
+          li CSS pseudo-element and -class selectors
+          li CSS at-rules (#[code @media], #[code @font-face])
+          li Jade buffered comments
+    mixin opr($namedColor)
+      li(class=$namedColor.fgClass())
+        = $namedColor.name() + ':'
+        ul
+          li delimiters and operators (#[code= '[]'], #[code {}], #[code +], #[code ==], #[code new], #[code typeof])
+          li HTML class names
+    mixin kwd($namedColor)
+      li(class=$namedColor.fgClass())
+        = $namedColor.name() + ':'
+        ul
+          li HTML attribute names
+          li CSS property names
+          li pre-defined keywords and types (#[code var], #[code function], #[code int], #[code class])
+    mixin cst($namedColor)
+      li(class=$namedColor.fgClass())
+        = $namedColor.name() + ':'
+        ul
+          li HTML characters and entities
+          li CSS numeric values with units
+          li constant values (numbers, colors, booleans, #[code null])
+    mixin str($namedColor)
+      li(class=$namedColor.fgClass())
+        = $namedColor.name() + ':'
+        ul
+          li HTML attribute values
+          li CSS property values
+          li strings (except in CSS)
+    mixin cmd($namedColor)
+      li(class=$namedColor.fgClass())
+        = $namedColor.name() + ':'
+        ul
+          li HTML tags
+          li CSS class selectors
+          li JS function definitions and function calls
+    mixin arg($namedColor)
+      li(class=$namedColor.fgClass())
+        = $namedColor.name() + ':'
+        ul
+          li CSS media query keywords
+          li variable/parameter names
+          li function arguments
+    mixin obj($namedColor)
+      li(class=$namedColor.fgClass())
+        = $namedColor.name() + ':'
+        ul
+          li string delimiters (#[code &quot;] and #[code &apos;])
+          li CSS strings
+          li object/class/function references (custom, built-in, #[code this], #[code prototype], #[code String], #[code Array])
+          li HTML id names
+    section.o-Grid__Item.o-Box.-x-1o2.a-bc-l03.a-c-s0
+      h2 Dark Color Theme
+      -
+        var darktheme = {
+            text   : Docs.SOLARIZED.getColor('Solarized Base0')
+          , emph   : Docs.SOLARIZED.getColor('Solarized Base1')
+          , deemph : Docs.SOLARIZED.getColor('Solarized Base01')
+          , hilite : Docs.LUNARIZED.getColor('Lunarized Base02')
+          , bg     : Docs.LUNARIZED.getColor('Lunarized Base03')
+          , ctl    : Docs.LUNARIZED.getColor('Lunarized Red')
+          , opr    : Docs.LUNARIZED.getColor('Lunarized Orange')
+          , kwd    : Docs.LUNARIZED.getColor('Lunarized Yellow')
+          , cst    : Docs.LUNARIZED.getColor('Lunarized Green')
+          , str    : Docs.LUNARIZED.getColor('Lunarized Cyan')
+          , cmd    : Docs.LUNARIZED.getColor('Lunarized Blue')
+          , arg    : Docs.LUNARIZED.getColor('Lunarized Indigo')
+          , obj    : Docs.LUNARIZED.getColor('Lunarized Violet')
+        }
+      section
+        h3 Bases
+        +baselist(darktheme)
+      section
+        h3 Accents
+        ul
+          +str(darktheme.str)
+          +cmd(darktheme.cmd)
+          +arg(darktheme.arg)
+          +obj(darktheme.obj)
+          +ctl(darktheme.ctl)
+          +opr(darktheme.opr)
+          +kwd(darktheme.kwd)
+          +cst(darktheme.cst)
+    section.o-Grid__Item.o-Box.-x-1o2.a-bc-s3.a-c-l00
+      h2 Light Color Theme
+      -
+        var litetheme = {
+            text   : Docs.LUNARIZED.getColor('Lunarized Base00')
+          , emph   : Docs.LUNARIZED.getColor('Lunarized Base01')
+          , deemph : Docs.LUNARIZED.getColor('Lunarized Base1')
+          , hilite : Docs.SOLARIZED.getColor('Solarized Base2')
+          , bg     : Docs.SOLARIZED.getColor('Solarized Base3')
+          , ctl    : Docs.SOLARIZED.getColor('Solarized Red')
+          , opr    : Docs.SOLARIZED.getColor('Solarized Orange')
+          , kwd    : Docs.SOLARIZED.getColor('Solarized Yellow')
+          , cst    : Docs.SOLARIZED.getColor('Solarized Green')
+          , str    : Docs.SOLARIZED.getColor('Solarized Cyan')
+          , cmd    : Docs.SOLARIZED.getColor('Solarized Blue')
+          , arg    : Docs.SOLARIZED.getColor('Solarized Violet')
+          , obj    : Docs.SOLARIZED.getColor('Solarized Magenta')
+        }
+      section
+        h3 Bases
+        +baselist(litetheme)
+      section
+        h3 Accents
+        ul
+          +ctl(litetheme.ctl)
+          +opr(litetheme.opr)
+          +kwd(litetheme.kwd)
+          +cst(litetheme.cst)
+          +str(litetheme.str)
+          +cmd(litetheme.cmd)
+          +arg(litetheme.arg)
+          +obj(litetheme.obj)

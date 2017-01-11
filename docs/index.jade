@@ -1,0 +1,116 @@
+extends _docs.tpl.jade
+
+block append vars
+  - var page = Docs.SITE.find('index.html')
+
+block append header
+  p.
+    This repo is specifically designed for using colors from the
+    #[cite Solarized] and #[cite Lunarized] color schemes.
+    These color schemes were originally designed for displaying computer code, though
+    they can be applied #[abbr(title="practically") literally] anywhere.
+    Import them into any project to use the variables and classes in your codebase.
+
+block append main
+  footer: p by #[a(href="https://github.com/chharvey/lux-nox/") Chris Harvey]
+  section
+    h2 Example
+    figure.o-Box.a-bc-s3.a-c-s00
+      pre.
+        #[span.-c-sb &lt;h3 #[span.-c-sy class=#[span.-c-sc #[span.-c-sm &quot;]-bc-s03  -c-lc#[span.-c-sm &quot;]]]&gt;]Solarized Base03 background, Lunarized Cyan foreground!#[span.-c-sb &lt;&#x002f;h3&gt;]
+        #[span.-c-sb &lt;h4 #[span.-c-sy class=#[span.-c-sc #[span.-c-sm &quot;]-rc-sb#[span.-c-sm &quot;]]]&gt;]Solarized Blue border!#[span.-c-sb &lt;&#x002f;h4&gt;]
+      h3.o-Box.-bc-s03.-c-lc Solarized Base03 background, Lunarized Cyan foreground!
+      h4.o-Box.-rc-sb(style="border: 3px solid;") Solarized Blue border!
+  section
+    h2 Usage
+    p Locally
+    pre.
+      $ npm install bangs
+    pre.
+      &lt;link rel="stylesheet" href="/node_modules/lux-nox/lux-nox[.min].css"/&gt;
+    p Remotely from a CDN (not recommended)
+    pre.
+      &lt;link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/lux-nox/#[var ‹master›]/lux-nox[.min].css"/&gt;
+    p Remotely from this site (not recommended)
+    pre.
+      &lt;link rel="stylesheet" href="https://chharvey.github.io/lux-nox/lux-nox[.min].css"/&gt;
+    p where #[code #[var ‹master›]] can be a branch or a tag, and optional #[code [.min]] is for the minified version.
+  section
+    h2 Description
+    p Each color scheme contains 16 colors total, shared among two modes:
+    ul
+      li Dark mode
+        ul
+          li medium-light text  (Base0)
+          li light emphasis     (Base1)
+          li dark de-emphasis   (Base01)
+          li darker highlight   (Base02)
+          li darkest background (Base03)
+      li Light mode
+        ul
+          li medium-dark text    (Base00)
+          li dark emphasis       (Base01)
+          li light de-emphasis   (Base1)
+          li lighter highlight   (Base2)
+          li lightest background (Base3)
+    p Of the 16 colors in each scheme, there are 8 base colors and 8 accent colors:
+    ul
+      li Bases
+        ul
+          li dull tones
+          li foreground, emphasis, de-emphasis, highlight, background
+          li interchanged based on the mode
+      li Accents
+        ul
+          li sharp tones
+          li syntax highlighting
+          li remain constant, independent of mode
+  section
+    mixin colorBox($namedColor)
+      li.o-Grid__Item.o-ColorBox(class=[
+        $namedColor.bgClass()
+      , { 'h-darkbg': $namedColor.name().slice(14)==='03' || $namedColor.name().slice(14)==='02' }
+      ])
+        h4= $namedColor.name()
+        pre.
+          #{$namedColor.toString('hex')}
+          #{$namedColor.bgClass()}
+          #{$namedColor.fgClass()}
+          #{$namedColor.brClass()}
+    h2 The Colors
+    section
+      h3 #[cite Solarized] Color Scheme
+      ul.o-List.o-Grid
+        each color in Docs.SOLARIZED._colors
+          +colorBox(color)
+    section
+      h3 #[cite Lunarized] Color Scheme
+      ul.o-List.o-Grid
+        each color in Docs.LUNARIZED._colors
+          +colorBox(color)
+    p: a(href="sample.html") See samples in action.
+  section
+    h2 Inspiration and Construction
+    p.
+      #[cite Solarized] was developed by
+      #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover].
+      Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
+      cool the Solarized Light background colors. The Light mode was appealing to me
+      but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
+      it gave me a bluish tint, #[strong(title="hence, “lunar”") like the full moon].
+      I tried inverting the accent colors as well,
+      but got ugly results, so I complemented them instead.
+    p.
+      In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
+      the accents are complements of the Solarized Accents.
+      The inverse of a color is a 180&deg; hue rotation of that color, while the complement
+      of a color is the difference between that color and white.
+    pre.
+      inverse(@color)    : spin(@color, 180);
+      complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );
+  nav
+    h2 More Pages
+    ul
+      li: a(href="sample.html") Sample
+      li: a(href="use.html") Suggested Use
+      li: a(href="accessibility.html") Accessibiltiy
