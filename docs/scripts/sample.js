@@ -1,39 +1,39 @@
   var scheme = {
     'Solarized' : {
-      base03  : { name: 'Solarized Base03'  , code: '#002b36' , bg_class: 'a-bc-s03' , fg_class: 'a-c-s03' , br_class: 'a-rc-s03' }
-    , base02  : { name: 'Solarized Base02'  , code: '#073642' , bg_class: 'a-bc-s02' , fg_class: 'a-c-s02' , br_class: 'a-rc-s02' }
-    , base01  : { name: 'Solarized Base01'  , code: '#586e75' , bg_class: 'a-bc-s01' , fg_class: 'a-c-s01' , br_class: 'a-rc-s01' }
-    , base00  : { name: 'Solarized Base00'  , code: '#657b83' , bg_class: 'a-bc-s00' , fg_class: 'a-c-s00' , br_class: 'a-rc-s00' }
-    , base0   : { name: 'Solarized Base0'   , code: '#839496' , bg_class: 'a-bc-s0'  , fg_class: 'a-c-s0'  , br_class: 'a-rc-s0'  }
-    , base1   : { name: 'Solarized Base1'   , code: '#93a1a1' , bg_class: 'a-bc-s1'  , fg_class: 'a-c-s1'  , br_class: 'a-rc-s1'  }
-    , base2   : { name: 'Solarized Base2'   , code: '#eee8d5' , bg_class: 'a-bc-s2'  , fg_class: 'a-c-s2'  , br_class: 'a-rc-s2'  }
-    , base3   : { name: 'Solarized Base3'   , code: '#fdf6e3' , bg_class: 'a-bc-s3'  , fg_class: 'a-c-s3'  , br_class: 'a-rc-s3'  }
-    , red     : { name: 'Solarized Red'     , code: '#dc322f' , bg_class: 'a-bc-sr'  , fg_class: 'a-c-sr'  , br_class: 'a-rc-sr'  }
-    , orange  : { name: 'Solarized Orange'  , code: '#cb4b16' , bg_class: 'a-bc-so'  , fg_class: 'a-c-so'  , br_class: 'a-rc-so'  }
-    , yellow  : { name: 'Solarized Yellow'  , code: '#b58900' , bg_class: 'a-bc-sy'  , fg_class: 'a-c-sy'  , br_class: 'a-rc-sy'  }
-    , green   : { name: 'Solarized Green'   , code: '#859900' , bg_class: 'a-bc-sg'  , fg_class: 'a-c-sg'  , br_class: 'a-rc-sg'  }
-    , cyan    : { name: 'Solarized Cyan'    , code: '#2aa198' , bg_class: 'a-bc-sc'  , fg_class: 'a-c-sc'  , br_class: 'a-rc-sc'  }
-    , blue    : { name: 'Solarized Blue'    , code: '#268bd2' , bg_class: 'a-bc-sb'  , fg_class: 'a-c-sb'  , br_class: 'a-rc-sb'  }
-    , violet  : { name: 'Solarized Violet'  , code: '#6c71c4' , bg_class: 'a-bc-sv'  , fg_class: 'a-c-sv'  , br_class: 'a-rc-sv'  }
-    , magenta : { name: 'Solarized Magenta' , code: '#d33682' , bg_class: 'a-bc-sm'  , fg_class: 'a-c-sm'  , br_class: 'a-rc-sm'  }
+      base03  : { name: 'Solarized Base03'  , code: '#002b36' , bg_class: '-bc-s03' , fg_class: '-c-s03' , br_class: '-rc-s03' }
+    , base02  : { name: 'Solarized Base02'  , code: '#073642' , bg_class: '-bc-s02' , fg_class: '-c-s02' , br_class: '-rc-s02' }
+    , base01  : { name: 'Solarized Base01'  , code: '#586e75' , bg_class: '-bc-s01' , fg_class: '-c-s01' , br_class: '-rc-s01' }
+    , base00  : { name: 'Solarized Base00'  , code: '#657b83' , bg_class: '-bc-s00' , fg_class: '-c-s00' , br_class: '-rc-s00' }
+    , base0   : { name: 'Solarized Base0'   , code: '#839496' , bg_class: '-bc-s0'  , fg_class: '-c-s0'  , br_class: '-rc-s0'  }
+    , base1   : { name: 'Solarized Base1'   , code: '#93a1a1' , bg_class: '-bc-s1'  , fg_class: '-c-s1'  , br_class: '-rc-s1'  }
+    , base2   : { name: 'Solarized Base2'   , code: '#eee8d5' , bg_class: '-bc-s2'  , fg_class: '-c-s2'  , br_class: '-rc-s2'  }
+    , base3   : { name: 'Solarized Base3'   , code: '#fdf6e3' , bg_class: '-bc-s3'  , fg_class: '-c-s3'  , br_class: '-rc-s3'  }
+    , red     : { name: 'Solarized Red'     , code: '#dc322f' , bg_class: '-bc-sr'  , fg_class: '-c-sr'  , br_class: '-rc-sr'  }
+    , orange  : { name: 'Solarized Orange'  , code: '#cb4b16' , bg_class: '-bc-so'  , fg_class: '-c-so'  , br_class: '-rc-so'  }
+    , yellow  : { name: 'Solarized Yellow'  , code: '#b58900' , bg_class: '-bc-sy'  , fg_class: '-c-sy'  , br_class: '-rc-sy'  }
+    , green   : { name: 'Solarized Green'   , code: '#859900' , bg_class: '-bc-sg'  , fg_class: '-c-sg'  , br_class: '-rc-sg'  }
+    , cyan    : { name: 'Solarized Cyan'    , code: '#2aa198' , bg_class: '-bc-sc'  , fg_class: '-c-sc'  , br_class: '-rc-sc'  }
+    , blue    : { name: 'Solarized Blue'    , code: '#268bd2' , bg_class: '-bc-sb'  , fg_class: '-c-sb'  , br_class: '-rc-sb'  }
+    , violet  : { name: 'Solarized Violet'  , code: '#6c71c4' , bg_class: '-bc-sv'  , fg_class: '-c-sv'  , br_class: '-rc-sv'  }
+    , magenta : { name: 'Solarized Magenta' , code: '#d33682' , bg_class: '-bc-sm'  , fg_class: '-c-sm'  , br_class: '-rc-sm'  }
     }
   , 'Lunarized' : {
-      base03  : { name: 'Lunarized Base03'  , code: '#360b00' , bg_class: 'a-bc-l03' , fg_class: 'a-c-l03' , br_class: 'a-rc-l03' }
-    , base02  : { name: 'Lunarized Base02'  , code: '#421307' , bg_class: 'a-bc-l02' , fg_class: 'a-c-l02' , br_class: 'a-rc-l02' }
-    , base01  : { name: 'Lunarized Base01'  , code: '#755f58' , bg_class: 'a-bc-l01' , fg_class: 'a-c-l01' , br_class: 'a-rc-l01' }
-    , base00  : { name: 'Lunarized Base00'  , code: '#836d65' , bg_class: 'a-bc-l00' , fg_class: 'a-c-l00' , br_class: 'a-rc-l00' }
-    , base0   : { name: 'Lunarized Base0'   , code: '#968583' , bg_class: 'a-bc-l0'  , fg_class: 'a-c-l0'  , br_class: 'a-rc-l0'  }
-    , base1   : { name: 'Lunarized Base1'   , code: '#a19393' , bg_class: 'a-bc-l1'  , fg_class: 'a-c-l1'  , br_class: 'a-rc-l1'  }
-    , base2   : { name: 'Lunarized Base2'   , code: '#d5dbee' , bg_class: 'a-bc-l2'  , fg_class: 'a-c-l2'  , br_class: 'a-rc-l2'  }
-    , base3   : { name: 'Lunarized Base3'   , code: '#e3eafd' , bg_class: 'a-bc-l3'  , fg_class: 'a-c-l3'  , br_class: 'a-rc-l3'  }
-    , cyan    : { name: 'Lunarized Cyan'    , code: '#23cdd0' , bg_class: 'a-bc-lc'  , fg_class: 'a-c-lc'  , br_class: 'a-rc-lc'  }
-    , blue    : { name: 'Lunarized Blue'    , code: '#34b4e9' , bg_class: 'a-bc-lb'  , fg_class: 'a-c-lb'  , br_class: 'a-rc-lb'  }
-    , indigo  : { name: 'Lunarized Indigo'  , code: '#4a76ff' , bg_class: 'a-bc-li'  , fg_class: 'a-c-li'  , br_class: 'a-rc-li'  }
-    , violet  : { name: 'Lunarized Violet'  , code: '#7a66ff' , bg_class: 'a-bc-lv'  , fg_class: 'a-c-lv'  , br_class: 'a-rc-lv'  }
-    , red     : { name: 'Lunarized Red'     , code: '#d55e67' , bg_class: 'a-bc-lr'  , fg_class: 'a-c-lr'  , br_class: 'a-rc-lr'  }
-    , orange  : { name: 'Lunarized Orange'  , code: '#d9742d' , bg_class: 'a-bc-lo'  , fg_class: 'a-c-lo'  , br_class: 'a-rc-lo'  }
-    , yellow  : { name: 'Lunarized Yellow'  , code: '#938e3b' , bg_class: 'a-bc-ly'  , fg_class: 'a-c-ly'  , br_class: 'a-rc-ly'  }
-    , green   : { name: 'Lunarized Green'   , code: '#2cc97d' , bg_class: 'a-bc-lg'  , fg_class: 'a-c-lg'  , br_class: 'a-rc-lg'  }
+      base03  : { name: 'Lunarized Base03'  , code: '#360b00' , bg_class: '-bc-l03' , fg_class: '-c-l03' , br_class: '-rc-l03' }
+    , base02  : { name: 'Lunarized Base02'  , code: '#421307' , bg_class: '-bc-l02' , fg_class: '-c-l02' , br_class: '-rc-l02' }
+    , base01  : { name: 'Lunarized Base01'  , code: '#755f58' , bg_class: '-bc-l01' , fg_class: '-c-l01' , br_class: '-rc-l01' }
+    , base00  : { name: 'Lunarized Base00'  , code: '#836d65' , bg_class: '-bc-l00' , fg_class: '-c-l00' , br_class: '-rc-l00' }
+    , base0   : { name: 'Lunarized Base0'   , code: '#968583' , bg_class: '-bc-l0'  , fg_class: '-c-l0'  , br_class: '-rc-l0'  }
+    , base1   : { name: 'Lunarized Base1'   , code: '#a19393' , bg_class: '-bc-l1'  , fg_class: '-c-l1'  , br_class: '-rc-l1'  }
+    , base2   : { name: 'Lunarized Base2'   , code: '#d5dbee' , bg_class: '-bc-l2'  , fg_class: '-c-l2'  , br_class: '-rc-l2'  }
+    , base3   : { name: 'Lunarized Base3'   , code: '#e3eafd' , bg_class: '-bc-l3'  , fg_class: '-c-l3'  , br_class: '-rc-l3'  }
+    , cyan    : { name: 'Lunarized Cyan'    , code: '#23cdd0' , bg_class: '-bc-lc'  , fg_class: '-c-lc'  , br_class: '-rc-lc'  }
+    , blue    : { name: 'Lunarized Blue'    , code: '#34b4e9' , bg_class: '-bc-lb'  , fg_class: '-c-lb'  , br_class: '-rc-lb'  }
+    , indigo  : { name: 'Lunarized Indigo'  , code: '#4a76ff' , bg_class: '-bc-li'  , fg_class: '-c-li'  , br_class: '-rc-li'  }
+    , violet  : { name: 'Lunarized Violet'  , code: '#7a66ff' , bg_class: '-bc-lv'  , fg_class: '-c-lv'  , br_class: '-rc-lv'  }
+    , red     : { name: 'Lunarized Red'     , code: '#d55e67' , bg_class: '-bc-lr'  , fg_class: '-c-lr'  , br_class: '-rc-lr'  }
+    , orange  : { name: 'Lunarized Orange'  , code: '#d9742d' , bg_class: '-bc-lo'  , fg_class: '-c-lo'  , br_class: '-rc-lo'  }
+    , yellow  : { name: 'Lunarized Yellow'  , code: '#938e3b' , bg_class: '-bc-ly'  , fg_class: '-c-ly'  , br_class: '-rc-ly'  }
+    , green   : { name: 'Lunarized Green'   , code: '#2cc97d' , bg_class: '-bc-lg'  , fg_class: '-c-lg'  , br_class: '-rc-lg'  }
     }
   }
   /*

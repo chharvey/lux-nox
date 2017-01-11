@@ -42,17 +42,17 @@ module.exports = (function () {
    * Return the CSS atom class for background color.
    * @return {string} css classname assigning background color
    */
-  NamedColor.prototype.bgClass = function bgClass() { return 'a-bc' + this._SUFFIX }
+  NamedColor.prototype.bgClass = function bgClass() { return '-bc' + this._SUFFIX }
   /**
    * Return the CSS atom class for foreground color.
    * @return {string} css classname assigning foreground color
    */
-  NamedColor.prototype.fgClass = function fgClass() { return 'a-c'  + this._SUFFIX }
+  NamedColor.prototype.fgClass = function fgClass() { return '-c'  + this._SUFFIX }
   /**
    * Return the CSS atom class for border color.
    * @return {string} css classname assigning border color
    */
-  NamedColor.prototype.brClass = function brClass() { return 'a-rc' + this._SUFFIX }
+  NamedColor.prototype.brClass = function brClass() { return '-rc' + this._SUFFIX }
 
   // STATIC MEMBERS
 
