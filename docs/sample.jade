@@ -1,92 +1,21 @@
-extends ../layout.tpl.jade
+extends _docs.tpl.jade
 
 block append vars
-  - page_names.push('Sample')
-  - home_path = '../'
+  - var page = Docs.SITE.find('sample.html')
 
-block append body
-  script.
-    var context = !{JSON.stringify(context)}
-    var createTheme = !{createTheme}
-    var preset_theme = !{JSON.stringify(preset_theme)}
-    function removeTheme(container) {
-      var theme = createTheme({
-        mode: container.attr('data-mode')
-      , bg_scheme: container.attr('data-bg_scheme')
-      , fg_scheme: container.attr('data-fg_scheme')
-      , ac_scheme: container.attr('data-ac_scheme')
-      })
-      container.removeAttr('data-mode')
-        .removeAttr('data-bg_scheme')
-        .removeAttr('data-fg_scheme')
-        .removeAttr('data-ac_scheme')
-      container.removeClass(theme.bg.class + ' ' + theme.text.class)
-      container.find('.js-emph').removeClass(theme.emph.class)
-      container.find('.js-deemph').removeClass(theme.deemph.class)
-      container.find('.js-hilite').removeClass(theme.hilite.class)
-      container.find('.js-ctl').removeClass(theme.ctl.class)
-      container.find('.js-opr').removeClass(theme.opr.class)
-      container.find('.js-kwd').removeClass(theme.kwd.class)
-      container.find('.js-cst').removeClass(theme.cst.class)
-      container.find('.js-str').removeClass(theme.str.class)
-      container.find('.js-cmd').removeClass(theme.cmd.class)
-      container.find('.js-arg').removeClass(theme.arg.class)
-      container.find('.js-obj').removeClass(theme.obj.class)
-      return theme
-    }
-    function applyTheme(theme, container) {
-      removeTheme(container)
-      container.attr('data-mode', theme.settings.mode)
-        .attr('data-bg_scheme', theme.settings.bg_scheme)
-        .attr('data-fg_scheme', theme.settings.fg_scheme)
-        .attr('data-ac_scheme', theme.settings.ac_scheme)
-      container.addClass(theme.bg.class + ' ' + theme.text.class)
-      container.find('.js-emph').addClass(theme.emph.class)
-      container.find('.js-deemph').addClass(theme.deemph.class)
-      container.find('.js-hilite').addClass(theme.hilite.class)
-      container.find('.js-ctl').addClass(theme.ctl.class)
-      container.find('.js-opr').addClass(theme.opr.class)
-      container.find('.js-kwd').addClass(theme.kwd.class)
-      container.find('.js-cst').addClass(theme.cst.class)
-      container.find('.js-str').addClass(theme.str.class)
-      container.find('.js-cmd').addClass(theme.cmd.class)
-      container.find('.js-arg').addClass(theme.arg.class)
-      container.find('.js-obj').addClass(theme.obj.class)
-    }
-    function editTheme(changes, container) {
-      var settings = removeTheme(container).settings
-      changes(settings)
-      applyTheme(createTheme(settings), container)
-    }
-    $('input[name="preset"]').change(function () {
-      var theme = preset_theme[$(this).val()]
-      $('select[data-param="mode"]').val(theme.settings.mode)
-      $('select[data-param="bg_scheme"]').val(theme.settings.bg_scheme)
-      $('select[data-param="fg_scheme"]').val(theme.settings.fg_scheme)
-      $('select[data-param="ac_scheme"]').val(theme.settings.ac_scheme)
-      applyTheme(theme, $('.js-theme'))
-    })
-    $('select[name="cyo"]').change(function () {
-      var self = this
-      $('input[name="preset"]').removeAttr('checked')
-      editTheme(function (settings) {
-        settings[$(self).attr('data-param')] = $(self).val()
-      }, $('.js-theme'))
-    })
-    $('input[type="reset"]').click(function () {
-      removeTheme($('.js-theme'))
-    })
+block append scripts
+  script(src="scripts/sample.js")
 
 block append main
-  form.o-GridFlex
-    fieldset.o-GridFlex__Item.-w-1o2
+  form.o-Grid
+    fieldset.o-Grid__Item.-x-1o2
       legend Preset Themes
       p.
         Preset #[cite Solarized] themes were created by
-        #[a(href="http://ethanschoonover(class=color.c)om/solarized") Ethan Schoonover];
+        #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover];
         preset #[cite Lunarized] themes were created by me.
-        Read the #[a(href="../index.html") home page] for more information.
-      ul.o-ListBare
+        Read the #[a(href="index.html") home page] for more information.
+      ul.o-List
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark")
           | Solarized Dark
@@ -99,13 +28,13 @@ block append main
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light")
           | Lunarized Light
-    fieldset.o-GridFlex__Item.-w-1o2
+    fieldset.o-Grid__Item.-x-1o2
       legend Accessible-Friendly Themes
       p.
         Accessible-friendly themes choose foreground and accent colors based on their
         #[a(href="accessibility.html") contrast ratios]
         with the background color.
-      ul.o-ListBare
+      ul.o-List
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="solarized_dark_mod")
           | Modified Solarized Dark
@@ -118,41 +47,41 @@ block append main
         li: label
           input(style="margin-right: 0.5em;" type="radio" name="preset" value="lunarized_light_mod")
           | Modified Lunarized Light
-      foooter: ul.o-ListBare
+      foooter: ul.o-List
         li #[sup &lowast;]recommended over #[b Modified Lunarized Light]
         li #[sup &dagger;]recommended over #[b Modified Solarized Dark]
-    fieldset.o-GridFlex__Item
+    fieldset.o-Grid__Item
       legend Create Your Own Theme
-      ul.o-ListBare.o-GridFlex
-        li.o-GridFlex__Item.-w-1o4: label
+      ul.o-List.o-Grid
+        li.o-Grid__Item.-x-1o4: label
           | Mode
           br
           select(name="cyo" data-param="mode")
             option
             option(value="dark") dark
             option(value="light") light
-        li.o-GridFlex__Item.-w-1o4: label
+        li.o-Grid__Item.-x-1o4: label
           | Background Scheme
           br
           select(name="cyo" data-param="bg_scheme")
             option
             option(value="Solarized") Solarized Backgrounds
             option(value="Lunarized") Lunarized Backgrounds
-        li.o-GridFlex__Item.-w-1o4: label
+        li.o-Grid__Item.-x-1o4: label
           | Foreground Scheme
           br
           select(name="cyo" data-param="fg_scheme")
             option
             option(value="Solarized") Solarized Bases
             option(value="Lunarized") Lunarized Bases
-        li.o-GridFlex__Item.-w-1o4: label
+        li.o-Grid__Item.-x-1o4: label
           | Accent Scheme
           br
           select(name="cyo" data-param="ac_scheme")
             option
             option(value="Solarized") Solarized Accents
             option(value="Lunarized") Lunarized Accents
-    p.o-GridFlex__Item: input(type="reset")
+    p.o-Grid__Item: input(type="reset")
   pre.o-Box.js-theme.
     #[span.js-cmd &lt;tag #[span.js-kwd attribute=#[span.js-str &quot;value value&quot;]]&gt;]content #[span.js-cst &amp;amp;] more#[span.js-cmd &lt;#{'/'}tag&gt;]
     #[small.js-deemph &lt;!-- HTML comment --&gt;]
