@@ -53,10 +53,7 @@ block append main
           li remain constant, independent of mode
   section
     mixin colorBox($namedColor)
-      li.o-Grid__Item.o-ColorBox(class=[
-        $namedColor.bgClass()
-      , { 'h-darkbg': $namedColor.name().slice(14)==='03' || $namedColor.name().slice(14)==='02' }
-      ])
+      li.o-List__Item.o-ColorBox(class=[ $namedColor.bgClass(), { 'h-darkbg': ['03', '02'].indexOf($namedColor.name().slice(14)) >= 0 } ])
         h4= $namedColor.name()
         pre.
           #{$namedColor.toString('hex')}
@@ -64,16 +61,12 @@ block append main
           #{$namedColor.fgClass()}
           #{$namedColor.brClass()}
     h2 The Colors
-    section
-      h3 #[cite Solarized] Color Scheme
-      ul.o-List.o-Grid
-        each color in Docs.SOLARIZED._colors
-          +colorBox(color)
-    section
-      h3 #[cite Lunarized] Color Scheme
-      ul.o-List.o-Grid
-        each color in Docs.LUNARIZED._colors
-          +colorBox(color)
+    each scheme in [Docs.SOLARIZED, Docs.LUNARIZED]
+      section
+        h3 #[cite= scheme._NAME] Color Scheme
+        ul.o-List.o-ColorBoxGrid
+          each color in scheme._colors
+            +colorBox(color)
     p: a(href="sample.html") See samples in action.
   nav
     h2 More Pages
