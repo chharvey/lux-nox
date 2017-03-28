@@ -15,52 +15,44 @@ td {
 .o-Box {
   padding: 0.75rem 0.5rem;
 }
+.o-ColorBoxGrid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-template-columns: 100%;
+  grid-template-columns: 100%;
+  -ms-grid-column-gap: 0.5rem;
+  grid-column-gap: 0.5rem;
+  -ms-grid-row-gap: calc(0.5 * var(--vru));
+  grid-row-gap: calc(0.5 * var(--vru));
+}
+@media screen and (min-width: 18.5rem) {
+  .o-ColorBoxGrid {
+    -ms-grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 35.5rem) {
+  .o-ColorBoxGrid {
+    -ms-grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 69.5rem) {
+  .o-ColorBoxGrid {
+    -ms-grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+@media screen and (min-width: 137.5rem) {
+  .o-ColorBoxGrid {
+    -ms-grid-template-columns: repeat(16, 1fr);
+    grid-template-columns: repeat(16, 1fr);
+  }
+}
 .o-ColorBox {
-  width: 100%;
   height: 8rem;
   padding: 0.25rem 0.5rem;
-  margin: 0 0.25rem 0.75rem;
   overflow: auto;
-}
-@media screen and (min-width: 17rem) {
-  .o-ColorBox {
-    -webkit-box-flex: calc(50%  -  0.5rem);
-    -moz-box-flex: calc(50%  -  0.5rem);
-    -webkit-flex: calc(50%  -  0.5rem);
-    -moz-flex: calc(50%  -  0.5rem);
-    -ms-flex: calc(50%  -  0.5rem);
-    flex: calc(50%  -  0.5rem);
-  }
-}
-@media screen and (min-width: 34rem) {
-  .o-ColorBox {
-    -webkit-box-flex: calc(25%  -  0.5rem);
-    -moz-box-flex: calc(25%  -  0.5rem);
-    -webkit-flex: calc(25%  -  0.5rem);
-    -moz-flex: calc(25%  -  0.5rem);
-    -ms-flex: calc(25%  -  0.5rem);
-    flex: calc(25%  -  0.5rem);
-  }
-}
-@media screen and (min-width: 68rem) {
-  .o-ColorBox {
-    -webkit-box-flex: calc(12.5%  -  0.5rem);
-    -moz-box-flex: calc(12.5%  -  0.5rem);
-    -webkit-flex: calc(12.5%  -  0.5rem);
-    -moz-flex: calc(12.5%  -  0.5rem);
-    -ms-flex: calc(12.5%  -  0.5rem);
-    flex: calc(12.5%  -  0.5rem);
-  }
-}
-@media screen and (min-width: 136rem) {
-  .o-ColorBox {
-    -webkit-box-flex: calc(6.25%  -  0.5rem);
-    -moz-box-flex: calc(6.25%  -  0.5rem);
-    -webkit-flex: calc(6.25%  -  0.5rem);
-    -moz-flex: calc(6.25%  -  0.5rem);
-    -ms-flex: calc(6.25%  -  0.5rem);
-    flex: calc(6.25%  -  0.5rem);
-  }
 }
 .o-ColorBox h4,
 .o-ColorBox pre {
