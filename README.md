@@ -15,7 +15,7 @@ Lux-Nox is a stylesheet containing 32 colors, and classes for using those colors
 ## Usage
 1. Locally
   ```
-  $ npm install bangs
+  $ npm install lux-nox
   ```
   ```html
   <link rel="stylesheet" href="/node_modules/lux-nox/lux-nox[.min].css"/>
