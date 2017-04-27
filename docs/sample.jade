@@ -83,30 +83,30 @@ block append main
             option(value="Lunarized") Lunarized Accents
     p.o-Grid__Item: input(type="reset")
   pre.o-Box.js-theme.
-    #[span.js-cmd &lt;tag #[span.js-kwd attribute=#[span.js-str &quot;value value&quot;]]&gt;]content #[span.js-cst &amp;amp;] more#[span.js-cmd &lt;#{'/'}tag&gt;]
+    #[span.js-cmd &lt;tag #[span.js-kwd attribute=#[span.js-str &quot;value value&quot;]]&gt;]content #[span.js-cst &amp;amp;] more#[span.js-cmd= '</tag>']
     #[small.js-deemph &lt;!-- HTML comment --&gt;]
     #[span.js-cmd &lt;style #[span.js-kwd scoped]&gt;]
       #[small.js-deemph /* block comment */]
       element,
       #[span.js-cmd .class] #[span.js-opr= '{']
-        #[small.js-deemph #{'//'} inline comment]
+        #[small.js-deemph= '// inline comment']
         #[span.js-kwd property]: #[span.js-str value];
         #[span.js-kwd property]: #[span.js-cst 48px];
         #[span.js-cmd .command(#[span.js-arg argument, #[span.js-obj 'string']])];
         #[strong.js-emph.js-hilite &amp;#[span.js-ctl :pseudo] #[span.js-opr= '{'] #[span.js-kwd property]: #[span.js-str value]; #[span.js-opr= '}']]
       #[span.js-opr= '}']
-    #[span.js-cmd &lt;#{'/'}style&gt;]
+    #[span.js-cmd= '</style>']
     #[span.js-cmd &lt;script&gt;]
-      #[span.js-kwd function] #[span.js-cmd Person(#[span.js-arg name])] #[span.js-opr= '{'] #[small.js-deemph #{'//'} constructor for class `Person`]
-        #[span.js-obj this].greetings #[span.js-opr =] #[span.js-opr #{'['}] #[span.js-str 'hello!']#[span.js-opr ,] #[span.js-str 'hi!']#[span.js-opr ,] handshake #[span.js-opr #{']'}];
+      #[span.js-kwd function] #[span.js-cmd Person(#[span.js-arg name])] #[span.js-opr= '{'] #[small.js-deemph= '// constructor for class `Person`']
+        #[span.js-obj this].greetings #[span.js-opr =] #[span.js-opr= '['] #[span.js-str 'hello!']#[span.js-opr ,] #[span.js-str 'hi!']#[span.js-opr ,] handshake #[span.js-opr= ']'];
       #[span.js-opr= '}']
-      #[span.js-kwd function] #[span.js-cmd TestSubject(#[span.js-arg name#[span.js-opr ,] adopted])] #[span.js-opr= '{'] #[small.js-deemph #{'//'} constructor for class `TestSubject`]
-        #[span.js-obj Person]#[span.js-cmd .call(#[span.js-arg #[span.js-obj this]#[span.js-opr ,] name#[span.js-opr ,] adopted])]; #[small.js-deemph #{'//'} calls the parent constructor]
+      #[span.js-kwd function] #[span.js-cmd TestSubject(#[span.js-arg name#[span.js-opr ,] adopted])] #[span.js-opr= '{'] #[small.js-deemph= '// constructor for class `TestSubject`']
+        #[span.js-obj Person]#[span.js-cmd .call(#[span.js-arg #[span.js-obj this]#[span.js-opr ,] name#[span.js-opr ,] adopted])]; #[small.js-deemph= '// calls the parent constructor']
         #[span.js-ctl if (#[span.js-opr typeof] #[span.js-arg adopted] #[span.js-opr ===] #[span.js-str 'boolean'])] #[span.js-opr= '{']
           #[strong.js-emph.js-hilite #[span.js-obj this].is_adopted #[span.js-opr =] #[span.js-arg adopted];]
         #[span.js-opr= '}'] #[span.js-ctl else] #[span.js-obj this].is_adopted #[span.js-opr =] #[span.js-cst false];
       #[span.js-opr= '}']
-      #[span.js-obj this].location #[span.js-opr =] #[span.js-opr #{'{'}] name#[span.js-opr :] #[span.js-str 'Aperture Science Enrichment Center'] #[span.js-opr #{'}'}]
-      #[span.js-obj Util]#[span.js-cmd .extend(#[span.js-arg #[span.js-obj TestSubject]#[span.js-opr ,] #[span.js-obj Person]])]; #[small.js-deemph #{'//'} extends `TestSubject` from `Person`]
-      #[span.js-kwd var] you #[span.js-opr =] #[span.js-opr new] #[span.js-cmd TestSubject(#[span.js-arg #[span.js-str 'Chell']#[span.js-opr ,] #[span.js-cst true]])]; #[small.js-deemph #{'//'} creates an instance of `TestSubject`]
-    #[span.js-cmd &lt;#{'/'}script&gt;]
+      #[span.js-obj this].location #[span.js-opr =] #[span.js-opr= '{'] name#[span.js-opr :] #[span.js-str 'Aperture Science Enrichment Center'] #[span.js-opr= '}']
+      #[span.js-obj Util]#[span.js-cmd .extend(#[span.js-arg #[span.js-obj TestSubject]#[span.js-opr ,] #[span.js-obj Person]])]; #[small.js-deemph= '// extends `TestSubject` from `Person`']
+      #[span.js-kwd var] you #[span.js-opr =] #[span.js-opr new] #[span.js-cmd TestSubject(#[span.js-arg #[span.js-str 'Chell']#[span.js-opr ,] #[span.js-cst true]])]; #[small.js-deemph= '// creates an instance of `TestSubject`']
+    #[span.js-cmd= '</script>']

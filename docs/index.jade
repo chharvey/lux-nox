@@ -22,20 +22,6 @@ block append main
       h3.o-Box.-bc-s03.-c-lc Solarized Base03 background, Lunarized Cyan foreground!
       h4.o-Box.-rc-sb(style="border: 3px solid;") Solarized Blue border!
   section
-    h2 Usage
-    p Locally
-    pre.
-      $ npm install bangs
-    pre.
-      &lt;link rel="stylesheet" href="/node_modules/lux-nox/lux-nox[.min].css"/&gt;
-    p Remotely from a CDN (not recommended)
-    pre.
-      &lt;link rel="stylesheet" href="https://cdn.rawgit.com/chharvey/lux-nox/#[var ‹master›]/lux-nox[.min].css"/&gt;
-    p Remotely from this site (not recommended)
-    pre.
-      &lt;link rel="stylesheet" href="https://chharvey.github.io/lux-nox/lux-nox[.min].css"/&gt;
-    p where #[code #[var ‹master›]] can be a branch or a tag, and optional #[code [.min]] is for the minified version.
-  section
     h2 Description
     p Each color scheme contains 16 colors total, shared among two modes:
     ul
@@ -67,10 +53,7 @@ block append main
           li remain constant, independent of mode
   section
     mixin colorBox($namedColor)
-      li.o-Grid__Item.o-ColorBox(class=[
-        $namedColor.bgClass()
-      , { 'h-darkbg': $namedColor.name().slice(14)==='03' || $namedColor.name().slice(14)==='02' }
-      ])
+      li.o-List__Item.o-ColorBox(class=[ $namedColor.bgClass(), { 'h-darkbg': ['03', '02'].indexOf($namedColor.name().slice(14)) >= 0 } ])
         h4= $namedColor.name()
         pre.
           #{$namedColor.toString('hex')}
@@ -78,36 +61,13 @@ block append main
           #{$namedColor.fgClass()}
           #{$namedColor.brClass()}
     h2 The Colors
-    section
-      h3 #[cite Solarized] Color Scheme
-      ul.o-List.o-Grid
-        each color in Docs.SOLARIZED._colors
-          +colorBox(color)
-    section
-      h3 #[cite Lunarized] Color Scheme
-      ul.o-List.o-Grid
-        each color in Docs.LUNARIZED._colors
-          +colorBox(color)
+    each scheme in [Docs.SOLARIZED, Docs.LUNARIZED]
+      section
+        h3 #[cite= scheme._NAME] Color Scheme
+        ul.o-List.o-ColorBoxGrid
+          each color in scheme._colors
+            +colorBox(color)
     p: a(href="sample.html") See samples in action.
-  section
-    h2 Inspiration and Construction
-    p.
-      #[cite Solarized] was developed by
-      #[a(href="http://ethanschoonover.com/solarized") Ethan Schoonover].
-      Inspired by his work, I developed the #[cite Lunarized] Scheme in an attempt to
-      cool the Solarized Light background colors. The Light mode was appealing to me
-      but I didn&rsquo;t like the yellowish tint. So I inverted the background color and
-      it gave me a bluish tint, #[strong(title="hence, “lunar”") like the full moon].
-      I tried inverting the accent colors as well,
-      but got ugly results, so I complemented them instead.
-    p.
-      In the Lunarized Scheme, the bases are inverses of the Solarized Bases while
-      the accents are complements of the Solarized Accents.
-      The inverse of a color is a 180&deg; hue rotation of that color, while the complement
-      of a color is the difference between that color and white.
-    pre.
-      inverse(@color)    : spin(@color, 180);
-      complement(@color) : rgb( 255-red(@color), 255-green(@color), 255-blue(@color) );
   nav
     h2 More Pages
     ul
