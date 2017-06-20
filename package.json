@@ -5,11 +5,7 @@
   "main": "lux-nox.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pug:docs": "pug -O docs/_models/options.js docs/{index,sample,use,accessibility}.pug",
-    "lessc:docs": "lessc docs/styles/docs.less docs/styles/docs.css",
-    "lessc:core": "lessc lux-nox.less lux-nox.css",
-    "minify": "cleancss lux-nox.css -o lux-nox.min.css",
-    "build": "npm run pug:docs  &&  npm run lessc:docs  &&  npm run lessc:core  &&  npm run minify"
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -28,10 +24,13 @@
   },
   "homepage": "https://chharvey.github.io/lux-nox/",
   "devDependencies": {
-    "clean-css": "^3.4.6",
     "csscolor": "^1.2.0",
-    "less": "^2.5.3",
-    "pug-cli": "^1.0.0-alpha6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.4.2",
+    "gulp-less": "^3.3.2",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.2.2",
     "sitepage": "^1.0.0",
     "xmeter": "^5.3.1"
   }
