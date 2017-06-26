@@ -37,20 +37,33 @@ th, td {
 
 @p-height: 8rem;
 @p-gap-horiz: 0.5rem;
-.o-ColorBoxGrid {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-column-gap: @p-gap-horiz;
-  grid-row-gap: calc(~'0.5 * var(--vru)');
+:root {
+  --columns: 1;
   .breakpoint-mx(@n) {
     @media screen and (min-width: (@n*@p-height + (@n - 1)*@p-gap-horiz + 2rem)) { // NOTE extra 2rem for `main` margins
-      grid-template-columns: repeat(@n, 1fr);
+      --columns: @n;
     }
   }
   .breakpoint-mx(2);
   .breakpoint-mx(4);
   .breakpoint-mx(8);
   .breakpoint-mx(16);
+}
+.o-ColorBoxGrid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-column-gap: @p-gap-horiz;
+  grid-row-gap: calc(~'0.5 * var(--vru)');
+  grid-template-columns: repeat(var(--columns), minmax(@p-height, (2*@p-height + @p-gap-horiz)));
+  // .breakpoint-mx(@n) {
+  //   @media screen and (min-width: (@n*@p-height + (@n - 1)*@p-gap-horiz + 2rem)) { // NOTE extra 2rem for `main` margins
+  //     grid-template-columns: repeat(@n, minmax(@p-height, (2*@p-height + @p-gap-horiz)));
+  //   }
+  // }
+  // .breakpoint-mx(2);     // @media screen and (min-width: ( 2*@p-height +  1*@p-gap-horizontal + 2rem) { .o-ColorBoxGrid { grid-template-columns: repeat( 2, minmax(@p-height, (2*@p-height + @p-gap-horiz))); } }    // @media screen and (min-width:  18.5rem) { .o-ColorBoxGrid { grid-template-columns: repeat( 2, minmax(8rem, 17.5rem)); }}
+  // .breakpoint-mx(4);     // @media screen and (min-width: ( 4*@p-height +  3*@p-gap-horizontal + 2rem) { .o-ColorBoxGrid { grid-template-columns: repeat( 4, minmax(@p-height, (2*@p-height + @p-gap-horiz))); } }    // @media screen and (min-width:  35.5rem) { .o-ColorBoxGrid { grid-template-columns: repeat( 4, minmax(8rem, 17.5rem)); }}
+  // .breakpoint-mx(8);     // @media screen and (min-width: ( 8*@p-height +  7*@p-gap-horizontal + 2rem) { .o-ColorBoxGrid { grid-template-columns: repeat( 8, minmax(@p-height, (2*@p-height + @p-gap-horiz))); } }    // @media screen and (min-width:  69.5rem) { .o-ColorBoxGrid { grid-template-columns: repeat( 8, minmax(8rem, 17.5rem)); }}
+  // .breakpoint-mx(16);    // @media screen and (min-width: (16*@p-height + 15*@p-gap-horizontal + 2rem) { .o-ColorBoxGrid { grid-template-columns: repeat(16, minmax(@p-height, (2*@p-height + @p-gap-horiz))); } }    // @media screen and (min-width: 137.5rem) { .o-ColorBoxGrid { grid-template-columns: repeat(16, minmax(8rem, 17.5rem)); }}
 }
 .o-ColorBox {
   height: @p-height;
