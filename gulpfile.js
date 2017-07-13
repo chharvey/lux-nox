@@ -27,7 +27,7 @@ gulp.task('lessc:docs', function () {
 })
 
 gulp.task('lessc:core', function () {
-  return gulp.src('lux-nox.less')
+  return gulp.src('src/lux-nox.less')
     .pipe(less())
     .pipe(autoprefixer({
       grid: true
