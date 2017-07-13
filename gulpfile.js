@@ -1,9 +1,9 @@
 var gulp = require('gulp')
-var rename = require('gulp-rename')
 var pug = require('gulp-pug')
 var less = require('gulp-less')
 var autoprefixer = require('gulp-autoprefixer')
 var clean_css = require('gulp-clean-css')
+var sourcemaps = require('gulp-sourcemaps')
 
 gulp.task('pug:docs', function () {
   return gulp.src('docs/{index,sample,use,accessibility}.pug')
@@ -26,21 +26,20 @@ gulp.task('lessc:docs', function () {
     .pipe(gulp.dest('./docs/styles/'))
 })
 
-gulp.task('lessc:lux-nox', function () {
-  return gulp.src('lux-nox.less')
+gulp.task('lessc:core', function () {
+  return gulp.src('src/lux-nox.less')
     .pipe(less())
     .pipe(autoprefixer({
       grid: true
     , cascade: false
     }))
     .pipe(gulp.dest('./'))
-})
-
-gulp.task('minify', ['lessc:lux-nox'], function () {
-  return gulp.src('lux-nox.css')
+    .pipe(sourcemaps.init())
     .pipe(clean_css())
-    .pipe(rename('lux-nox.min.css')) // TODO: use a SourceMap!
+    .pipe(sourcemaps.write('./')) // writes to an external .map file
     .pipe(gulp.dest('./'))
 })
 
-gulp.task('build', ['pug:docs', 'lessc:docs', 'minify'])
+gulp.task('lessc:all', ['lessc:docs', 'lessc:core'])
+
+gulp.task('build', ['pug:docs', 'lessc:all'])
