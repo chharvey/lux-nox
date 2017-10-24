@@ -1,4 +1,4 @@
-var Color = require('csscolor').Color
+const Color = require('extrajs-color')
 
 module.exports = class NamedColor extends Color {
   /**
@@ -11,7 +11,7 @@ module.exports = class NamedColor extends Color {
    * @param {string} suffix the suffix for any CSS classes
    */
   constructor($color, name, suffix) {
-    super($color.rgb())
+    super(...$color.rgb)
     this._NAME = name
     this._SUFFIX = suffix
   }

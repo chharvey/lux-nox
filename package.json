@@ -24,14 +24,13 @@
   },
   "homepage": "https://chharvey.github.io/lux-nox/",
   "devDependencies": {
-    "csscolor": "^1.2.0",
+    "extrajs-color": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-clean-css": "^3.4.2",
     "gulp-less": "^3.3.2",
     "gulp-pug": "^3.3.0",
     "gulp-sourcemaps": "^2.6.0",
-    "sitepage": "^1.0.0",
-    "xmeter": "^5.3.1"
+    "sitepage": "^1.0.0"
   }
 }

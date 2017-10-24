@@ -1,7 +1,7 @@
-var Page = require('sitepage').Page
-var Color = require('csscolor').Color
-var NamedColor = require('./NamedColor.class.js')
-var Scheme = require('./Scheme.class.js')
+const Page       = require('sitepage').Page
+const Color      = require('extrajs-color')
+const NamedColor = require('./NamedColor.class.js')
+const Scheme     = require('./Scheme.class.js')
 
 module.exports = (function () {
   /**
